@@ -5,4 +5,12 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+    <package name="xiayule" namespace="/" extends="struts-default">
+
+        <action name="test" class="test">
+            <result name="success">/index.jsp</result>
+        </action>
+
+    </package>
+
 </struts>
