@@ -11,7 +11,7 @@ package com.linuxgroup.model;
  * 教师/家长性别(0.女，1.男)(sex)
  * 教师/家长家庭住址(address)
  * 教师/家长的联系方式(communication)
- * 教师/家长对应管理所的学生(student_list)
+ * 教师/家长对应管理所的学生(studentList)
  * Person类型（0.老师，1.家长）
  */
 public class PersonModel {
@@ -20,18 +20,18 @@ public class PersonModel {
     private int sex;     // 教师/家长性别(0.女，1.男)
     private String address;  // 教师/家长家庭住址
     private String communication;  // 教师/家长的联系方式
-    private List<int> student_list;  // 教师/家长对应管理所的学生
+    private List<int> studentList;  // 教师/家长对应管理所的学生
     private int type;        // person类型（0.老师，1.家长）
 
     public PersonModel() {
     }
-    public PersonModel(int id,String name,int sex,String address,String communication,List<int> student_list,int type) {
+    public PersonModel(int id,String name,int sex,String address,String communication,List<int> studentList,int type) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.sex = sex;
         this.communication = communication;
-        this.student_list = student_list;
+        this.studentList = studentList;
         this.type = type;
     }
 
@@ -75,12 +75,12 @@ public class PersonModel {
         this.communication = communication;
     }
 
-    public List<int> getStudent_list() {
-        return student_list;
+    public List<int> getStudentList() {
+        return studentList;
     }
 
-    public void setStudent_list(List<int> student_list) {
-        this.student_list = student_list;
+    public void setStudentList(List<int> studentList) {
+        this.studentList = studentList;
     }
 
     public int getType() {

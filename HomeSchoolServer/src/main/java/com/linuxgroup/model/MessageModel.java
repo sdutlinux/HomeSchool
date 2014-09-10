@@ -7,38 +7,38 @@ import java.util.Date;
  *
  * Message类
  * 老师与家长交流信息的模型，其中包括属性：
- * 发送信息人（from_person）
- * 信息接受人（to_person）
+ * 发送信息人（fromPerson）
+ * 信息接受人（toPerson）
  * 信息发送时间 （Date）
  * 信息发送类型（1.文字，2.图片，3.文件）
  */
 public class MessageModel {
-    private int from_person_id;   // 发送信息人id
-    private int to_person_id;     // 信息接受人id
+    private int fromPersonId;   // 发送信息人id
+    private int toPersonId;     // 信息接受人id
     private Date   time;          // 信息发送时间
     private int    type;          // 信息发送类型（1.文字，2.图片，3.文件）
 
     public MessageModel() { }
-    public MessageModel(int from_person_id, int to_person_id, Date time, int type) {
-        this.from_person_id = from_person_id;
-        this.to_person_id = to_person_id;
+    public MessageModel(int fromPersonId, int toPersonId, Date time, int type) {
+        this.fromPersonId = fromPersonId;
+        this.toPersonId = toPersonId;
         this.time = time;
         this.type = type;
     }
 
-    public int getFrom_person_id() { 
-        return from_person_id;
+    public int getFromPersonId() {
+        return fromPersonId;
     }
 
-    public void setFrom_person_id(int from_person_id) {
-        this.from_person_id = from_person_id;
+    public void setFromPersonId(int fromPersonId) {
+        this.fromPersonId = fromPersonId;
     }
 
-    public int getTo_person_id() {
-        return to_person_id;
+    public int getToPersonId() {
+        return toPersonId;
     }
-    public void setTo_person_id(int to_person_id) {
-        this.to_person_id = to_person_id;
+    public void setToPersonId(int toPersonId) {
+        this.toPersonId = toPersonId;
     }
 
     public Date getTime() {
