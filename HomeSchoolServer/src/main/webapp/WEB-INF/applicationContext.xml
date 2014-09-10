@@ -1,10 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 定义数据源 Bean, 使用 C3P0 数据源实现 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <!-- 指定链接数据库的驱动-->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
 
-    <bean id="test" class="com.linuxgroup.Test">
+        <!-- 指定链接数据库的 url -->
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/family_school?useUnicode=true&amp;characterEncoding=utf8"/>
+        <!-- 指定链接数据库的用户名 -->
+        <property name="user" value="root"/>
+        <!-- 指定链接数据库的密码 -->
+        <property name="password" value="0000"/>
+
+        <!-- 指定链接数据库连接池的最大连接数 -->
+        <property name="maxPoolSize" value="40"/>
+        <!-- 指定链接数据库连接池的最小连接数 -->
+        <property name="minPoolSize" value="1"/>
+        <!-- 指定链接数据库连接池的初始化连接数 -->
+        <property name="initialPoolSize" value="1"/>
+
+        <!-- sae 建议 -->
+        <property name="idleConnectionTestPeriod" value="10"/>
+        <!-- 指定链接数据库连接池的最大空闲时间 -->
+        <property name="maxIdleTime" value="10"/>
+    </bean>
+
+    <!-- 定义 Hibernate 的 SessionFactory -->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mappingResources">
+            <list>
+                <!-- 以下列出所有的 PO 映射文件 -->
+                <value>com/linuxgroup/model/MessageModel.hbm.xml</value>
+                <value>com/linuxgroup/model/PersonModel.hbm.xml</value>
+                <value>com/linuxgroup/model/StudentModel.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <!-- 设置 Hibernate 属性 -->
+            <value>
+                hibernate.dialect=org.hibernate.dialect.MySQLDialect
+                hibernate.hbm2ddl.auto=update
+            </value>
+        </property>
 
     </bean>
 
+
+
 </beans>
+
