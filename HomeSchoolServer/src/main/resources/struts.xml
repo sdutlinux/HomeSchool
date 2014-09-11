@@ -13,4 +13,39 @@
 
     </package>
 
+    <package name="ajax" namespace="/ajax" extends="struts-default">
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+        </result-types>
+
+        <!-- 定义一个拦截器 -->
+        <interceptors>
+            <!-- json 中使用的自带的 -->
+            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+
+            <!-- 自定义的检测是否自动登录  -->
+            <!--<interceptor name="authority" class="authInterceptor"/>-->
+
+            <!-- 拦截器栈 -->
+            <interceptor-stack name="authStack">
+                <!--<interceptor-ref name="authority"/>-->
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="json"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="authStack"/>
+
+        <!-- 定义全局 Result -->
+        <!--<global-results>
+            &lt;!&ndash; 当返回login视图名时，转入/页面 &ndash;&gt;
+            <result name="login" type="redirect">/</result>
+        </global-results>-->
+
+        
+
+
+    </package>
+
+
 </struts>
