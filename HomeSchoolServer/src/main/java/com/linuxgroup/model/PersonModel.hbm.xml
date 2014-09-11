@@ -26,4 +26,4 @@
             <one-to-many class="StudentModel"/>
         </list>
     </class>
-</hibernate-map
+</hibernate-map>
