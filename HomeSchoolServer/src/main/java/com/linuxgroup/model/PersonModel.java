@@ -1,5 +1,7 @@
 package com.linuxgroup.model;
 
+import java.util.List;
+
 /**
  * Created by huihui on 14-9-9.
  *
@@ -20,12 +22,12 @@ public class PersonModel {
     private int sex;     // 教师/家长性别(0.女，1.男)
     private String address;  // 教师/家长家庭住址
     private String communication;  // 教师/家长的联系方式
-    private List<int> studentList;  // 教师/家长对应管理所的学生
+    private List<Integer> studentList;  // 教师/家长对应管理所的学生
     private int type;        // person类型（0.老师，1.家长）
 
     public PersonModel() {
     }
-    public PersonModel(int id,String name,int sex,String address,String communication,List<int> studentList,int type) {
+    public PersonModel(int id,String name,int sex,String address,String communication,List<Integer> studentList,int type) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -75,11 +77,11 @@ public class PersonModel {
         this.communication = communication;
     }
 
-    public List<int> getStudentList() {
+    public List<Integer> getStudentList() {
         return studentList;
     }
 
-    public void setStudentList(List<int> studentList) {
+    public void setStudentList(List<Integer> studentList) {
         this.studentList = studentList;
     }
 
