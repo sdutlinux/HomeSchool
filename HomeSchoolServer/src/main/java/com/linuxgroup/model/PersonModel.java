@@ -24,11 +24,19 @@ public class PersonModel {
     private int sex;     // 教师/家长性别(0.女，1.男)
     private String address;  // 教师/家长家庭住址
     private String communication;  // 教师/家长的联系方式
+<<<<<<< HEAD
     private List<StudentModel> studentList = new ArrayList<StudentModel>();  // 教师/家长对应管理所的学生
+=======
+    private List<StudentModel> studentList = new LinkedList<StudentModel>();  // 教师/家长对应管理所的学生
+>>>>>>> 17fb4b3775b2dd17c48e4539fc01f908b6f8ad58
     private int type;        // person类型（0.老师，1.家长）
 
     public PersonModel() {
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 17fb4b3775b2dd17c48e4539fc01f908b6f8ad58
     public PersonModel(int id,String name,int sex,String address,String communication,List<StudentModel> studentList,int type) {
         this.id = id;
         this.name = name;
