@@ -7,14 +7,14 @@
 <hibernate-mapping package="com.linuxgroup.model" >
     <!-- 每个class元素对应一个持久话对象-->
     <class name="StudentModel" table="studentModel_table">
-        <id name="id" column="studentModel_id">
+        <id name="id" column="id" >
             <generator class="identity"/>
         </id>
         <!-- property元素定义常规属性-->
-        <property name="studentId"/>
-        <property name="name"/>
-        <property name="sex"/>
-        <property name="teacherId"/>
-        <property name="parentId"/>
+        <property name="studentId" column="studentId" type="integer"/>
+        <property name="name" column="name" type="string"/>
+        <property name="sex" column="sex" type="string"/>
+        <property name="teacherId" column="teacherId" type="integer"/>
+        <property name="parentId" column="parentId" type="string"/>
     </class>
 </hibernate-mapping>
