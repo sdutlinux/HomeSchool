@@ -1,5 +1,6 @@
 package com.linuxgroup.model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -22,20 +23,13 @@ public class PersonModel {
     private int sex;     // 教师/家长性别(0.女，1.男)
     private String address;  // 教师/家长家庭住址
     private String communication;  // 教师/家长的联系方式
-<<<<<<< HEAD
-    private List<StudentModel> studentList;  // 教师/家长对应管理所的学生
-=======
-    private List<Integer> studentList;  // 教师/家长对应管理所的学生
->>>>>>> 9716400d1a12fccfbde9e796d7c95fe4226e37f0
+    private List<StudentModel> studentList = new LinkedList<StudentModel>();  // 教师/家长对应管理所的学生
     private int type;        // person类型（0.老师，1.家长）
 
     public PersonModel() {
     }
-<<<<<<< HEAD
+
     public PersonModel(int id,String name,int sex,String address,String communication,List<StudentModel> studentList,int type) {
-=======
-    public PersonModel(int id,String name,int sex,String address,String communication,List<Integer> studentList,int type) {
->>>>>>> 9716400d1a12fccfbde9e796d7c95fe4226e37f0
         this.id = id;
         this.name = name;
         this.address = address;
@@ -85,19 +79,11 @@ public class PersonModel {
         this.communication = communication;
     }
 
-<<<<<<< HEAD
     public List<StudentModel> getStudentList() {
         return studentList;
     }
 
     public void setStudentList(List<StudentModel> studentList) {
-=======
-    public List<Integer> getStudentList() {
-        return studentList;
-    }
-
-    public void setStudentList(List<Integer> studentList) {
->>>>>>> 9716400d1a12fccfbde9e796d7c95fe4226e37f0
         this.studentList = studentList;
     }
 

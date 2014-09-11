@@ -7,7 +7,7 @@
 <hibernate-mapping package="com.linuxgroup.model" >
     <!-- 每个class元素对应一个持久话对象-->
     <class name="StudentModel" table="studentModel_table">
-        <id name="id">
+        <id name="id" column="studentModel_id">
             <generator class="identity"/>
         </id>
         <!-- property元素定义常规属性-->

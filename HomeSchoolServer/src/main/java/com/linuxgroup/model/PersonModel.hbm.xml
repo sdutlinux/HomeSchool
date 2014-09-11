@@ -8,7 +8,7 @@
     <!-- 每个class元素对应一个持久话对象-->
     <class name="PersonModel" table="personModel_table">
         <!--id元素定义持久化对象-->
-        <id name="id">
+        <id name="id" column="personModel_id">
             <!--指定主键生成策略-->
             <generator class="identity"/>
         </id>
@@ -26,4 +26,4 @@
             <one-to-many class="StudentModel"/>
         </list>
     </class>
-</hibernate-map>
+</hibernate-mapping>

@@ -7,6 +7,10 @@
 <hibernate-mapping package="com.linuxgroup.model" >
     <!-- 每个class元素对应一个持久话对象-->
     <class name="MessageModel" table="messageModel_table">
+            <id name="id" column="messageModel_id">
+                <!--定义主键生成器-->
+                <generator class="identity"/>
+            </id>
             <!-- property元素定义常规属性-->
             <property name="fromPersonId"/>
             <property name="toPersonId"/>
