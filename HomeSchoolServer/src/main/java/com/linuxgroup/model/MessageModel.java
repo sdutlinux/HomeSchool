@@ -13,13 +13,15 @@ import java.util.Date;
  * 信息发送类型（1.文字，2.图片，3.文件）
  */
 public class MessageModel {
+    private int id;             // 信息的id
     private int fromPersonId;   // 发送信息人id
     private int toPersonId;     // 信息接受人id
     private Date   time;          // 信息发送时间
     private int    type;          // 信息发送类型（1.文字，2.图片，3.文件）
 
     public MessageModel() { }
-    public MessageModel(int fromPersonId, int toPersonId, Date time, int type) {
+    public MessageModel(int id,int fromPersonId, int toPersonId, Date time, int type) {
+        this.id = id;
         this.fromPersonId = fromPersonId;
         this.toPersonId = toPersonId;
         this.time = time;
@@ -54,5 +56,13 @@ public class MessageModel {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
