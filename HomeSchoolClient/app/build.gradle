@@ -22,4 +22,5 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/jpush-sdk-release1.6.4.jar')
+
 }

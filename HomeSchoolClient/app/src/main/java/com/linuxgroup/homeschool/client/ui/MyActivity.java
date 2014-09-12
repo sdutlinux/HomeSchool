@@ -1,10 +1,11 @@
-package com.linuxgroup.homeschool.client;
+package com.linuxgroup.homeschool.client.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.linuxgroup.homeschool.client.R;
 
 public class MyActivity extends Activity {
 
