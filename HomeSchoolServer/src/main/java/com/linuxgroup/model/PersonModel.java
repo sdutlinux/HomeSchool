@@ -5,28 +5,61 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by huihui on 14-9-9.
+ * @author huihui
+ * @version PersonModel类
  *
- * PersonModel类
- *
- * Person类模型属性
+ * PersonModel类属性
  * 教师/家长id(id)
  * 教师/家长姓名(name)
  * 教师/家长性别(0.女，1.男)(sex)
  * 教师/家长家庭住址(address)
  * 教师/家长的联系方式(communication)
  * 教师/家长对应管理所的学生(studentList)
- * Person类型（0.老师，1.家长）
+ * Person类型（0.老师，1.家长）(type)
  */
 public class PersonModel {
-    private int id;       // 教师/家长id
-    private String name;   // 教师/家长姓名
-    private int sex;     // 教师/家长性别(0.女，1.男)
-    private String address;  // 教师/家长家庭住址
-    private String communication;  // 教师/家长的联系方式
-    private List<StudentModel> studentList = new ArrayList<StudentModel>();  // 教师/家长对应管理所的学生
 
-    private int type;        // person类型（0.老师，1.家长）
+    /**
+     * id
+     * 教师/家长id
+     */
+    private int id;
+
+    /**
+     * name
+     * 教师/家长姓名
+     */
+    private String name;
+
+    /**
+     * sex
+     * 教师/家长性别(0.女，1.男)
+     */
+    private int sex;
+
+    /**
+     * address
+     * 教师/家长家庭住址
+     */
+    private String address;
+
+    /**
+     * communication
+     * 教师/家长的联系方式
+     */
+    private String communication;
+
+    /**
+     * studentList
+     * 教师/家长对应管理所的学生
+     */
+    private List<StudentModel>  studentList = new ArrayList<StudentModel>();
+
+    /**
+     *  type
+     * person类型（0.老师，1.家长）
+     */
+    private int type;
 
     public PersonModel() {
     }
