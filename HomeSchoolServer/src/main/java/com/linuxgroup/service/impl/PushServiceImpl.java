@@ -40,8 +40,9 @@ public class PushServiceImpl implements PushService {
 
     // 快捷地构建推送对象：所有平台，所有设备，内容为 ALERT 的通知
     public static PushPayload buildPushObject_all_all_alert() {
-        return PushPayload.alertAll("125623");
+        return PushPayload.alertAll("11112");
     }
+
 
     // 构建推送对象：所有平台，推送目标是别名为 "alias1"，通知内容为 ALERT
     public static PushPayload buildPushObject_all_alias_alert() {
