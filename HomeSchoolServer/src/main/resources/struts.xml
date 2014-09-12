@@ -5,7 +5,7 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    <package name="xiayule" namespace="/" extends="struts-default">
+    <package name="linuxgroup" namespace="/" extends="struts-default">
 
        <action name="test" class="com.linuxgroup.Test">
             <result name="success">/index.jsp</result>
