@@ -7,7 +7,7 @@
 <struts>
     <package name="xiayule" namespace="/" extends="struts-default">
 
-        <action name="test" class="test">
+       <action name="test" class="com.linuxgroup.Test">
             <result name="success">/index.jsp</result>
         </action>
 
