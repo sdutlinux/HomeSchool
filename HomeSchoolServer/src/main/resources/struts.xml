@@ -7,7 +7,7 @@
 <struts>
     <package name="linuxgroup" namespace="/" extends="struts-default">
 
-        <action name="test" class="com.linuxgroup.Test">
+       <action name="test" class="com.linuxgroup.Test">
             <result name="success">/index.jsp</result>
         </action>
 
