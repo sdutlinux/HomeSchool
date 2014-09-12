@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="46dp"
+        android:layout_marginRight="61dp"
+        >
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login_logo"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="帐号："
+                android:textSize="16sp"
+                />
+            <EditText
+                android:id="@+id/et_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="输入帐号"
+                android:background="@drawable/input_normal"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="密码："
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="200dip"
+                android:layout_height="wrap_content"
+                android:inputType="numberPassword"
+                android:background="@drawable/input_normal"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/cb_check"
+                android:text="记住密码"
+                android:textColor="#4F4F4F"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="110dip"
+                android:layout_height="35dip"
+                android:background="@drawable/login_button_nor"
+                android:gravity="center"
+                android:text="注册" />
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="110dip"
+                android:layout_height="35dip"
+                android:background="@drawable/login_btn_selector"
+                android:gravity="center"
+                android:text="登陆" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
