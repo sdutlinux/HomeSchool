@@ -11,7 +11,7 @@ package com.linuxgroup.model;
  * 学生对应老师的id(teacherId)
  * 学生对应的家长id(personId)
  */
-public class StudentModel {
+public class Student {
     /**
      * id  学生在数据表中的id
      */
@@ -42,8 +42,8 @@ public class StudentModel {
      */
     private int parentId;
 
-    public StudentModel() { }
-    public StudentModel(int id,int studentId,String name,int sex,int teacherId,int parentId) {
+    public Student() { }
+    public Student(int id, int studentId, String name, int sex, int teacherId, int parentId) {
         this.id = id;
         this.studentId = studentId;
         this.name = name;

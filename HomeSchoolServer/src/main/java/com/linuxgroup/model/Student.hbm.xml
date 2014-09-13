@@ -6,7 +6,7 @@
 <!--hibernate-mapping是映射文件的根元素-->
 <hibernate-mapping package="com.linuxgroup.model" >
     <!-- 每个class元素对应一个持久话对象-->
-    <class name="StudentModel" table="studentModel_table">
+    <class name="com.linuxgroup.model.Student" table="student_table">
         <id name="id" column="id" >
             <generator class="identity"/>
         </id>

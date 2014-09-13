@@ -13,7 +13,7 @@ import java.util.Date;
  * 信息发送时间 （Date）
  * 信息发送类型（1.文字，2.图片，3.文件）
  */
-public class MessageModel {
+public class Message {
     /**
      * id 信息的id
      */
@@ -44,9 +44,9 @@ public class MessageModel {
      */
     private int  type;
 
-    public MessageModel() { }
+    public Message() { }
 
-    public MessageModel(int id,int fromPersonId, int toPersonId, String content,Date time, int type) {
+    public Message(int id, int fromPersonId, int toPersonId, String content, Date time, int type) {
         this.id = id;
         this.fromPersonId = fromPersonId;
         this.toPersonId = toPersonId;

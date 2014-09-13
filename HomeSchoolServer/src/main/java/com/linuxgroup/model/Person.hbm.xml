@@ -6,7 +6,7 @@
 <!--hibernate-mapping是映射文件的根元素-->
 <hibernate-mapping package="com.linuxgroup.model" >
     <!-- 每个class元素对应一个持久话对象-->
-    <class name="PersonModel" table="personModel_table">
+    <class name="com.linuxgroup.model.Person" table="person_table">
         <!--id元素定义持久化对象-->
         <id name="id" column="id">
             <!--指定主键生成策略-->
@@ -19,12 +19,12 @@
         <property name="communication" column="communication" type="string"/>
         <property name="type" column="type" type="integer"/>
         <!--Person和student的一对多关系-->
-        <list name="studentList" table="studentModel_table" cascade="all">
+        <list name="studentList" table="student_table" cascade="all">
             <!--指定关联的外键到-->
             <key column="id" />
             <list-index column="order" base="0"/>
             <!--用以映射到关联类属性-->
-            <one-to-many class="com.linuxgroup.model.StudentModel"/>
+            <one-to-many class="Student"/>
         </list>
     </class>
 </hibernate-mapping>

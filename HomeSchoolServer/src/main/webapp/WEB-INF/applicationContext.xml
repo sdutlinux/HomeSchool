@@ -36,9 +36,9 @@
         <property name="mappingResources">
             <list>
                 <!-- 以下列出所有的 PO 映射文件 -->
-                <value>com/linuxgroup/model/MessageModel.hbm.xml</value>
-                <value>com/linuxgroup/model/PersonModel.hbm.xml</value>
-                <value>com/linuxgroup/model/StudentModel.hbm.xml</value>
+                <value>com/linuxgroup/model/Message.hbm.xml</value>
+                <value>com/linuxgroup/model/Person.hbm.xml</value>
+                <value>com/linuxgroup/model/Student.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
