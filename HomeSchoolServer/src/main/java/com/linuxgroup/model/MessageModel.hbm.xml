@@ -6,7 +6,7 @@
 <!--hibernate-mapping是映射文件的根元素-->
 <hibernate-mapping package="com.linuxgroup.model" >
     <!-- 每个class元素对应一个持久话对象-->
-    <class name="MessageModel" table="messageModel_table">
+    <class name="com.linuxgroup.model.Message" table="messageModel_table">
             <id name="id" column="id">
                 <!--定义主键生成器-->
                 <generator class="identity"/>
