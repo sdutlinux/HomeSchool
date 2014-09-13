@@ -45,6 +45,8 @@ public class PushServiceImpl implements PushService {
         return result;
     }
 
+
+
     /*
     public static void main(String[] args) {
         JPushClient jPushClient = new JPushClient("2a090943a34259bca2745744", "8a306f5ee8eb3f339a8a8ad0", 3);

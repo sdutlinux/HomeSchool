@@ -6,6 +6,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.linuxgroup.homeschool.client.R;
+import com.linuxgroup.homeschool.client.service.UserInfoService;
+
+import java.util.Set;
+
+import cn.jpush.android.api.TagAliasCallback;
 
 public class MainActivity extends Activity {
 
@@ -13,6 +18,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+
+        UserInfoService.setAlias(this, "18369905136", new TagAliasCallback() {
+            @Override
+            public void gotResult(int i, String s, Set<String> strings) {
+                System.out.println(i);
+            }
+        });
     }
 
 
