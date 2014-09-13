@@ -23,5 +23,5 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/jpush-sdk-release1.6.4.jar')
     compile 'com.google.code.gson:gson:2.2.4'
-    
+
 }

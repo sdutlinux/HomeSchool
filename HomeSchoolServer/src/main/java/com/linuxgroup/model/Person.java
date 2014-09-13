@@ -1,7 +1,6 @@
 package com.linuxgroup.model;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -17,7 +16,7 @@ import java.util.List;
  * 教师/家长对应管理所的学生(studentList)
  * Person类型（0.老师，1.家长）(type)
  */
-public class PersonModel {
+public class Person {
 
     /**
      * id
@@ -53,7 +52,7 @@ public class PersonModel {
      * studentList
      * 教师/家长对应管理所的学生
      */
-    private List<StudentModel>  studentList = new ArrayList<StudentModel>();
+    private List<Student>  studentList = new ArrayList<Student>();
 
     /**
      *  type
@@ -61,10 +60,10 @@ public class PersonModel {
      */
     private int type;
 
-    public PersonModel() {
+    public Person() {
     }
 
-    public PersonModel(int id,String name,int sex,String address,String communication,List<StudentModel> studentList,int type) {
+    public Person(int id, String name, int sex, String address, String communication, List<Student> studentList, int type) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -114,11 +113,11 @@ public class PersonModel {
         this.communication = communication;
     }
 
-    public List<StudentModel> getStudentList() {
+    public List<Student> getStudentList() {
         return studentList;
     }
 
-    public void setStudentList(List<StudentModel> studentList) {
+    public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
     }
 
