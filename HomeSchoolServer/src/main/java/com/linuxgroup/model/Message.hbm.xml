@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="gb2312"?>
-<!--Ö¸¶¨Hibernate3Ó³ÉäÎÄ¼þµÄDTDÐÅÏ¢-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!--æŒ‡å®šHibernate3æ˜ å°„æ–‡ä»¶çš„DTDä¿¡æ¯-->
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
-<!--hibernate-mappingÊÇÓ³ÉäÎÄ¼þµÄ¸ùÔªËØ-->
+<!--hibernate-mappingæ˜¯æ˜ å°„æ–‡ä»¶çš„æ ¹å…ƒç´ -->
 <hibernate-mapping package="com.linuxgroup.model" >
-    <!-- Ã¿¸öclassÔªËØ¶ÔÓ¦Ò»¸ö³Ö¾Ã»°¶ÔÏó-->
+    <!-- æ¯ä¸ªclasså…ƒç´ å¯¹åº”ä¸€ä¸ªæŒä¹…è¯å¯¹è±¡-->
     <class name="com.linuxgroup.model.Message" table="messages_table">
             <id name="id" column="id">
-                <!--¶¨ÒåÖ÷¼üÉú³ÉÆ÷-->
+                <!--å®šä¹‰ä¸»é”®ç”Ÿæˆå™¨-->
                 <generator class="identity"/>
             </id>
-            <!-- propertyÔªËØ¶¨Òå³£¹æÊôÐÔ-->
+            <!-- propertyå…ƒç´ å®šä¹‰å¸¸è§„å±žæ€§-->
             <property name="fromPersonId"  type="integer"/>
             <property name="toPersonId"  type="integer"/>
             <property name="time"  type="date"/>

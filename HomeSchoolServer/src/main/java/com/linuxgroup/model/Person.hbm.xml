@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="gb2312"?>
-<!--Ö¸¶¨Hibernate3Ó³ÉäÎÄ¼þµÄDTDÐÅÏ¢-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!--æŒ‡å®šHibernate3æ˜ å°„æ–‡ä»¶çš„DTDä¿¡æ¯-->
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
-<!--hibernate-mappingÊÇÓ³ÉäÎÄ¼þµÄ¸ùÔªËØ-->
+<!--hibernate-mappingæ˜¯æ˜ å°„æ–‡ä»¶çš„æ ¹å…ƒç´ -->
 <hibernate-mapping package="com.linuxgroup.model" >
-    <!-- Ã¿¸öclassÔªËØ¶ÔÓ¦Ò»¸ö³Ö¾Ã»°¶ÔÏó-->
+    <!-- æ¯ä¸ªclasså…ƒç´ å¯¹åº”ä¸€ä¸ªæŒä¹…è¯å¯¹è±¡-->
     <class name="com.linuxgroup.model.Person" table="persons_table">
-        <!--idÔªËØ¶¨Òå³Ö¾Ã»¯¶ÔÏó-->
+        <!--idå…ƒç´ å®šä¹‰æŒä¹…åŒ–å¯¹è±¡-->
         <id name="id" column="id">
-            <!--Ö¸¶¨Ö÷¼üÉú³É²ßÂÔ-->
+            <!--æŒ‡å®šä¸»é”®ç”Ÿæˆç­–ç•¥-->
             <generator class="identity"/>
         </id>
-        <!-- propertyÔªËØ¶¨Òå³£¹æÊôÐÔ-->
+        <!-- propertyå…ƒç´ å®šä¹‰å¸¸è§„å±žæ€§-->
         <property name="account" type="string"/>
         <property name="name" type="string"/>
         <property name="sex" type="integer"/>
         <property name="address" type="string"/>
         <property name="communication" type="string"/>
         <property name="type" type="integer"/>
-        <!--PersonºÍstudentµÄ¶à¶Ô¶à¹ØÏµ-->
+        <!--Personå’Œstudentçš„å¤šå¯¹å¤šå…³ç³»-->
         <set name="studentsId" table="person_student">
-            <!--Ö¸¶¨¹ØÁªµÄÍâ¼üµ½-->
+            <!--æŒ‡å®šå…³è”çš„å¤–é”®åˆ°-->
             <key column="person_id" />
-            <!--ÓÃÒÔÓ³Éäµ½¹ØÁªÀàÊôÐÔ-->
+            <!--ç”¨ä»¥æ˜ å°„åˆ°å…³è”ç±»å±žæ€§-->
             <many-to-many class="Student" column="student_id"/>
         </set>
     </class>
