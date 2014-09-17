@@ -11,6 +11,7 @@ import cn.jpush.api.push.model.notification.Notification;
  * Created by tan on 14-9-12.
  */
 public class PushPayLoadFactory {
+
     // 快捷地构建推送对象：所有平台，所有设备，内容为 ALERT 的通知
     public static PushPayload buildAllAllAlert(String alert) {
         return PushPayload.alertAll(alert);

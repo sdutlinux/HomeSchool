@@ -1,5 +1,8 @@
 package com.linuxgroup.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author huihui on 14-9-10.
  *
@@ -8,8 +11,7 @@ package com.linuxgroup.model;
  * 学生学号(studentId)
  * 学生姓名(name)
  * 学生性别(sex)
- * 学生对应老师的id(teacherId)
- * 学生对应的家长id(personId)
+ * 学生对应老师/家长的id(personId)
  */
 public class Student {
     /**
@@ -20,7 +22,7 @@ public class Student {
     /**
      * studentId 学生学号
      */
-    private int studentId;
+    private String studentId;
 
     /**
      * name 学生姓名
@@ -33,23 +35,18 @@ public class Student {
     private int sex;
 
     /**
-     * teacherId 学生对应老师的id
+     * PersonId 学生对应老师/家长（person）的id
      */
-    private int teacherId;
+    private Set<Person> personId = new HashSet<Person>();
 
-    /**
-     * parentId 学生对应的家长id
-     */
-    private int parentId;
 
     public Student() { }
-    public Student(int id, int studentId, String name, int sex, int teacherId, int parentId) {
+    public Student(int id, String studentId, String name, int sex, Set<Person> personId) {
         this.id = id;
         this.studentId = studentId;
         this.name = name;
         this.sex = sex;
-        this.teacherId = teacherId;
-        this.parentId = parentId;
+        this.personId = personId;
     }
 
     public int getId() {
@@ -60,11 +57,11 @@ public class Student {
         this.id = id;
     }
 
-    public int getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
@@ -84,19 +81,11 @@ public class Student {
         this.sex = sex;
     }
 
-    public int getTeacherId() {
-        return teacherId;
+    public Set<Person> getPersonId() {
+        return this.personId;
     }
 
-    public void setTeacherId(int teacherId) {
-        this.teacherId = teacherId;
-    }
-
-    public int getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(int parentId) {
-        this.parentId = parentId;
+    public void setPersonId(Set<Person> personId) {
+        this.personId = personId;
     }
 }

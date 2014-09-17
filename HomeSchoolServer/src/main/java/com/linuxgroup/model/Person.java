@@ -1,7 +1,7 @@
 package com.linuxgroup.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author huihui
@@ -13,7 +13,7 @@ import java.util.List;
  * 教师/家长性别(0.女，1.男)(sex)
  * 教师/家长家庭住址(address)
  * 教师/家长的联系方式(communication)
- * 教师/家长对应管理所的学生(studentList)
+ * 教师/家长对应管理所的学生(studentId)
  * Person类型（0.老师，1.家长）(type)
  */
 public class Person {
@@ -23,6 +23,12 @@ public class Person {
      * 教师/家长id
      */
     private int id;
+
+    /**
+     * account
+     * 用户帐号（暂时用手机号）
+     */
+    private String account;
 
     /**
      * name
@@ -49,10 +55,10 @@ public class Person {
     private String communication;
 
     /**
-     * studentList
+     * studentId
      * 教师/家长对应管理所的学生
      */
-    private List<Student>  studentList = new ArrayList<Student>();
+    private Set<Student>  studentId = new HashSet<Student>();
 
     /**
      *  type
@@ -63,13 +69,14 @@ public class Person {
     public Person() {
     }
 
-    public Person(int id, String name, int sex, String address, String communication, List<Student> studentList, int type) {
+    public Person(int id, String account,String name, int sex, String address, String communication, Set<Student> studentId, int type) {
         this.id = id;
+        this.account = account;
         this.name = name;
         this.address = address;
         this.sex = sex;
         this.communication = communication;
-        this.studentList = studentList;
+        this.studentId = studentId;
         this.type = type;
     }
 
@@ -79,6 +86,14 @@ public class Person {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getName() {
@@ -113,12 +128,12 @@ public class Person {
         this.communication = communication;
     }
 
-    public List<Student> getStudentList() {
-        return studentList;
+    public Set<Student> getStudentId() {
+        return this.studentId;
     }
 
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
+    public void setStudentId(Set<Student> studentId) {
+        this.studentId = studentId;
     }
 
     public int getType() {

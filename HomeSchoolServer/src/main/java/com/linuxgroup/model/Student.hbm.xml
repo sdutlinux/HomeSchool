@@ -6,15 +6,23 @@
 <!--hibernate-mapping是映射文件的根元素-->
 <hibernate-mapping package="com.linuxgroup.model" >
     <!-- 每个class元素对应一个持久话对象-->
-    <class name="com.linuxgroup.model.Student" table="student_table">
-        <id name="id" column="id" >
+    <class name="Student" table="student_table">
+        <id name="id" column="id">
+            <!--指定主键生成策略-->
             <generator class="identity"/>
         </id>
+
         <!-- property元素定义常规属性-->
-        <property name="studentId" column="studentId" type="integer"/>
-        <property name="name" column="name" type="string"/>
-        <property name="sex" column="sex" type="string"/>
-        <property name="teacherId" column="teacherId" type="integer"/>
-        <property name="parentId" column="parentId" type="string"/>
+        <property name="studentId" type="integer"/>
+        <property name="name" type="string"/>
+        <property name="sex" type="string"/>
+
+        <!--Person和student的多对多关系-->
+        <set name="personId" table="person_student">
+            <!--指定关联的外键到-->
+            <key column="student_id" />
+            <!--用以映射到关联类属性-->
+            <many-to-many class="Person" column="person_id"/>
+        </set>
     </class>
 </hibernate-mapping>

@@ -143,6 +143,20 @@
             <version>4.0.5.RELEASE</version>
         </dependency>
 
+        <!--&lt;!&ndash; 错误修改处&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+            <!--&lt;!&ndash;<groupId>org.aspectj</groupId>&ndash;&gt;-->
+            <!--&lt;!&ndash;<artifactId>aspectjrt</artifactId>&ndash;&gt;-->
+            <!--&lt;!&ndash;<version>1.7.4</version>&ndash;&gt;-->
+        <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.aspectj</groupId>-->
+            <!--<artifactId>aspectjweaver</artifactId>-->
+            <!--<version>1.7.4</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; &ndash;&gt;-->
+
         <!-- struts2 -->
         <dependency>
             <groupId>org.apache.struts</groupId>
