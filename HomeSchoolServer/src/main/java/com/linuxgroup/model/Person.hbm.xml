@@ -6,7 +6,7 @@
 <!--hibernate-mapping是映射文件的根元素-->
 <hibernate-mapping package="com.linuxgroup.model" >
     <!-- 每个class元素对应一个持久话对象-->
-    <class name="com.linuxgroup.model.Person" table="person_table">
+    <class name="com.linuxgroup.model.Person" table="persons_table">
         <!--id元素定义持久化对象-->
         <id name="id" column="id">
             <!--指定主键生成策略-->
@@ -20,11 +20,11 @@
         <property name="communication" type="string"/>
         <property name="type" type="integer"/>
         <!--Person和student的多对多关系-->
-        <set name="studentId" table="person_student">
+        <set name="studentsId" table="person_student">
             <!--指定关联的外键到-->
             <key column="person_id" />
             <!--用以映射到关联类属性-->
-            <many-to-many class="Student" column="student_id" unique="true"/>
+            <many-to-many class="Student" column="student_id"/>
         </set>
     </class>
 </hibernate-mapping>

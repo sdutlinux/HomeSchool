@@ -6,16 +6,16 @@
 <!--hibernate-mapping是映射文件的根元素-->
 <hibernate-mapping package="com.linuxgroup.model" >
     <!-- 每个class元素对应一个持久话对象-->
-    <class name="com.linuxgroup.model.Message" table="message_table">
+    <class name="com.linuxgroup.model.Message" table="messages_table">
             <id name="id" column="id">
                 <!--定义主键生成器-->
                 <generator class="identity"/>
             </id>
             <!-- property元素定义常规属性-->
-            <property name="fromPersonId" column="fromPersonId" type="integer"/>
-            <property name="toPersonId" column="toPerson" type="integer"/>
-            <property name="time" column="time" type="date"/>
-            <property name="type" column="type" type="integer"/>
+            <property name="fromPersonId"  type="integer"/>
+            <property name="toPersonId"  type="integer"/>
+            <property name="time"  type="date"/>
+            <property name="type"  type="integer"/>
 
     </class>
 </hibernate-mapping>

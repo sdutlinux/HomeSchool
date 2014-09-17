@@ -58,7 +58,7 @@ public class Person {
      * studentId
      * 教师/家长对应管理所的学生
      */
-    private Set<Student>  studentId = new HashSet<Student>();
+    private Set<Student>  studentsId = new HashSet<Student>();
 
     /**
      *  type
@@ -69,14 +69,14 @@ public class Person {
     public Person() {
     }
 
-    public Person(int id, String account,String name, int sex, String address, String communication, Set<Student> studentId, int type) {
+    public Person(int id, String account,String name, int sex, String address, String communication, Set<Student> studentsId, int type) {
         this.id = id;
         this.account = account;
         this.name = name;
         this.address = address;
         this.sex = sex;
         this.communication = communication;
-        this.studentId = studentId;
+        this.studentsId = studentsId;
         this.type = type;
     }
 
@@ -128,12 +128,12 @@ public class Person {
         this.communication = communication;
     }
 
-    public Set<Student> getStudentId() {
-        return this.studentId;
+    public Set<Student> getStudentsId() {
+        return studentsId;
     }
 
-    public void setStudentId(Set<Student> studentId) {
-        this.studentId = studentId;
+    public void setStudentsId(Set<Student> studentsId) {
+        this.studentsId = studentsId;
     }
 
     public int getType() {

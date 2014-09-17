@@ -37,16 +37,16 @@ public class Student {
     /**
      * PersonId 学生对应老师/家长（person）的id
      */
-    private Set<Person> personId = new HashSet<Person>();
+    private Set<Person> personsId = new HashSet<Person>();
 
 
     public Student() { }
-    public Student(int id, String studentId, String name, int sex, Set<Person> personId) {
+    public Student(int id, String studentId, String name, int sex, Set<Person> personsId) {
         this.id = id;
         this.studentId = studentId;
         this.name = name;
         this.sex = sex;
-        this.personId = personId;
+        this.personsId = personsId;
     }
 
     public int getId() {
@@ -81,11 +81,11 @@ public class Student {
         this.sex = sex;
     }
 
-    public Set<Person> getPersonId() {
-        return this.personId;
+    public Set<Person> getPersonsId() {
+        return personsId;
     }
 
-    public void setPersonId(Set<Person> personId) {
-        this.personId = personId;
+    public void setPersonsId(Set<Person> personsId) {
+        this.personsId = personsId;
     }
 }
