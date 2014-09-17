@@ -26,4 +26,4 @@
 ## 第三方服务
 
 * 消息模块使用 [JPush(极光推送)](https://www.jpush.cn/)
-
+* 文件存储使用 [七牛](http://www.qiniu.com/)
