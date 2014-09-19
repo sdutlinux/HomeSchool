@@ -1,6 +1,7 @@
 package com.linuxgroup.ajax;
 
 import com.linuxgroup.model.Message;
+import com.opensymphony.xwork2.Action;
 
 /**
  * Created by tan on 14-9-19.
@@ -8,9 +9,9 @@ import com.linuxgroup.model.Message;
 public aspect AjaxAction {
     private Message message;
 
-    public void sendMessage() {
+    public String sendMessage() {
 
+
+        return Action.SUCCESS;
     }
-
-
 }
