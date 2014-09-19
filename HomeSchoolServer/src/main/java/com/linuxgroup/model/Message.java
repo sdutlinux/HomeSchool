@@ -20,20 +20,20 @@ public class Message {
     private int id;
 
     /**
-     * fromPersonId  发送信息人id
+     *  发送信息人的 account
      */
-    private int fromPersonId;
+    private String fromAccount;
 
     /**
-     * toPersonId 信息接受人id
+     * to 信息接受人的 account
      */
-    private int toPersonId;
+    private String toAccount;
 
     /**
      * time 信息发送时间
      * 以服务器时间为准
      */
-    private Date   time;
+    private Date time;
 
     /**
      * content 信息发送的内容
@@ -47,27 +47,27 @@ public class Message {
 
     public Message() { }
 
-    public Message(int id, int fromPersonId, int toPersonId, String content, Date time, int type) {
+    public Message(int id, String fromAccount, String toAccount, String content, Date time, int type) {
         this.id = id;
-        this.fromPersonId = fromPersonId;
-        this.toPersonId = toPersonId;
+        this.fromAccount = fromAccount;
+        this.toAccount = toAccount;
         this.content = content;
         this.time = time;
         this.type = type;
     }
 
-    public int getFromPersonId() {
-        return fromPersonId;
+    public String getFromAccount() {
+        return fromAccount;
     }
-    public void setFromPersonId(int fromPersonId) {
-        this.fromPersonId = fromPersonId;
+    public void setFromAccount(String from) {
+        this.fromAccount = from;
     }
 
-    public int getToPersonId() {
-        return toPersonId;
+    public String getToAccount() {
+        return toAccount;
     }
-    public void setToPersonId(int toPersonId) {
-        this.toPersonId = toPersonId;
+    public void setToAccount(String to) {
+        this.toAccount = to;
     }
 
     public String getContent() {

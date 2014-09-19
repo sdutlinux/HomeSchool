@@ -12,8 +12,8 @@
                 <generator class="identity"/>
             </id>
             <!-- property元素定义常规属性-->
-            <property name="fromPersonId"  type="integer"/>
-            <property name="toPersonId"  type="integer"/>
+            <property name="getFrom"  type="integer"/>
+            <property name="getTo"  type="integer"/>
             <property name="time"  type="date"/>
             <property name="type"  type="integer"/>
 
