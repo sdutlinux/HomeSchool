@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.linuxgroup.homeschool.client.R;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

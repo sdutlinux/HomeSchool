@@ -12,7 +12,7 @@ import java.util.Set;
 
 import cn.jpush.android.api.TagAliasCallback;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

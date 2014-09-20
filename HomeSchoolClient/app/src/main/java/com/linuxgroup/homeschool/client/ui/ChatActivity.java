@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.linuxgroup.homeschool.client.R;
 
-public class ChatActivity extends Activity {
+public class ChatActivity extends BaseActivity {
 
 
     @Override
