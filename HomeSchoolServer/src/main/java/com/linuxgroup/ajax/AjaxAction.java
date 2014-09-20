@@ -1,5 +1,7 @@
 package com.linuxgroup.ajax;
 
+import com.google.gson.Gson;
+import com.linuxgroup.result.Result;
 import com.opensymphony.xwork2.Action;
 
 /**
@@ -12,8 +14,15 @@ public class AjaxAction {
     public String sendMessage() {
 
 
+        Result result = new Result();
+        result.setStatus("ok");
+
+        jsonObj = new Gson().toJson(result);
+
         return Action.SUCCESS;
     }
+
+
 
 
     // set and get methods
