@@ -21,7 +21,10 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:support-v4:19.+'
+    compile 'com.android.support:appcompat-v7:19.+'
     compile files('libs/jpush-sdk-release1.6.4.jar')
-    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.mcxiaoke.volley:library:1.0.2'
+    compile 'com.jakewharton:butterknife:5.1.2'
 
 }
