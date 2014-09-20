@@ -8,7 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.linuxgroup.homeschool.client.R;
+import com.linuxgroup.homeschool.client.data.RequestManager;
+import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
 /**
  * Created by tan on 14-8-5.
@@ -28,8 +33,8 @@ public class BaseActivity extends FragmentActivity {
         actionBar = getActionBar();
 
         // 设置背景颜色
-        Drawable drawable = getResources().getDrawable(R.drawable.actionbar_shape);
-        actionBar.setBackgroundDrawable(drawable);
+//        Drawable drawable = getResources().getDrawable(R.drawable.actionbar_shape);
+//        actionBar.setBackgroundDrawable(drawable);
 
         // 显示返回上一层的图标
 
