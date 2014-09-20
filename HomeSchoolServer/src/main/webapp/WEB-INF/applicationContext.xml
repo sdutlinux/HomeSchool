@@ -58,7 +58,7 @@
     </bean>
 
     <bean id="ajax" class="com.linuxgroup.ajax.AjaxAction">
-
+        <property name="pushService" ref="pushService"/>
     </bean>
 
 </beans>
