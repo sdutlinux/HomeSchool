@@ -37,14 +37,17 @@
         <default-interceptor-ref name="authStack"/>
 
         <!-- 定义全局 Result -->
-        <!--<global-results>
-            &lt;!&ndash; 当返回login视图名时，转入/页面 &ndash;&gt;
+        <global-results>
+            <!-- 当返回login视图名时，转入/页面 -->
             <result name="login" type="redirect">/</result>
-        </global-results>-->
-
-        
+        </global-results>
 
 
+        <action name="sendMessage" class="ajax" method="sendMessage">
+            <result type="json">
+                <param name="root">jsonObj</param>
+            </result>
+        </action>
     </package>
 
 
