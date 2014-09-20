@@ -52,8 +52,8 @@
     </bean>
 
     <bean id="pushService" class="com.linuxgroup.service.impl.PushServiceImpl">
-        <constructor-arg index="0" value="2a090943a34259bca2745744"/>
-        <constructor-arg index="1" value="8a306f5ee8eb3f339a8a8ad0"/>
+        <constructor-arg index="0" value="81b8b2da3590a1a6dd34afe9"/>
+        <constructor-arg index="1" value="0717a98f9b35a46648842df0"/>
         <constructor-arg index="2" value="3"/>
     </bean>
 

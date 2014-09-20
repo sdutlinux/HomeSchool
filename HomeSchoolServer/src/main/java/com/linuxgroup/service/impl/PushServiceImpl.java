@@ -28,7 +28,7 @@ public class PushServiceImpl implements PushService {
 
     private JPushClient jPushClient;
 
-    public PushServiceImpl(String masterSecret, String appKey, Integer maxRetryTimes) {
+    public PushServiceImpl(String appKey, String masterSecret, Integer maxRetryTimes) {
         this.masterSecret = masterSecret;
         this.appKey = appKey;
         this.maxRetryTimes = maxRetryTimes;
