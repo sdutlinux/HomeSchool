@@ -22,7 +22,6 @@ public class AjaxAction {
 
         Result result = new Result();
 
-
         try {
             pushService.pushToAll("test");
 
