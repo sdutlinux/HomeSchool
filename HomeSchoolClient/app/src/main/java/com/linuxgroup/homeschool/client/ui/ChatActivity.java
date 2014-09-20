@@ -4,15 +4,36 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
 import com.linuxgroup.homeschool.client.R;
+import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.domain.Message;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 public class ChatActivity extends BaseActivity {
 
-    // todo: 测试数据
-    private Message message = new Message(1, "1", "2", "test", new Date(), 1);
+    private List<Message> messages;
+
+    private ChatListAdapter chatListAdapter;
+
+    @InjectView(R.id.listview)
+    ListView listView;
+
+    // 添加测试数据
+    public void testData() {
+        // todo: 测试数据
+        messages = new ArrayList<Message>();
+        messages.add(new Message(1, "1", "2", "test", new Date(), 1));
+        messages.add(new Message(1, "1", "2", "test1", new Date(), 1));
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +41,14 @@ public class ChatActivity extends BaseActivity {
         setContentView(R.layout.activity_chat);
 
         actionBar.hide();
+
+        ButterKnife.inject(this);
+
+        // todo: 测试数据
+        testData();
+
+        chatListAdapter = new ChatListAdapter(this, messages);
+        listView.setAdapter(chatListAdapter);
 
     }
 
