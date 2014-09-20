@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item type="id" name="tv_actionbar_title"/>
-
+    <item type="id" name="listview"/>
+    <item type="id" name="input"/>
+    <item type="id" name="send"/>
 
 </resources>

@@ -5,14 +5,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.linuxgroup.homeschool.client.R;
+import com.linuxgroup.homeschool.client.domain.Message;
+
+import java.util.Date;
 
 public class ChatActivity extends BaseActivity {
 
+    // todo: 测试数据
+    private Message message = new Message(1, "1", "2", "test", new Date(), 1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        actionBar.hide();
+
     }
 
 
