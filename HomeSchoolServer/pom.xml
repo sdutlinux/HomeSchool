@@ -31,14 +31,20 @@
             <version>2.2.4</version>
         </dependency>
 
+        <!-- json-lib -->
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+            <classifier>jdk15</classifier>
+        </dependency>
+
         <!-- log4j -->
-<!--
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
--->
 
         <!-- 七牛 -->
         <!--   <dependency>
@@ -143,18 +149,25 @@
             <version>4.0.5.RELEASE</version>
         </dependency>
 
-        <!--&lt;!&ndash; 错误修改处&ndash;&gt;-->
-
-        <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
-            <!--&lt;!&ndash;<groupId>org.aspectj</groupId>&ndash;&gt;-->
-            <!--&lt;!&ndash;<artifactId>aspectjrt</artifactId>&ndash;&gt;-->
-            <!--&lt;!&ndash;<version>1.7.4</version>&ndash;&gt;-->
-        <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.aspectj</groupId>-->
-            <!--<artifactId>aspectjweaver</artifactId>-->
-            <!--<version>1.7.4</version>-->
+        <!-- 错误修改处
+        &lt;!&ndash;<dependency>&ndash;&gt;
+            &lt;!&ndash;<groupId>org.aspectj</groupId>&ndash;&gt;
+            &lt;!&ndash;<artifactId>aspectjrt</artifactId>&ndash;&gt;
+            &lt;!&ndash;<version>1.7.4</version>&ndash;&gt;
+        &lt;!&ndash;</dependency>&ndash;&gt;
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.7.4</version>-->
         <!--</dependency>-->
+
+        <!-- json-lib -->
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+            <classifier>jdk15</classifier>
+        </dependency>
         <!--&lt;!&ndash; &ndash;&gt;-->
 
         <!-- struts2 -->

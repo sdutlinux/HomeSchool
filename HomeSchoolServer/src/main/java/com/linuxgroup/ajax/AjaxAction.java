@@ -1,7 +1,9 @@
 package com.linuxgroup.ajax;
 
-import com.google.gson.Gson;
+
+import net.sf.json.JSONObject;
 import com.linuxgroup.result.Result;
+import com.linuxgroup.utils.JsonUtils;
 import com.opensymphony.xwork2.Action;
 
 /**
@@ -9,7 +11,7 @@ import com.opensymphony.xwork2.Action;
  */
 public class AjaxAction {
 
-    private String jsonObj;
+    private JSONObject jsonObj;
 
     public String sendMessage() {
 
@@ -17,7 +19,7 @@ public class AjaxAction {
         Result result = new Result();
         result.setStatus("ok");
 
-        jsonObj = new Gson().toJson(result);
+        jsonObj = JsonUtils.toJson(result);
 
         return Action.SUCCESS;
     }
@@ -28,11 +30,11 @@ public class AjaxAction {
     // set and get methods
 
 
-    public String getJsonObj() {
+    public JSONObject getJsonObj() {
         return jsonObj;
     }
 
-    public void setJsonObj(String jsonObj) {
+    public void setJsonObj(JSONObject jsonObj) {
         this.jsonObj = jsonObj;
     }
 }
