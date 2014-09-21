@@ -6,6 +6,6 @@ import com.linuxgroup.homeschool.client.domain.Message;
 /**
  * Created by tan on 14-9-21.
  */
-public interface MessageDAo extends Dao<Message, Integer> {
+public interface MessageDao extends Dao<Message, Integer> {
 
 }

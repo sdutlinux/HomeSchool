@@ -8,6 +8,8 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.linuxgroup.homeschool.client.db.dao.MessageDao;
+import com.linuxgroup.homeschool.client.db.dao.impl.MessageDaoImpl;
 import com.linuxgroup.homeschool.client.domain.Message;
 
 import org.w3c.dom.UserDataHandler;
@@ -21,7 +23,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private static final String DATABASE_NAME = "ormlite.db";
     private static final int DATABASE_VERSION = 1;
 
-    private Dao<Message, Integer> messageDao = null;
+//    private Dao<Message, Integer> messageDao = null;
+    private MessageDao messageDao;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -52,9 +55,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
-    public Dao<Message, Integer> getMessageDao() throws SQLException {
+    public MessageDao getMessageDao() throws SQLException {
         if (messageDao == null) {
-            messageDao = getDao(Message.class);
+//            messageDao = getDao(Message.class);
+            // 创建自定义的 dao
+            messageDao = new MessageDaoImpl(connectionSource);
         }
 
         return messageDao;

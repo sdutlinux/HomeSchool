@@ -55,8 +55,6 @@ public class ChatActivity extends BaseActivity {
         listView.setAdapter(chatListAdapter);
 
 
-
-
         // todo: 测试 orm
         Message testMessage = new Message(1, "1", "2", "test", new Date(), 1);
         // 插入测试

@@ -16,7 +16,10 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.data.RequestManager;
 import com.linuxgroup.homeschool.client.db.DatabaseHelper;
+import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;
+
+import java.sql.SQLException;
 
 /**
  * Created by tan on 14-8-5.
@@ -90,6 +93,10 @@ public class BaseActivity extends FragmentActivity {
                     .getHelper(this, DatabaseHelper.class);
         }
         return databaseHelper;
+    }
+
+    public MessageDao getMessageDao() throws SQLException {
+        return getHelper().getMessageDao();
     }
 
     protected void executeRequest(Request<?> request) {
