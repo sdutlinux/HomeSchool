@@ -26,5 +26,5 @@ dependencies {
     compile files('libs/jpush-sdk-release1.6.4.jar')
     compile 'com.mcxiaoke.volley:library:1.0.2'
     compile 'com.jakewharton:butterknife:5.1.2'
-
+    compile 'com.j256.ormlite:ormlite-android:4.48'
 }

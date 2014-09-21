@@ -33,7 +33,6 @@ public class ChatActivity extends BaseActivity {
         messages.add(new Message(1, "1", "2", "test", new Date(), 1));
         messages.add(new Message(1, "1", "2", "test1", new Date(), 1));
         messages.add(new Message(1, "2", "1", "test1", new Date(), 1));
-
     }
 
     @Override
@@ -49,9 +48,10 @@ public class ChatActivity extends BaseActivity {
         testData();
 
         // todo: 测试数据
-        chatListAdapter = new ChatListAdapter(this, "2", messages);
-        listView.setAdapter(chatListAdapter);
+        String ownerAccount = "2";
 
+        chatListAdapter = new ChatListAdapter(this, ownerAccount, messages);
+        listView.setAdapter(chatListAdapter);
     }
 
 

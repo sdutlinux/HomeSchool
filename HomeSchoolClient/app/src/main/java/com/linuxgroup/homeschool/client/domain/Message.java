@@ -1,5 +1,7 @@
 package com.linuxgroup.homeschool.client.domain;
 
+import com.j256.ormlite.table.DatabaseTable;
+
 import java.util.Date;
 
 /**
