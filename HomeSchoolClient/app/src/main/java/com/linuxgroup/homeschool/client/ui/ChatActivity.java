@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
+import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.domain.Message;
 
 import java.sql.SQLException;
@@ -54,31 +55,18 @@ public class ChatActivity extends BaseActivity {
         chatListAdapter = new ChatListAdapter(this, ownerAccount, messages);
         listView.setAdapter(chatListAdapter);
 
-
         // todo: 测试 orm
         Message testMessage = new Message(1, "1", "2", "test", new Date(), 1);
-        // 插入测试
+
         try {
-            getHelper().getMessageDao().createIfNotExists(testMessage);
+            MessageDao messagesDao = getHelper().getMessageDao();
+            messagesDao.save(testMessage);
+
+            Message m = getMessageDao().get(1);
+            System.out.println(m.getId() + " " + m.getContent());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        // 查询测试
-        try {
-            Message mes = getHelper()
-                    .getMessageDao()
-                    .queryBuilder()
-                    .where()
-                    .eq("fromAccount", "1")
-                    .query()
-                    .get(0);
-
-            System.out.println("##" + mes.getContent() + " " + mes.getTime());
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
     }
 
 

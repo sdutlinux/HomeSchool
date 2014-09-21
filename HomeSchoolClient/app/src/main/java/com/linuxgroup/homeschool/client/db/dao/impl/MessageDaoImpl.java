@@ -14,4 +14,21 @@ public class MessageDaoImpl extends BaseDaoImpl<Message, Integer> implements Mes
     public MessageDaoImpl(ConnectionSource connectionSource) throws SQLException {
         super(connectionSource, Message.class);
     }
+
+    @Override
+    public void save(Message message) throws SQLException {
+        // todo: 如果不存在 就 创建, 如果存在，则更新?
+        this.createIfNotExists(message);
+    }
+
+    @Override
+    public Message get(Integer id) throws SQLException {
+        Message mes = this.queryBuilder()
+                .where()
+                .eq("id", id)
+                .query()
+                .get(0);
+
+        return mes;
+    }
 }
