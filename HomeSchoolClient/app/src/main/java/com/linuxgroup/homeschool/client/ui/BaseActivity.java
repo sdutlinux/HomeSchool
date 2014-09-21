@@ -11,8 +11,11 @@ import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.data.RequestManager;
+import com.linuxgroup.homeschool.client.db.DatabaseHelper;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
 /**
@@ -20,6 +23,8 @@ import com.linuxgroup.homeschool.client.utils.ToastUtils;
  */
 public class BaseActivity extends FragmentActivity {
     protected ActionBar actionBar;
+
+    private DatabaseHelper databaseHelper;
 
 //    @InjectView(R.id.tv_actionbar_title)
     private TextView mActionBarTitle;
@@ -77,6 +82,14 @@ public class BaseActivity extends FragmentActivity {
     public void onDestroy() {
         super.onDestroy();
         RequestManager.cancelAll(this);
+    }
+
+    public DatabaseHelper getHelper() {
+        if (databaseHelper == null) {
+            databaseHelper = OpenHelperManager
+                    .getHelper(this, DatabaseHelper.class);
+        }
+        return databaseHelper;
     }
 
     protected void executeRequest(Request<?> request) {

@@ -1,5 +1,6 @@
 package com.linuxgroup.homeschool.client.domain;
 
+import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.Date;
@@ -15,36 +16,43 @@ import java.util.Date;
  * 信息发送时间 （Date）
  * 信息发送类型（1.文字，2.图片，3.文件）
  */
+@DatabaseTable(tableName = "message")
 public class Message {
     /**
      * id 信息的id
      */
+    @DatabaseField(id = true)
     private int id;
 
     /**
      *  发送信息人的 account
      */
+    @DatabaseField
     private String fromAccount;
 
     /**
      * to 信息接受人的 account
      */
+    @DatabaseField
     private String toAccount;
 
     /**
      * time 信息发送时间
      * 以服务器时间为准
      */
+    @DatabaseField
     private Date time;
 
     /**
      * content 信息发送的内容
      */
+    @DatabaseField
     private String content;
 
     /**
      * type 信息发送类型（1.文字，2.图片，3.文件）
      */
+    @DatabaseField
     private int  type;
 
     public Message() { }
