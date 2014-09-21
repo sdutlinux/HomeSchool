@@ -57,7 +57,7 @@
         <constructor-arg index="2" value="3"/>
     </bean>
 
-    <bean id="ajax" class="com.linuxgroup.ajax.AjaxAction">
+    <bean id="ajax" class="com.linuxgroup.action.Communication">
         <property name="pushService" ref="pushService"/>
     </bean>
 

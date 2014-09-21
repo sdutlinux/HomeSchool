@@ -17,7 +17,7 @@ public class Message {
     /**
      * id 信息的id
      */
-    private int id;
+    private long id;
 
     /**
      *  发送信息人的 account
@@ -47,7 +47,7 @@ public class Message {
 
     public Message() { }
 
-    public Message(int id, String fromAccount, String toAccount, String content, Date time, int type) {
+    public Message(long id, String fromAccount, String toAccount, String content, Date time, int type) {
         this.id = id;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
@@ -55,6 +55,9 @@ public class Message {
         this.time = time;
         this.type = type;
     }
+
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
 
     public String getFromAccount() {
         return fromAccount;
@@ -70,19 +73,18 @@ public class Message {
         this.toAccount = to;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public Date getTime() {
         return time;
     }
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    public String getContent() {
+        return content;
+    }
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getType() {
@@ -92,10 +94,4 @@ public class Message {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
 }

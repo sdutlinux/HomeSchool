@@ -7,6 +7,9 @@
       <root url="jar://$MAVEN_REPOSITORY$/antlr/antlr/2.7.7/antlr-2.7.7-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
+      <root url="file://$PROJECT_DIR$/out/artifacts/HomeSchoolServer_war_exploded/WEB-INF/classes" />
+      <root url="file://$PROJECT_DIR$/src/main/java" />
+      <root url="file://$PROJECT_DIR$/target/classes" />
       <root url="jar://$MAVEN_REPOSITORY$/antlr/antlr/2.7.7/antlr-2.7.7-sources.jar!/" />
     </SOURCES>
   </library>

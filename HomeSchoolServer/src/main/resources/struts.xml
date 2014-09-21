@@ -42,13 +42,10 @@
             <result name="login" type="redirect">/</result>
         </global-results>
 
-
         <action name="sendMessage" class="ajax" method="sendMessage">
             <result type="json">
                 <param name="root">jsonObj</param>
             </result>
         </action>
     </package>
-
-
 </struts>
