@@ -1,5 +1,6 @@
 package com.linuxgroup.action;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.linuxgroup.model.Message;
 import com.linuxgroup.service.PushService;
@@ -18,7 +19,6 @@ public class Communication {
     private PushService pushService;
 
     private JSONObject jsonObj;
-    private JSONObject jsp;
 
     public String sendMessage() {
 
@@ -36,14 +36,10 @@ public class Communication {
         msg.setType(1);
 
 
-        jsp = JSONObject.fromObject(msg);  // 把java对象转变成json
-        String str = jsp.getString("id");  // 从json里获取id的值,注意，格式是String
 
         try {
 
-            System.out.println(str);    // 在控制台输出信息
-
-            pushService.pushToAll(str);  // 将信息发送至极光推送
+            pushService.pushToAll("123");  // 将信息发送至极光推送
 
             result.setStatus("ok");
 
@@ -51,13 +47,11 @@ public class Communication {
             result.setStatus("error");
         }
 
-        jsonObj = JsonUtils.toJson(result);
 
+        jsonObj = JsonUtils.toJson(result);
 
         return Action.SUCCESS;
     }
-
-
 
 
     // set and get methods

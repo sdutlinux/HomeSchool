@@ -1,5 +1,6 @@
 package com.linuxgroup.utils;
 
+import com.google.gson.Gson;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 
@@ -13,6 +14,13 @@ public class JsonUtils {
     }
 
     public static JSONObject toJson(Object obj) {
-        return JSONObject.fromObject(obj);
+        // 单用菏泽一句会报 java.lang.reflect.InvocationTargetException 的错误
+        // 原因是，obj 内部有的属性为空
+//        return JSONObject.fromObject(obj);
+
+        // 这样使用，能够去掉 json字符里面的空的属性
+        return JSONObject.fromObject(new Gson().toJson(obj));
     }
+
+
 }
