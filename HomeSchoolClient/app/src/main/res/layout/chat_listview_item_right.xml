@@ -3,29 +3,29 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
     <ImageView
-        android:id="@+id/avatar_chat_right"
+        android:id="@id/avatar_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/avatar_default" />
     <RelativeLayout
-        android:id="@+id/rl_chat_right"
+        android:id="@id/rl_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/avatar_chat_right"
+        android:layout_toLeftOf="@id/avatar_chat"
         android:background="@drawable/chat_right" >
         <TextView
-            android:id="@+id/message_chat_right"
+            android:id="@id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxWidth="160dip" />
     </RelativeLayout>
     <TextView
-        android:id="@+id/sendtime_chat_right"
+        android:id="@id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rl_chat_right"
-        android:layout_toLeftOf="@+id/avatar_chat_right"
+        android:layout_below="@id/rl_chat"
+        android:layout_toLeftOf="@id/avatar_chat"
         android:textSize="10sp"/>
 </RelativeLayout>

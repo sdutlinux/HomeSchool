@@ -20,14 +20,18 @@ import butterknife.InjectView;
  * Created by tan on 14-9-20.
  */
 public class ChatListAdapter extends BaseAdapter {
+    // 用户的 Account, 用它来辨别是接收的消息还是发送的消息
+    private String ownerAccount;
+
     private Context context;
     private List<Message> messages;
     LayoutInflater inflater;
 
-    public ChatListAdapter(Context context, List<Message> messages) {
+    public ChatListAdapter(Context context, String ownerAccount, List<Message> messages) {
         this.context = context;
         this.messages = messages;
         inflater = LayoutInflater.from(context);
+        this.ownerAccount = ownerAccount;
     }
 
     @Override
@@ -47,20 +51,34 @@ public class ChatListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        CacheView cacheView;
-
-        //TODO: 接受的消息和发送的消息分别排列在左右
-        if (view == null) {
-            view = inflater.inflate(R.layout.chat_listview_item_left, null);
-
-            cacheView = new CacheView(view);
-
-            view.setTag(cacheView);
-        } else {
-            cacheView = (CacheView) view.getTag();
-        }
+        CacheView cacheView = null;
 
         Message message = getItem(i);
+
+        if (message.getFromAccount().equals(ownerAccount)) { // 表示发送的消息
+
+            if (view == null || view.getTag(R.id.tag_right) == null) {
+                view = inflater.inflate(R.layout.chat_listview_item_right, null);
+
+                cacheView = new CacheView(view);
+
+                view.setTag(R.id.tag_right, cacheView);
+            } else {
+                cacheView = (CacheView) view.getTag(R.id.tag_right);
+            }
+        } else { // 表示接收的消息
+
+            if (view == null || view.getTag(R.id.tag_left) == null) {
+                view = inflater.inflate(R.layout.chat_listview_item_left, null);
+
+                cacheView = new CacheView(view);
+
+                view.setTag(R.id.tag_left, cacheView);
+            } else {
+                cacheView = (CacheView) view.getTag(R.id.tag_left);
+            }
+        }
+
 
         cacheView.tv_content.setText(message.getContent());
         cacheView.tv_send_time.setText(message.getTime()+"");

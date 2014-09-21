@@ -5,4 +5,17 @@
     <item type="id" name="input"/>
     <item type="id" name="send"/>
 
+    <item type="id" name="avatar_chat"/>
+    <item type="id" name="rl_chat"/>
+    <item type="id" name="content"/>
+    <item type="id" name="time"/>
+
+
+
+
+
+    <!-- 代表 接受或者发送的消息 -->
+    <item type="id" name="tag_left"/>
+    <item type="id" name="tag_right"/>
+
 </resources>

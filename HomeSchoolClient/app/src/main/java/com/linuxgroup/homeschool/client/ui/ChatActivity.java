@@ -32,6 +32,7 @@ public class ChatActivity extends BaseActivity {
         messages = new ArrayList<Message>();
         messages.add(new Message(1, "1", "2", "test", new Date(), 1));
         messages.add(new Message(1, "1", "2", "test1", new Date(), 1));
+        messages.add(new Message(1, "2", "1", "test1", new Date(), 1));
 
     }
 
@@ -47,7 +48,8 @@ public class ChatActivity extends BaseActivity {
         // todo: 测试数据
         testData();
 
-        chatListAdapter = new ChatListAdapter(this, messages);
+        // todo: 测试数据
+        chatListAdapter = new ChatListAdapter(this, "2", messages);
         listView.setAdapter(chatListAdapter);
 
     }
