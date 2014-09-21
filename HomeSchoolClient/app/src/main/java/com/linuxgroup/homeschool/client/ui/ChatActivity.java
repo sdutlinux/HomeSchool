@@ -28,6 +28,8 @@ public class ChatActivity extends BaseActivity {
     @InjectView(R.id.listview)
     ListView listView;
 
+    private MessageDao messageDao;
+
     // 添加测试数据
     public void testData() {
         // todo: 测试数据
@@ -46,8 +48,19 @@ public class ChatActivity extends BaseActivity {
 
         ButterKnife.inject(this);
 
+        // todo: 测试, 从数据库中读取消息
+        try {
+            messageDao = getMessageDao();
+//            Message message = messageDao.get(1);
+            messages = messageDao.queryForAll();
+
+            System.out.println(messages.size());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         // todo: 测试数据
-        testData();
+//        testData();
 
         // todo: 测试数据
         String ownerAccount = "2";
@@ -56,8 +69,7 @@ public class ChatActivity extends BaseActivity {
         listView.setAdapter(chatListAdapter);
 
         // todo: 测试 orm
-        Message testMessage = new Message(1, "1", "2", "test", new Date(), 1);
-
+        /*Message testMessage = new Message(2, "2", "1", "test12", new Date(), 1);
         try {
             MessageDao messagesDao = getHelper().getMessageDao();
             messagesDao.save(testMessage);
@@ -66,7 +78,7 @@ public class ChatActivity extends BaseActivity {
             System.out.println(m.getId() + " " + m.getContent());
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
 

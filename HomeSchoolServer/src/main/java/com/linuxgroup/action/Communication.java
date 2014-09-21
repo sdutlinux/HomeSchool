@@ -35,18 +35,12 @@ public class Communication {
         msg.setTime(new Date());
         msg.setType(1);
 
-
-
         try {
-
             pushService.pushToAll("123");  // 将信息发送至极光推送
-
             result.setStatus("ok");
-
         } catch (Exception e) {
             result.setStatus("error");
         }
-
 
         jsonObj = JsonUtils.toJson(result);
 
