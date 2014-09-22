@@ -6,7 +6,8 @@
 
     <filter>
         <filter-name>struts2</filter-name>
-        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+        <!--<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>-->
+        <filter-class>com.linuxgroup.filter.MyStrutsFilter</filter-class>
     </filter>
 
     <filter-mapping>
