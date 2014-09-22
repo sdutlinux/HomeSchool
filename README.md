@@ -24,6 +24,12 @@
 1. 客户端与服务端之间通信使用 `json`
 2. 客户端与服务器都使用 `JSON-lib`
 
+## REST WEB
+1. 显示的使用 HTTP 方法
+2. 无状态
+3. 公开目录结构式的 URI
+4. 传输 XML、JavaScript Object Notation(JSON), 或者同时这两种
+
 ## 第三方服务
 
 * 消息模块使用 [JPush(极光推送)](https://www.jpush.cn/)
