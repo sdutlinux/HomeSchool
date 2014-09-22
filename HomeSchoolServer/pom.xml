@@ -67,6 +67,13 @@
             <version>2.5</version>
         </dependency>
 
+        <!-- spring mvc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.0.5.RELEASE</version>
+        </dependency>
+
         <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>

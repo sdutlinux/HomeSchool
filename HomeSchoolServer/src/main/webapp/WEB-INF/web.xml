@@ -18,4 +18,20 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!-- rest 拦截 -->
+    <servlet>
+        <servlet-name>rest</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:/rest-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>rest</servlet-name>
+        <url-pattern>/restful/*</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

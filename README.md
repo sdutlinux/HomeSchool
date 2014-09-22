@@ -11,6 +11,8 @@
 
 框架使用`SSH` 
 
+**日后将 Struts2 替换为 Spring MVC**
+
 ## 客户端
 
 客户端使用 Android
@@ -29,6 +31,9 @@
 2. 无状态
 3. 公开目录结构式的 URI
 4. 传输 XML、JavaScript Object Notation(JSON), 或者同时这两种
+
+**使用 Spring 实现 REST**
+
 
 ## 第三方服务
 

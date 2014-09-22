@@ -66,6 +66,7 @@
           <element id="library" level="project" name="Maven: org.apache.struts:struts2-spring-plugin:2.3.16.3" />
           <element id="library" level="project" name="Maven: c3p0:c3p0:0.9.0" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.31" />
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="HomeSchoolServer/web/Web" />
