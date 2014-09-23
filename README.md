@@ -34,6 +34,8 @@
 
 **使用 Spring MVC 实现 REST**
 
+`/restful/message` 接口操作 Message
+
 
 ## 第三方服务
 

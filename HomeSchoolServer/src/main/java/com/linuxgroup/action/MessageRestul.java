@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.sql.Time;
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -20,32 +22,19 @@ import java.util.HashMap;
 @RequestMapping("/messge")
 public class MessageRestul {
 
-    
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody
     Message get(HttpServletRequest request, HttpServletResponse response,
-                    @PathVariable String id) {
-        /*StringBuilder msg = new StringBuilder();
-        msg.append("{\"msg\":\"").append("——这是你刚才传入的第二个参数 " + id + "\"}");
-        printData(response, msg);*/
+                    @PathVariable Integer id) {
 
         Message message = new Message();
-        message.setId(1);
-        message.setContent("haha");
+        message.setId(id);
+        message.setContent("小测试 娃哈哈");
+        message.setFromAccount("18369905136");
+        message.setToAccount("18369905506");
+        message.setTime(new Date());
+        message.setType(1);
 
         return message;
-    }
-
-    private void printData(HttpServletResponse response, StringBuilder msg) {
-        try {
-            response.setContentType("text/html;charset=utf-8");
-            response.setCharacterEncoding("UTF-8");
-            PrintWriter out = new PrintWriter(new OutputStreamWriter(response.getOutputStream(), "UTF-8"));
-            out.println(msg);
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
