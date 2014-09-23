@@ -32,7 +32,7 @@
 3. 公开目录结构式的 URI
 4. 传输 XML、JavaScript Object Notation(JSON), 或者同时这两种
 
-**使用 Spring 实现 REST**
+**使用 Spring MVC 实现 REST**
 
 
 ## 第三方服务
