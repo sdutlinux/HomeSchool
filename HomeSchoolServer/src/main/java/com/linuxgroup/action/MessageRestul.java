@@ -19,7 +19,7 @@ import java.util.HashMap;
  * Created by tan on 14-9-22.
  */
 @Controller
-@RequestMapping("/messge")
+@RequestMapping("/message")
 public class MessageRestul {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -27,6 +27,7 @@ public class MessageRestul {
     Message get(HttpServletRequest request, HttpServletResponse response,
                     @PathVariable Integer id) {
 
+        //TODO: 测试样例
         Message message = new Message();
         message.setId(id);
         message.setContent("小测试 娃哈哈");

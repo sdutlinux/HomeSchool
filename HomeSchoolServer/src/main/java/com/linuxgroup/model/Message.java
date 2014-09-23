@@ -1,5 +1,8 @@
 package com.linuxgroup.model;
 
+import com.linuxgroup.serializer.JsonDateSerializer;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import java.util.Date;
 
 /**
@@ -73,9 +76,11 @@ public class Message {
         this.toAccount = to;
     }
 
+    @JsonSerialize(using = JsonDateSerializer.class)
     public Date getTime() {
         return time;
     }
+
     public void setTime(Date time) {
         this.time = time;
     }

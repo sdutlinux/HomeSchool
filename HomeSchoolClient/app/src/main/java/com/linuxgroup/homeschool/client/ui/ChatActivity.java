@@ -6,8 +6,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
+import com.linuxgroup.homeschool.client.api.Api;
+import com.linuxgroup.homeschool.client.api.MessageApi;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.domain.Message;
 
@@ -18,6 +22,8 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import retrofit.RestAdapter;
+import retrofit.converter.GsonConverter;
 
 public class ChatActivity extends BaseActivity {
 
@@ -79,6 +85,26 @@ public class ChatActivity extends BaseActivity {
         } catch (SQLException e) {
             e.printStackTrace();
         }*/
+
+        // todo: 测试 rest
+        // 同一时间格式
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .create();
+
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint(Api.BASE_URL)
+                .setConverter(new GsonConverter(gson))
+                .build();
+        final MessageApi messageApi = restAdapter.create(MessageApi.class);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Message message = messageApi.getMessage(1);
+                System.out.println(message.getId() + " " + message.getContent());
+            }
+        }).start();
     }
 
 
