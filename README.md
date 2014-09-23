@@ -9,7 +9,7 @@
 
 服务端使用`java`语言
 
-框架使用`SSH` 
+1. 框架使用`SSH` 
 
 **日后将 Struts2 替换为 Spring MVC**
 
@@ -17,7 +17,8 @@
 
 客户端使用 Android
 
-`ORM `使用 `ormlite`
+1. `ORM `使用 `ormlite`
+2. `REST` 使用 `Retrofit`
 
 支持的版本暂定为 `4.0+`
 
@@ -34,8 +35,14 @@
 
 **使用 Spring MVC 实现 REST**
 
-`/restful/message` 接口操作 Message
+## 接口
 
+### 列表
+
+1. `/restful/message` 接口操作 Message
+
+### 注意
+1. json 中日期格式为 `yyyy-MM-dd HH:mm:ss`
 
 ## 第三方服务
 
