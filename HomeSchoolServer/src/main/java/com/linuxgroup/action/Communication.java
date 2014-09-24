@@ -19,7 +19,6 @@ public class Communication {
     private MessageService messageService;
     private JSONObject jsonObj;
 
-
     public String sendMessage() {
 
         Result result = new Result();
