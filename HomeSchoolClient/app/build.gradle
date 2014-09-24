@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'idea'
 
 android {
     compileSdkVersion 19
@@ -38,4 +39,14 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'org.springframework.android:spring-android-rest-template:2.0.0.M1'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.4.2'
+}
+
+idea {
+    module {
+        //if you love browsing Javadoc
+        downloadJavadoc = true
+
+        //and hate reading sources :)
+        downloadSources = true
+    }
 }
