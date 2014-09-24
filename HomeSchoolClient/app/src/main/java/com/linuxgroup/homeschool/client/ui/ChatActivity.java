@@ -1,19 +1,18 @@
 package com.linuxgroup.homeschool.client.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Api;
-import com.linuxgroup.homeschool.client.api.MessageApi;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.domain.Message;
+
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,8 +21,6 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import retrofit.RestAdapter;
-import retrofit.converter.GsonConverter;
 
 public class ChatActivity extends BaseActivity {
 
@@ -87,24 +84,18 @@ public class ChatActivity extends BaseActivity {
         }*/
 
         // todo: 测试 rest
-        // 同一时间格式
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd HH:mm:ss")
-                .create();
-
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(Api.BASE_URL)
-                .setConverter(new GsonConverter(gson))
-                .build();
-        final MessageApi messageApi = restAdapter.create(MessageApi.class);
+        final RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Message message = messageApi.getMessage(1);
-                System.out.println(message.getId() + " " + message.getContent());
+                Message message = restTemplate.getForObject(Api.BASE_URL + "/restful/message/{id}", Message.class, 1);
+                System.out.println("id: " + message.getId() + " content:" + message.getContent() + " date:" + message.getTime());
             }
         }).start();
+
+
     }
 
 

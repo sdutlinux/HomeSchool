@@ -81,7 +81,7 @@ public class Message {
         this.toAccount = to;
     }
 
-    @JsonSerialize(using = JsonDateSerializer.class)
+//    @JsonSerialize(using = JsonDateSerializer.class)
     public Date getTime() {
         return time;
     }

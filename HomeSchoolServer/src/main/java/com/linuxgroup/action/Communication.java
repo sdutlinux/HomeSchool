@@ -21,7 +21,7 @@ public class Communication {
     private JSONObject jsonObj;
 
 
-    public String sendMessage(String str) {
+    public String sendMessage() {
 
         Result result = new Result();
 
@@ -34,7 +34,7 @@ public class Communication {
 
         try {
 
-            jsonObj = JSONObject.fromObject(str);
+            //jsonObj = JSONObject.fromObject(str);
             //msg  = JSONObject.toBean(jsonObj,Message.class);
             messageService.saveMessage(msg);
             //Integer id = messageService
