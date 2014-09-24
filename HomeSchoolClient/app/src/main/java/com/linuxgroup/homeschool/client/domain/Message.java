@@ -2,6 +2,7 @@ package com.linuxgroup.homeschool.client.domain;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.linuxgroup.homeschool.client.db.dao.impl.MessageDaoImpl;
 
 import java.util.Date;
 
@@ -16,7 +17,7 @@ import java.util.Date;
  * 信息发送时间 （Date）
  * 信息发送类型（1.文字，2.图片，3.文件）
  */
-@DatabaseTable(tableName = "message")
+@DatabaseTable(tableName = "message", daoClass = MessageDaoImpl.class)
 public class Message {
     /**
      * id 信息的id

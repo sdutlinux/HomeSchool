@@ -6,8 +6,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
+import com.linuxgroup.homeschool.client.api.Api;
+import com.linuxgroup.homeschool.client.api.MessageApi;
+import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.domain.Message;
 
 import java.sql.SQLException;
@@ -17,6 +22,8 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import retrofit.RestAdapter;
+import retrofit.converter.GsonConverter;
 
 public class ChatActivity extends BaseActivity {
 
@@ -26,6 +33,8 @@ public class ChatActivity extends BaseActivity {
 
     @InjectView(R.id.listview)
     ListView listView;
+
+    private MessageDao messageDao;
 
     // 添加测试数据
     public void testData() {
@@ -45,8 +54,19 @@ public class ChatActivity extends BaseActivity {
 
         ButterKnife.inject(this);
 
+        // todo: 测试, 从数据库中读取消息
+        try {
+            messageDao = getMessageDao();
+//            Message message = messageDao.get(1);
+            messages = messageDao.queryForAll();
+
+            System.out.println(messages.size());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         // todo: 测试数据
-        testData();
+//        testData();
 
         // todo: 测试数据
         String ownerAccount = "2";
@@ -54,33 +74,37 @@ public class ChatActivity extends BaseActivity {
         chatListAdapter = new ChatListAdapter(this, ownerAccount, messages);
         listView.setAdapter(chatListAdapter);
 
-
-
-
         // todo: 测试 orm
-        Message testMessage = new Message(1, "1", "2", "test", new Date(), 1);
-        // 插入测试
+        /*Message testMessage = new Message(2, "2", "1", "test12", new Date(), 1);
         try {
-            getHelper().getMessageDao().createIfNotExists(testMessage);
+            MessageDao messagesDao = getHelper().getMessageDao();
+            messagesDao.save(testMessage);
+
+            Message m = getMessageDao().get(1);
+            System.out.println(m.getId() + " " + m.getContent());
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        // 查询测试
-        try {
-            Message mes = getHelper()
-                    .getMessageDao()
-                    .queryBuilder()
-                    .where()
-                    .eq("fromAccount", "1")
-                    .query()
-                    .get(0);
+        }*/
 
-            System.out.println("##" + mes.getContent() + " " + mes.getTime());
+        // todo: 测试 rest
+        // 同一时间格式
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd HH:mm:ss")
+                .create();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint(Api.BASE_URL)
+                .setConverter(new GsonConverter(gson))
+                .build();
+        final MessageApi messageApi = restAdapter.create(MessageApi.class);
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Message message = messageApi.getMessage(1);
+                System.out.println(message.getId() + " " + message.getContent());
+            }
+        }).start();
     }
 
 
