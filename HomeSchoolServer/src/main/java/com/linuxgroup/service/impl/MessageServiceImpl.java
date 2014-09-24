@@ -24,4 +24,13 @@ public class MessageServiceImpl implements MessageService {
     public Integer saveMessage(Message msg) {
         return messageDao.save(msg);
     }
+
+    @Override
+    public void delectMessage(Integer id) {
+        messageDao.delete(id);
+    }
+    @Override
+    public Message get(Integer id) {
+        return messageDao.get(id);
+    }
 }
