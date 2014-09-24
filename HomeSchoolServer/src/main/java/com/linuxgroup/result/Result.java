@@ -8,7 +8,10 @@ import com.linuxgroup.model.Message;
 public class Result {
     private String status;
 
-    private Message message;
+    /**
+     * 发送消息时，保存在服务数据库中的 id
+     */
+    private Integer messageId;
 
     // set and get methods
 
@@ -20,11 +23,11 @@ public class Result {
         this.status = status;
     }
 
-    public Message getMessage() {
-        return message;
+    public Integer getMessageId() {
+        return messageId;
     }
 
-    public void setMessage(Message message) {
-        this.message = message;
+    public void setMessageId(Integer messageId) {
+        this.messageId = messageId;
     }
 }
