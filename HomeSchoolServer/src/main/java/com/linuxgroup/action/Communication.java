@@ -36,7 +36,7 @@ public class Communication {
 
             //jsonObj = JSONObject.fromObject(str);
             //msg  = JSONObject.toBean(jsonObj,Message.class);
-            messageService.saveMessage(msg);
+            //messageService.saveMessage(msg);
             //Integer id = messageService
 
             pushService.pushToAll("123");  // 将信息发送至极光推送
