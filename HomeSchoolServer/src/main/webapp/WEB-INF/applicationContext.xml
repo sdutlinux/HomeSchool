@@ -64,6 +64,12 @@
     <bean id="messageService" class="com.linuxgroup.service.impl.MessageServiceImpl">
         <property name="messageDao" ref="messageDao" />
     </bean>
+    <bean id="personDao" class="com.linuxgroup.dao.impl.PersonDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="personService" class="com.linuxgroup.service.impl.PersonServiceImpl">
+        <property name="personDao" ref="personDao" />
+    </bean>
 
 
     <bean id="pushService" class="com.linuxgroup.service.impl.PushServiceImpl">
