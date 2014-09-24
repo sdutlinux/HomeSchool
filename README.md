@@ -10,6 +10,7 @@
 服务端使用`java`语言
 
 1. 框架使用`SSH` 
+2. `REST` 使用 Spring 实现
 
 **日后将 Struts2 替换为 Spring MVC**
 
@@ -18,14 +19,15 @@
 客户端使用 Android
 
 1. `ORM `使用 `ormlite`
-2. `REST` 使用 `Retrofit`
+2. `REST` 使用 ~~Retrofit~~ `Spring for android`
 
 支持的版本暂定为 `4.0+`
 
 ## 通信
 
 1. 客户端与服务端之间通信使用 `json`
-2. 客户端与服务器都使用 `JSON-lib`
+2. ~~客户端与服务器都使用 `JSON-lib`~~
+3. 使用 RESTFUL
 
 ## REST WEB
 1. 显示的使用 HTTP 方法
@@ -42,7 +44,9 @@
 1. `/restful/message` 接口操作 Message
 
 ### 注意
-1. json 中日期格式为 `yyyy-MM-dd HH:mm:ss`
+1. ~~json 中日期格式为 yyyy-MM-dd HH:mm:ss~~*
+    *(注: 客户端、服务端统一使用 Spring, 因此解析都使用 `Jackson`, 无需统一格式，直接使用时间戳即可)
+
 
 ## 第三方服务
 
