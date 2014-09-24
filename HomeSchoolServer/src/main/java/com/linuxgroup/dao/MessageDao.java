@@ -17,11 +17,4 @@ public interface MessageDao {
     public void delete(Integer id);
 
     //public List<Message> fingById(Integer id);   // 保留，有待商议
-
-
-    //public void update(Message msg);
-
-    //public saveOrUpdate(Message msg);
-
-    //public void delete(Message msg);
 }

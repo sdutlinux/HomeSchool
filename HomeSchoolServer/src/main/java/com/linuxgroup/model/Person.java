@@ -31,6 +31,12 @@ public class Person {
     private String account;
 
     /**
+     * password
+     * 用户登录密码
+     */
+    private String password;
+
+    /**
      * name
      * 教师/家长姓名
      */
@@ -69,9 +75,10 @@ public class Person {
     public Person() {
     }
 
-    public Person(int id, String account,String name, int sex, String address, String communication, Set<Student> studentsId, int type) {
+    public Person(int id, String account,String password,String name, int sex, String address, String communication, Set<Student> studentsId, int type) {
         this.id = id;
         this.account = account;
+        this.password = password;
         this.name = name;
         this.address = address;
         this.sex = sex;
@@ -94,6 +101,14 @@ public class Person {
 
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
