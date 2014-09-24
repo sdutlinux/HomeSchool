@@ -1,6 +1,5 @@
 package com.linuxgroup.homeschool.client.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,12 +8,10 @@ import android.widget.ListView;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Api;
-import com.linuxgroup.homeschool.client.api.MessageApi;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.domain.Message;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import java.sql.SQLException;
@@ -87,26 +84,6 @@ public class ChatActivity extends BaseActivity {
         }*/
 
         // todo: 测试 rest
-        // 同一时间格式
-        /*Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd HH:mm:ss")
-                .create();
-
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(Api.BASE_URL)
-                .setConverter(new GsonConverter(gson))
-                .build();
-        final MessageApi messageApi = restAdapter.create(MessageApi.class);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Message message = messageApi.getMessage(1);
-                System.out.println(message.getId() + " " + message.getContent());
-            }
-        }).start();
-*/
-
         final RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 
