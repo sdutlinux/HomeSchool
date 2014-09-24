@@ -14,9 +14,9 @@ public class JsonUtils {
     }
 
     public static JSONObject toJson(Object obj) {
-        // 单用菏泽一句会报 java.lang.reflect.InvocationTargetException 的错误
+        // 单用这一句会报 java.lang.reflect.InvocationTargetException 的错误
         // 原因是，obj 内部有的属性为空
-//        return JSONObject.fromObject(obj);
+        // return JSONObject.fromObject(obj);
 
         // 这样使用，能够去掉 json字符里面的空的属性
         return JSONObject.fromObject(new Gson().toJson(obj));

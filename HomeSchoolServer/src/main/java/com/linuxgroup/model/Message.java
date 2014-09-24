@@ -20,7 +20,7 @@ public class Message {
     /**
      * id 信息的id
      */
-    private long id;
+    private int id;
 
     /**
      *  发送信息人的 account
@@ -50,7 +50,7 @@ public class Message {
 
     public Message() { }
 
-    public Message(long id, String fromAccount, String toAccount, String content, Date time, int type) {
+    public Message(int id, String fromAccount, String toAccount, String content, Date time, int type) {
         this.id = id;
         this.fromAccount = fromAccount;
         this.toAccount = toAccount;
@@ -59,8 +59,13 @@ public class Message {
         this.type = type;
     }
 
-    public long getId() { return id; }
-    public void setId(long id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFromAccount() {
         return fromAccount;
