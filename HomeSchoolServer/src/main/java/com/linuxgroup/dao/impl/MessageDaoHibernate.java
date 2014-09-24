@@ -4,12 +4,15 @@ import com.linuxgroup.dao.MessageDao;
 import com.linuxgroup.model.Message;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
+import java.util.List;
+
 
 /**
  * Created by huihui on 14-9-21.
  */
 public class MessageDaoHibernate extends HibernateDaoSupport implements MessageDao {
 
+    @Override
     public Message get(Integer id) {
         return getHibernateTemplate().get(Message.class,id);
     }
@@ -18,4 +21,10 @@ public class MessageDaoHibernate extends HibernateDaoSupport implements MessageD
     public Integer save(Message msg) {
         return (Integer) getHibernateTemplate().save(msg);
     }
+
+    @Override
+    public void delete(Integer id) {
+        getHibernateTemplate().delete(get(id));
+    }
+
 }
