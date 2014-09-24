@@ -1,6 +1,9 @@
 package com.linuxgroup.action;
 
 import com.linuxgroup.model.Message;
+import com.linuxgroup.service.MessageService;
+import com.linuxgroup.service.impl.MessageServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,14 +25,18 @@ import java.util.HashMap;
 @RequestMapping("/message")
 public class MessageRestul {
 
+    @Autowired()
+    private MessageService messageService;
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody
     Message get(HttpServletRequest request, HttpServletResponse response,
                     @PathVariable Integer id) {
 
+
         //TODO: 测试样例
         Message message = new Message();
-        message.setId(id);
+
         message.setContent("小测试 娃哈哈");
         message.setFromAccount("18369905136");
         message.setToAccount("18369905506");
@@ -37,5 +44,18 @@ public class MessageRestul {
         message.setType(1);
 
         return message;
+    }
+
+
+
+    // set and get methods
+
+
+    public MessageService getMessageService() {
+        return messageService;
+    }
+
+    public void setMessageService(MessageService messageService) {
+        this.messageService = messageService;
     }
 }
