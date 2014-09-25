@@ -1,14 +1,15 @@
 package com.linuxgroup.action;
 
+import cn.jpush.api.common.APIConnectionException;
+import cn.jpush.api.common.APIRequestException;
 import com.linuxgroup.model.Message;
+import com.linuxgroup.result.Result;
 import com.linuxgroup.service.MessageService;
+import com.linuxgroup.service.PushService;
 import com.linuxgroup.service.impl.MessageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,9 +26,17 @@ import java.util.HashMap;
 @RequestMapping("/message")
 public class MessageRestul {
 
-    @Autowired()
+    @Autowired
     private MessageService messageService;
 
+    @Autowired
+    private PushService pushService;
+
+    /**
+     * 获取消息
+     * @param id 要获取的 id
+     * @return 消息实体
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody
     Message get(HttpServletRequest request, HttpServletResponse response,
@@ -50,7 +59,27 @@ public class MessageRestul {
         return message;
     }
 
-    
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody
+    Result sendMessage(@RequestBody Message message) {
+        System.out.println(message.getContent() + " " + message.getFromAccount());
+
+        Integer msgId = messageService.saveMessage(message);
+
+        Result result = new Result();
+
+        //todo: 修改为对指定用户发送消息
+        try {
+            pushService.pushToAll(message.getContent());
+
+            result.setStatus("ok");
+            result.setMessageId(msgId);
+        } catch (Exception  e) {
+            result.setStatus("error");
+        }
+
+        return result;
+    }
 
 
     // set and get methods
@@ -62,5 +91,13 @@ public class MessageRestul {
 
     public void setMessageService(MessageService messageService) {
         this.messageService = messageService;
+    }
+
+    public PushService getPushService() {
+        return pushService;
+    }
+
+    public void setPushService(PushService pushService) {
+        this.pushService = pushService;
     }
 }

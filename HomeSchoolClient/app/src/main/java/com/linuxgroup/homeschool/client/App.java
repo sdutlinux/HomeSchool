@@ -10,7 +10,7 @@ import cn.jpush.android.api.JPushInterface;
  */
 public class App extends Application {
     private static Context sContext;
-
+    private JobManager jobManager;
 
     @Override
     public void onCreate() {
@@ -18,7 +18,7 @@ public class App extends Application {
 
         sContext = getApplicationContext();
 
-
+        // 初始化 jpush
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
     }

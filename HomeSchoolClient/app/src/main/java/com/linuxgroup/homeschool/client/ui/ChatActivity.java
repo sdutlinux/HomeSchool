@@ -10,6 +10,7 @@ import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Api;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.domain.Message;
+import com.linuxgroup.homeschool.client.result.Result;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -95,6 +96,21 @@ public class ChatActivity extends BaseActivity {
             }
         }).start();
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                Message message = new Message();
+                message.setContent("小测试 娃哈哈");
+                message.setFromAccount("18369905136");
+                message.setToAccount("18369905506");
+                message.setTime(new Date());
+                message.setType(1);
+
+                Result result = restTemplate.postForObject(Api.BASE_URL + "/restful/message", message, Result.class);
+                System.out.println("resuldIdi: " + result.getMessageId());
+            }
+        }).start();
 
     }
 
