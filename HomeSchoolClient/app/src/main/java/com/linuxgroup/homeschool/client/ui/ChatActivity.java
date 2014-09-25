@@ -11,6 +11,7 @@ import com.linuxgroup.homeschool.client.api.Api;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.domain.Message;
 import com.linuxgroup.homeschool.client.result.Result;
+import com.linuxgroup.homeschool.client.service.DataBaseManager;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -35,13 +36,13 @@ public class ChatActivity extends BaseActivity {
     private MessageDao messageDao;
 
     // 添加测试数据
-    public void testData() {
+/*    public void testData() {
         // todo: 测试数据
         messages = new ArrayList<Message>();
         messages.add(new Message(1, "1", "2", "test", new Date(), 1));
         messages.add(new Message(1, "1", "2", "test1", new Date(), 1));
         messages.add(new Message(1, "2", "1", "test1", new Date(), 1));
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class ChatActivity extends BaseActivity {
 
         // todo: 测试, 从数据库中读取消息
         try {
-            messageDao = getMessageDao();
+            messageDao = DataBaseManager.getMessageDao();
 //            Message message = messageDao.get(1);
             messages = messageDao.queryForAll();
 
@@ -85,7 +86,7 @@ public class ChatActivity extends BaseActivity {
         }*/
 
         // todo: 测试 rest
-        final RestTemplate restTemplate = new RestTemplate();
+        /*final RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 
         new Thread(new Runnable() {
@@ -110,7 +111,7 @@ public class ChatActivity extends BaseActivity {
                 Result result = restTemplate.postForObject(Api.BASE_URL + "/restful/message", message, Result.class);
                 System.out.println("resuldIdi: " + result.getMessageId());
             }
-        }).start();
+        }).start();*/
     }
 
 

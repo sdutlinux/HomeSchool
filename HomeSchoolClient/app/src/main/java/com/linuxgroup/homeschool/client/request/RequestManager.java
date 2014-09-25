@@ -3,6 +3,7 @@ package com.linuxgroup.homeschool.client.request;
 import android.util.Log;
 
 import com.linuxgroup.homeschool.client.App;
+import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.JobManager;
 import com.path.android.jobqueue.config.Configuration;
 import com.path.android.jobqueue.log.CustomLogger;
@@ -28,8 +29,8 @@ public class RequestManager {
         configureJobManager();
     }
 
-    public JobManager getJobManager() {
-        return jobManager;
+    public static void addBackgroundJob(Job job) {
+        getInstance().getJobManager().addJobInBackground(job);
     }
 
     private void configureJobManager() {
@@ -64,6 +65,11 @@ public class RequestManager {
 
         jobManager = new JobManager(App.getContext(), configuration);
     }
+
+    public JobManager getJobManager() {
+        return jobManager;
+    }
+
 }
 
 

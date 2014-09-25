@@ -80,7 +80,7 @@ public class BaseActivity extends FragmentActivity {
         super.onDestroy();
     }
 
-    public DatabaseHelper getHelper() {
+    /*public DatabaseHelper getHelper() {
         if (databaseHelper == null) {
             databaseHelper = OpenHelperManager
                     .getHelper(this, DatabaseHelper.class);
@@ -90,7 +90,7 @@ public class BaseActivity extends FragmentActivity {
 
     public MessageDao getMessageDao() throws SQLException {
         return getHelper().getMessageDao();
-    }
+    }*/
 
 //    protected void executeRequest(Request<?> request) {
 //        RequestManager.addRequest(request, this);

@@ -1,4 +1,4 @@
-package com.linuxgroup.homeschool.client.request.job;
+package com.linuxgroup.homeschool.client.request;
 
 import com.linuxgroup.homeschool.client.api.Api;
 import com.linuxgroup.homeschool.client.domain.Message;
@@ -27,7 +27,6 @@ public class MessageRequest {
                 msgId);
 
         return message;
-//        System.out.println("id: " + message.getId() + " content:" + message.getContent() + " date:" + message.getTime());
     }
 
     /**
@@ -40,24 +39,4 @@ public class MessageRequest {
 
         return result.getMessageId();
     }
-/*
-    public static void main(String[] args) {
-
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                Message message = new Message();
-                message.setContent("小测试 娃哈哈");
-                message.setFromAccount("18369905136");
-                message.setToAccount("18369905506");
-                message.setTime(new Date());
-                message.setType(1);
-
-
-                System.out.println("resuldIdi: " + result.getMessageId());
-            }
-        }).start();
-    }*/
 }
