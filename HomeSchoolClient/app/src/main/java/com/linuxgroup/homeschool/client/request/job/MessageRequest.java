@@ -20,7 +20,7 @@ public class MessageRequest {
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
     }
 
-    public Message getMessage(Integer msgId) {
+    public static Message getMessage(Integer msgId) {
         Message message = restTemplate.getForObject(
                 Api.BASE_URL + "/restful/message/{id}",
                 Message.class,
@@ -35,7 +35,7 @@ public class MessageRequest {
      * @param message
      * @return
      */
-    public Integer sendMessage(Message message) {
+    public static Integer sendMessage(Message message) {
         Result result = restTemplate.postForObject(Api.BASE_URL + "/restful/message", message, Result.class);
 
         return result.getMessageId();

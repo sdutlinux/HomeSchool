@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.linuxgroup.homeschool.client.App;
+import com.linuxgroup.homeschool.client.domain.Message;
+import com.linuxgroup.homeschool.client.request.RequestManager;
+import com.linuxgroup.homeschool.client.request.job.FetchMessageJob;
+import com.linuxgroup.homeschool.client.request.job.MessageRequest;
 import com.linuxgroup.homeschool.client.ui.MainActivity;
 
 import cn.jpush.android.api.JPushInterface;
@@ -33,12 +37,18 @@ public class MessageReceiver extends BroadcastReceiver {
             System.out.println("收到了自定义消息。消息内容是：" + bundle.getString(JPushInterface.EXTRA_MESSAGE));
             // 自定义消息不会展示在通知栏，完全要开发者写代码去处理
 
+            //todo: 不知道在这里执行网络请求、耗时任务会怎样
+            // 会异常
             // 收到的自定义消息
-            String mes = bundle.getString(JPushInterface.EXTRA_MESSAGE);
+            /*String mes = bundle.getString(JPushInterface.EXTRA_MESSAGE);
 
             // 转换成 id
             Integer mesId = Integer.parseInt(mes);
 
+            Message message = MessageRequest.getMessage(mesId);
+            System.out.println("###" + message.getId()  + " " + message.getContent());
+*/
+            RequestManager.getInstance().getJobManager().addJobInBackground(new FetchMessageJob());
 
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
             System.out.println("收到了通知");
@@ -49,6 +59,7 @@ public class MessageReceiver extends BroadcastReceiver {
             Intent i = new Intent(context, MainActivity.class);  //自定义打开的界面
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
+
 
         } else {
             Log.d(TAG, "Unhandled intent - " + intent.getAction());
