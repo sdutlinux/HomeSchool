@@ -1,20 +1,14 @@
 package com.linuxgroup.homeschool.client.ui;
 
 import android.app.ActionBar;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.linuxgroup.homeschool.client.R;
-import com.linuxgroup.homeschool.client.data.RequestManager;
 import com.linuxgroup.homeschool.client.db.DatabaseHelper;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;
@@ -84,7 +78,6 @@ public class BaseActivity extends FragmentActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        RequestManager.cancelAll(this);
     }
 
     public DatabaseHelper getHelper() {
@@ -99,16 +92,9 @@ public class BaseActivity extends FragmentActivity {
         return getHelper().getMessageDao();
     }
 
-    protected void executeRequest(Request<?> request) {
-        RequestManager.addRequest(request, this);
-    }
+//    protected void executeRequest(Request<?> request) {
+//        RequestManager.addRequest(request, this);
+//    }
 
-    protected Response.ErrorListener errorListener() {
-        return new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                ToastUtils.showLong(error.getMessage());
-            }
-        };
-    }
+
 }

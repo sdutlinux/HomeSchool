@@ -34,7 +34,6 @@ dependencies {
     compile 'com.android.support:support-v4:19.+'
     compile 'com.android.support:appcompat-v7:19.+'
     compile files('libs/jpush-sdk-release1.6.4.jar')
-    compile 'com.mcxiaoke.volley:library:1.0.2'
     compile 'com.jakewharton:butterknife:5.1.2'
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'org.springframework.android:spring-android-rest-template:2.0.0.M1'

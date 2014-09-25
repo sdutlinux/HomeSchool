@@ -111,7 +111,6 @@ public class ChatActivity extends BaseActivity {
                 System.out.println("resuldIdi: " + result.getMessageId());
             }
         }).start();
-
     }
 
 
