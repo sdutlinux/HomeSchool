@@ -47,17 +47,6 @@ public class ChatActivity extends BaseActivity {
     @InjectView(R.id.message)
     EditText et_message;
 
-
-
-    // 添加测试数据
-/*    public void testData() {
-        // todo: 测试数据
-        messages = new ArrayList<Message>();
-        messages.add(new Message(1, "1", "2", "test", new Date(), 1));
-        messages.add(new Message(1, "1", "2", "test1", new Date(), 1));
-        messages.add(new Message(1, "2", "1", "test1", new Date(), 1));
-    }*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,47 +62,6 @@ public class ChatActivity extends BaseActivity {
         initListView();
 
         registerReceivedNewMessageBroadcast();
-
-
-        // todo: 测试 orm
-        /*Message testMessage = new Message(2, "2", "1", "test12", new Date(), 1);
-        try {
-            MessageDao messagesDao = getHelper().getMessageDao();
-            messagesDao.save(testMessage);
-
-            Message m = getMessageDao().get(1);
-            System.out.println(m.getId() + " " + m.getContent());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
-
-        // todo: 测试 rest
-        /*final RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Message message = restTemplate.getForObject(Api.BASE_URL + "/restful/message/{id}", Message.class, 1);
-                System.out.println("id: " + message.getId() + " content:" + message.getContent() + " date:" + message.getTime());
-            }
-        }).start();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                Message message = new Message();
-                message.setContent("小测试 娃哈哈");
-                message.setFromAccount("18369905136");
-                message.setToAccount("18369905506");
-                message.setTime(new Date());
-                message.setType(1);
-
-                Result result = restTemplate.postForObject(Api.BASE_URL + "/restful/message", message, Result.class);
-                System.out.println("resuldIdi: " + result.getMessageId());
-            }
-        }).start();*/
     }
 
     public void initListView() {
