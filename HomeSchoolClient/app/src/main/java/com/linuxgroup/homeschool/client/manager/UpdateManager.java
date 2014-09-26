@@ -56,8 +56,6 @@ public class UpdateManager {
 
     private int progress;
 
-    private Thread downloadThread;
-
     private boolean interceptFlag = false;
 
     private Handler mHandler = new Handler() {
@@ -91,8 +89,6 @@ public class UpdateManager {
 
                 Integer latestVersion = UpdateApi.getLatestVersion();
 
-                System.out.println("## latestVersion:" + latestVersion + " version:"+  version);
-
                 if (latestVersion > version) {
                     mHandler.sendEmptyMessage(NEW_VERSION);
                 }
@@ -111,27 +107,6 @@ public class UpdateManager {
                 });
 
         noticeDialog.show();
-
-        /*AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("软件版本有更新")
-                .setMessage(updateMsg);
-        builder.setPositiveButton("下载", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-
-            }
-        });
-
-        builder.setNegativeButton("以后再说", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        noticeDialog = builder.create();
-        noticeDialog.show();*/
     }
 
     protected void showDownloadDialog() {
@@ -158,7 +133,7 @@ public class UpdateManager {
     }
 
     private void downloadApk() {
-        downloadThread = new Thread(mdownApkRunnable);
+        Thread downloadThread = new Thread(mdownApkRunnable);
         downloadThread.start();
     }
 
@@ -171,6 +146,9 @@ public class UpdateManager {
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(Uri.parse("file://" + apkFile.toString()), "application/vnd.android.package-archive");
+
+        downloadDialog.dismiss();
+
         context.startActivity(intent);
     }
 
@@ -187,23 +165,18 @@ public class UpdateManager {
 
 
                 File file = new File(savePath);
-                Log.i("test", "sd: " + savePath);
 
                 if (!file.exists()) {
-                    Log.i("test", "path not exist");
-                    Log.i("test", ""+file.mkdirs());
-                    Log.i("test", "mkdir");
+                    file.mkdirs();
                 }
 
                 File apkFile = new File(saveFileName);
 
                 FileOutputStream fos = new FileOutputStream(apkFile);
-                Log.i("test", saveFileName);
-                Log.i("test", "get inputstream");
 
                 int count = 0;
                 byte[] buf = new byte[1024];
-                Log.i("test", "interceptFlag: " + interceptFlag);
+
                 while (! interceptFlag) {
                     int numread = in.read(buf);
                     count += numread;

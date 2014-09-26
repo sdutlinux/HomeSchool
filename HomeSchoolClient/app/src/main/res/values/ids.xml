@@ -10,12 +10,15 @@
     <item type="id" name="content"/>
     <item type="id" name="time"/>
 
-
-
-
+    <item type="id" name="save_status"/>
+    <item type="id" name="tv_register"/>
+    <item type="id" name="bt_login"/>
+    <item type="id" name="password"/>
+    <item type="id" name="username"/>
 
     <!-- 代表 接受或者发送的消息 -->
     <item type="id" name="tag_left"/>
     <item type="id" name="tag_right"/>
+
 
 </resources>
