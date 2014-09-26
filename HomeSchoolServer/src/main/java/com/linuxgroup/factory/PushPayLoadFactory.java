@@ -17,6 +17,14 @@ public class PushPayLoadFactory {
         return PushPayload.alertAll(alert);
     }
 
+    /**
+     * 指的是 自定义消息
+     * @param msg 自定义消息内容
+     * @return
+     */
+    public static PushPayload buildMessage(String msg) {
+        return PushPayload.messageAll(msg);
+    }
 
     // 构建推送对象：所有平台，推送目标是别名为 "alias1"，通知内容为 ALERT
     public static PushPayload buildAllAliasAlert(String alias, String alert) {

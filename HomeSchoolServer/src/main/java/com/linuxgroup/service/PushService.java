@@ -13,4 +13,13 @@ public interface PushService {
      * @param message 要发送的消息
      */
     public PushResult pushToAll(String message) throws APIConnectionException, APIRequestException;
+
+    /**
+     * 发送自定义消息到所有终端
+     * @param message
+     * @return
+     * @throws APIConnectionException
+     * @throws APIRequestException
+     */
+    public PushResult pushMessageToAll(String message) throws APIConnectionException, APIRequestException;
 }

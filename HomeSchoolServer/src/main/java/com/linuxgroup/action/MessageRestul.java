@@ -71,7 +71,7 @@ public class MessageRestul {
         //todo: 修改为对指定用户发送消息
         try {
             // 推送消息的 id
-            pushService.pushToAll(""+msgId);
+            pushService.pushMessageToAll(""+msgId);
 
             result.setStatus("ok");
             result.setMessageId(msgId);

@@ -42,6 +42,15 @@ public class PushServiceImpl implements PushService {
 
         PushResult result = jPushClient.sendPush(payload);
 
+
+        return result;
+    }
+
+    public PushResult pushMessageToAll(String message) throws APIConnectionException, APIRequestException {
+        PushPayload payload = PushPayLoadFactory.buildMessage(message);
+
+        PushResult result = jPushClient.sendPush(payload);
+
         return result;
     }
 
