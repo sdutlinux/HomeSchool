@@ -3,6 +3,7 @@ package com.linuxgroup.homeschool.client.ui;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -95,6 +96,4 @@ public class BaseActivity extends FragmentActivity {
 //    protected void executeRequest(Request<?> request) {
 //        RequestManager.addRequest(request, this);
 //    }
-
-
 }

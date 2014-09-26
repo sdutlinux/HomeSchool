@@ -19,29 +19,15 @@ import butterknife.InjectView;
 /**
  * Created by tan on 14-9-20.
  */
-public class ChatListAdapter extends BaseAdapter {
+public class ChatListAdapter extends LazyListAdapter<Message> {
     // 用户的 Account, 用它来辨别是接收的消息还是发送的消息
     private String ownerAccount;
 
-    private Context context;
-    private List<Message> messages;
-    LayoutInflater inflater;
+    private final LayoutInflater inflater;
 
-    public ChatListAdapter(Context context, String ownerAccount, List<Message> messages) {
-        this.context = context;
-        this.messages = messages;
-        inflater = LayoutInflater.from(context);
+    public ChatListAdapter(LayoutInflater layoutInflater, String ownerAccount) {
         this.ownerAccount = ownerAccount;
-    }
-
-    @Override
-    public int getCount() {
-        return messages.size();
-    }
-
-    @Override
-    public Message getItem(int i) {
-        return messages.get(i);
+        this.inflater = layoutInflater;
     }
 
     @Override
@@ -79,9 +65,8 @@ public class ChatListAdapter extends BaseAdapter {
             }
         }
 
-
-        cacheView.tv_content.setText(message.getContent());
-        cacheView.tv_send_time.setText(message.getTime()+"");
+        // 展示信息
+        cacheView.render(message);
 
 
         return view;
@@ -99,6 +84,11 @@ public class ChatListAdapter extends BaseAdapter {
 
         public CacheView(View view) {
             ButterKnife.inject(this, view);
+        }
+
+        public void render(Message message) {
+            tv_content.setText(message.getContent());
+            tv_send_time.setText(message.getTime()+"");
         }
     }
 }

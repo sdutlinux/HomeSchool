@@ -118,6 +118,12 @@ public class ChatActivity extends BaseActivity {
     }
 
     public void initListView() {
+        // todo: 测试数据
+        String ownerAccount = "2";
+
+        chatListAdapter = new ChatListAdapter(getLayoutInflater(), ownerAccount);
+        listView.setAdapter(chatListAdapter);
+
         // todo: 测试, 从数据库中读取消息
         try {
             messageDao = DataBaseManager.getMessageDao();
@@ -129,11 +135,7 @@ public class ChatActivity extends BaseActivity {
             e.printStackTrace();
         }
 
-        // todo: 测试数据
-        String ownerAccount = "2";
-
-        chatListAdapter = new ChatListAdapter(this, ownerAccount, messages);
-        listView.setAdapter(chatListAdapter);
+        chatListAdapter.replaceLazyList(messages);
     }
 
     /**
