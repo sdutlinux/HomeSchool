@@ -18,6 +18,7 @@ import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Constants;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.domain.Message;
+import com.linuxgroup.homeschool.client.manager.UpdateManager;
 import com.linuxgroup.homeschool.client.request.RequestManager;
 import com.linuxgroup.homeschool.client.request.job.SendMessageJob;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;
@@ -62,6 +63,10 @@ public class ChatActivity extends BaseActivity {
         initListView();
 
         registerReceivedNewMessageBroadcast();
+
+        // 检查更新
+        UpdateManager updateManager = new UpdateManager(this);
+        updateManager.checkUpdate();
     }
 
     public void initListView() {
