@@ -1,13 +1,7 @@
 package com.linuxgroup.homeschool.client.api;
 
-import com.linuxgroup.homeschool.client.api.Api;
-import com.linuxgroup.homeschool.client.domain.Message;
+import com.linuxgroup.homeschool.client.model.Message;
 import com.linuxgroup.homeschool.client.result.Result;
-
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.Date;
 
 /**
  * Created by tan on 14-9-25.

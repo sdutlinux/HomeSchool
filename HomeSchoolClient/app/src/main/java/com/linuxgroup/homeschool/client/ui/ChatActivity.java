@@ -16,15 +16,13 @@ import android.widget.ListView;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Constants;
-import com.linuxgroup.homeschool.client.api.UpdateApi;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
-import com.linuxgroup.homeschool.client.domain.Message;
+import com.linuxgroup.homeschool.client.model.Message;
 import com.linuxgroup.homeschool.client.manager.UpdateManager;
 import com.linuxgroup.homeschool.client.request.RequestManager;
 import com.linuxgroup.homeschool.client.request.job.SendMessageJob;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;
 import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
-import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
 import java.sql.SQLException;
 import java.util.Date;

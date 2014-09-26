@@ -1,7 +1,7 @@
 package com.linuxgroup.homeschool.client.db.dao;
 
 import com.j256.ormlite.dao.Dao;
-import com.linuxgroup.homeschool.client.domain.Message;
+import com.linuxgroup.homeschool.client.model.Message;
 
 import java.sql.SQLException;
 

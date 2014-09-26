@@ -1,17 +1,13 @@
 package com.linuxgroup.homeschool.client.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.linuxgroup.homeschool.client.R;
-import com.linuxgroup.homeschool.client.domain.Message;
-
-import java.util.List;
+import com.linuxgroup.homeschool.client.model.Message;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

@@ -3,7 +3,7 @@ package com.linuxgroup.homeschool.client.db.dao.impl;
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.support.ConnectionSource;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
-import com.linuxgroup.homeschool.client.domain.Message;
+import com.linuxgroup.homeschool.client.model.Message;
 
 import java.sql.SQLException;
 

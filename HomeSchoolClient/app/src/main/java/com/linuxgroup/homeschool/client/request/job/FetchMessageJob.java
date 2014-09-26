@@ -2,7 +2,7 @@ package com.linuxgroup.homeschool.client.request.job;
 
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.broadcast.BroadcastSender;
-import com.linuxgroup.homeschool.client.domain.Message;
+import com.linuxgroup.homeschool.client.model.Message;
 import com.linuxgroup.homeschool.client.api.MessageApi;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;
 import com.path.android.jobqueue.Job;
