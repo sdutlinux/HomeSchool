@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.linuxgroup.homeschool.client.domain.Message;
 import com.linuxgroup.homeschool.client.request.RequestManager;
 import com.linuxgroup.homeschool.client.request.job.SendMessageJob;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;
+import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
 import java.sql.SQLException;
@@ -30,12 +32,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class ChatActivity extends BaseActivity {
-
-    private List<Message> messages;
+    private static final String TAG = "ChatAcivity";
 
     private ChatListAdapter chatListAdapter;
-
-    private MessageDao messageDao;
 
     private BroadcastReceiver broadcastReceiver;
 
@@ -124,18 +123,29 @@ public class ChatActivity extends BaseActivity {
         chatListAdapter = new ChatListAdapter(getLayoutInflater(), ownerAccount);
         listView.setAdapter(chatListAdapter);
 
-        // todo: 测试, 从数据库中读取消息
-        try {
-            messageDao = DataBaseManager.getMessageDao();
-//            Message message = messageDao.get(1);
-            messages = messageDao.queryForAll();
+        refreshList();
+    }
 
-            System.out.println(messages.size());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void refreshList() {
 
-        chatListAdapter.replaceLazyList(messages);
+        // 异步刷新消息，从数据库中读取、更新到 listview
+        new SimpleBackgroundTask<List<Message>>(this) {
+            @Override
+            protected List<Message> onRun() {
+                try {
+                    MessageDao messageDao = DataBaseManager.getMessageDao();
+                    return messageDao.queryForAll();
+                } catch (SQLException e) {
+                    Log.d(TAG, "从数据库读取messages出错");
+                    return null;
+                }
+            }
+
+            @Override
+            protected void onSuccess(List<Message> messages) {
+                chatListAdapter.replaceLazyList(messages);
+            }
+        }.execute();
     }
 
     /**
@@ -169,7 +179,11 @@ public class ChatActivity extends BaseActivity {
                 message.setTime(new Date());
                 message.setType(1);
 
+                // 后台发送消息
                 RequestManager.addBackgroundJob(new SendMessageJob(message));
+
+                // 清空输入栏
+                et_message.setText("");
             }
         });
     }
