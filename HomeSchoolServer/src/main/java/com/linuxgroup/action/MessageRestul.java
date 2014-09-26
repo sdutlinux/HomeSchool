@@ -42,18 +42,6 @@ public class MessageRestul {
     Message get(HttpServletRequest request, HttpServletResponse response,
                     @PathVariable Integer id) {
 
-
-        //TODO: 测试样例
-        /*Message message = new Message();
-
-        message.setContent("小测试 娃哈哈");
-        message.setFromAccount("18369905136");
-        message.setToAccount("18369905506");
-        message.setTime(new Date());
-        message.setType(1);
-
-        Integer mesId = messageService.saveMessage(message);*/
-
         Message message = messageService.get(id);
 
         return message;
@@ -62,8 +50,6 @@ public class MessageRestul {
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
     Result sendMessage(@RequestBody Message message) {
-        System.out.println(message.getContent() + " " + message.getFromAccount());
-
         Integer msgId = messageService.saveMessage(message);
 
         Result result = new Result();

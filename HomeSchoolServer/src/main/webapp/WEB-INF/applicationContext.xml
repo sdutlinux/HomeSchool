@@ -83,7 +83,9 @@
         <property name="messageService" ref="messageService" />
     </bean>
 
+    <bean id="updateService" class="com.linuxgroup.service.impl.UpdateServiceImpl">
 
+    </bean>
 
     <!-- 配置 Hibernate 的局部事务管理器，使用 HibernateTransactionManager 类 -->
     <!-- 该类实现 PlatformTransactionManager 接口，是针对 Hibernate 的特定实现 -->
