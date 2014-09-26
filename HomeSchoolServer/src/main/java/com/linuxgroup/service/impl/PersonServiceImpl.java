@@ -46,6 +46,8 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person personFindBy(String account,String password) {
+
+        System.out.println(personDao);
         return personDao.findBy(account,password);
     }
 

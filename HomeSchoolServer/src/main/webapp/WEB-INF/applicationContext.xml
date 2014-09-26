@@ -81,6 +81,7 @@
     <bean id="ajax" class="com.linuxgroup.action.Communication">
         <property name="pushService" ref="pushService"/>
         <property name="messageService" ref="messageService" />
+        <property name="personService" ref="personService" />
     </bean>
 
 
@@ -106,7 +107,7 @@
     <aop:config>
         <!-- 配置一个切入点 -->
         <aop:pointcut id="ajaxPointcut"
-                      expression="bean(pushService)||bean(messageService)"/>
+                      expression="bean(pushService)||bean(messageService)||bean(personService)"/>
         <!-- 指定在 leePointcut 切入点应用 txAdvice 事务增强处理 -->
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="ajaxPointcut"/>
