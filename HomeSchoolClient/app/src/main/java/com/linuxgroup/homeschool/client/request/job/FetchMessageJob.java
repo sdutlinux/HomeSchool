@@ -1,5 +1,7 @@
 package com.linuxgroup.homeschool.client.request.job;
 
+import com.linuxgroup.homeschool.client.App;
+import com.linuxgroup.homeschool.client.broadcast.BroadcastSender;
 import com.linuxgroup.homeschool.client.domain.Message;
 import com.linuxgroup.homeschool.client.api.MessageApi;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;
@@ -31,7 +33,6 @@ public class FetchMessageJob extends Job {
 
     @Override
     public void onAdded() {
-        System.out.println("added Fetch message " + id);
     }
 
     @Override
@@ -43,6 +44,9 @@ public class FetchMessageJob extends Job {
 
         // 保存到本地数据库
         DataBaseManager.getMessageDao().save(message);
+
+        // 发送收到新消息的广播
+        BroadcastSender.sendReceivedNewMessage(App.getContext());
     }
 
     @Override
