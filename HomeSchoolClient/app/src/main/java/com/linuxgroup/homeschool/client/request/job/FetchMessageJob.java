@@ -1,12 +1,11 @@
 package com.linuxgroup.homeschool.client.request.job;
 
 import com.linuxgroup.homeschool.client.domain.Message;
-import com.linuxgroup.homeschool.client.request.MessageRequest;
+import com.linuxgroup.homeschool.client.api.MessageApi;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.Params;
 
-import java.sql.DatabaseMetaData;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -40,7 +39,7 @@ public class FetchMessageJob extends Job {
         System.out.println("run Fetch message " + id);
 
         // 获取消息
-        Message message = MessageRequest.getMessage(requestMsgId);
+        Message message = MessageApi.getMessage(requestMsgId);
         System.out.println("###" + message.getId()  + " " + message.getContent());
 
         // 保存到本地数据库

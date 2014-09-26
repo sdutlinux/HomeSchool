@@ -1,4 +1,4 @@
-package com.linuxgroup.homeschool.client.request;
+package com.linuxgroup.homeschool.client.api;
 
 import com.linuxgroup.homeschool.client.api.Api;
 import com.linuxgroup.homeschool.client.domain.Message;
@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * Created by tan on 14-9-25.
  */
-public class MessageRequest {
+public class MessageApi {
     private static RestTemplate restTemplate;
 
     static {

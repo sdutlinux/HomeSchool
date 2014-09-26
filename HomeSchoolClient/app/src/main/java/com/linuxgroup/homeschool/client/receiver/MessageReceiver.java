@@ -7,10 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.linuxgroup.homeschool.client.domain.Message;
 import com.linuxgroup.homeschool.client.request.RequestManager;
 import com.linuxgroup.homeschool.client.request.job.FetchMessageJob;
-import com.linuxgroup.homeschool.client.request.MessageRequest;
 import com.linuxgroup.homeschool.client.ui.MainActivity;
 
 import cn.jpush.android.api.JPushInterface;
