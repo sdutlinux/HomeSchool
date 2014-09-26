@@ -15,6 +15,23 @@
     <item type="id" name="bt_login"/>
     <item type="id" name="password"/>
     <item type="id" name="username"/>
+    <item type="id" name="name"/>
+    <item type="id" name="bt_register"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- 代表 接受或者发送的消息 -->
     <item type="id" name="tag_left"/>
