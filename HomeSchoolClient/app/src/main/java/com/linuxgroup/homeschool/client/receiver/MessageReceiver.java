@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.linuxgroup.homeschool.client.manager.SoundManager;
 import com.linuxgroup.homeschool.client.request.RequestManager;
 import com.linuxgroup.homeschool.client.request.job.FetchMessageJob;
 import com.linuxgroup.homeschool.client.ui.MainActivity;
@@ -42,6 +43,8 @@ public class MessageReceiver extends BroadcastReceiver {
 
             RequestManager.addBackgroundJob(new FetchMessageJob(mesId));
 
+            // 收到消息加入响铃
+            SoundManager.PlaySound(context);
 
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
             System.out.println("收到了通知");
