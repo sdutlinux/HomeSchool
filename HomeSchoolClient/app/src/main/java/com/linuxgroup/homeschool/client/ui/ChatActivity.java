@@ -3,6 +3,9 @@ package com.linuxgroup.homeschool.client.ui;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.linuxgroup.homeschool.client.R;
@@ -10,6 +13,8 @@ import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Api;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.domain.Message;
+import com.linuxgroup.homeschool.client.request.RequestManager;
+import com.linuxgroup.homeschool.client.request.job.SendMessageJob;
 import com.linuxgroup.homeschool.client.result.Result;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;
 
@@ -33,6 +38,12 @@ public class ChatActivity extends BaseActivity {
     @InjectView(R.id.listview)
     ListView listView;
 
+    @InjectView(R.id.send)
+    Button bt_send;
+
+    @InjectView(R.id.message)
+    EditText et_message;
+
     private MessageDao messageDao;
 
     // 添加测试数据
@@ -52,6 +63,8 @@ public class ChatActivity extends BaseActivity {
         actionBar.hide();
 
         ButterKnife.inject(this);
+
+        setListener();
 
         // todo: 测试, 从数据库中读取消息
         try {
@@ -112,6 +125,24 @@ public class ChatActivity extends BaseActivity {
                 System.out.println("resuldIdi: " + result.getMessageId());
             }
         }).start();*/
+    }
+
+    private void setListener() {
+        bt_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String messageContent = et_message.getText().toString();
+                // todo： 修改 详细信息，比如 fromAccount
+                Message message = new Message();
+                message.setFromAccount("1");
+                message.setToAccount("2");
+                message.setContent(messageContent);
+                message.setTime(new Date());
+                message.setType(1);
+
+                RequestManager.addBackgroundJob(new SendMessageJob(message));
+            }
+        });
     }
 
 

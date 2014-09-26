@@ -48,7 +48,7 @@
         >
 
         <EditText
-            android:id="@id/input"
+            android:id="@id/message"
             android:layout_width="0dp"
             android:layout_weight="10"
             android:layout_height="wrap_content"

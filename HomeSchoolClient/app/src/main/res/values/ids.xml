@@ -2,7 +2,7 @@
 <resources>
     <item type="id" name="tv_actionbar_title"/>
     <item type="id" name="listview"/>
-    <item type="id" name="input"/>
+    <item type="id" name="message"/>
     <item type="id" name="send"/>
 
     <item type="id" name="avatar_chat"/>

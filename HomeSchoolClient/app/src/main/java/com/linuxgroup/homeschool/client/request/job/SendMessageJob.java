@@ -1,7 +1,7 @@
 package com.linuxgroup.homeschool.client.request.job;
 
-import com.linuxgroup.homeschool.client.domain.Message;
 import com.linuxgroup.homeschool.client.api.MessageApi;
+import com.linuxgroup.homeschool.client.domain.Message;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.Params;
@@ -9,29 +9,29 @@ import com.path.android.jobqueue.Params;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Created by tan on 14-9-25.
+ * Created by tan on 14-9-26.
  */
-public class FetchMessageJob extends Job {
+public class SendMessageJob extends Job {
     private static final AtomicInteger jobCounter = new AtomicInteger(0);
 
     private final int id;
 
     /**
-     * 用于请求的 message 的 id
+     * 需要发送的 message
      */
-    private Integer requestMsgId;
+    private Message message;
 
-    public FetchMessageJob(Integer requestMsgId) {
-        super(new Params(Priority.LOW).requireNetwork().groupBy("fetch-message"));
+    public SendMessageJob(Message message) {
+        super(new Params(Priority.LOW).requireNetwork().groupBy("send_message"));
 
         id = jobCounter.incrementAndGet();
 
-        this.requestMsgId = requestMsgId;
+        this.message = message;
     }
 
     @Override
     public void onAdded() {
-        System.out.println("added Fetch message " + id);
+
     }
 
     @Override
@@ -39,15 +39,19 @@ public class FetchMessageJob extends Job {
         System.out.println("run Fetch message " + id);
 
         // 获取消息
-        Message message = MessageApi.getMessage(requestMsgId);
+        Integer msgId = MessageApi.sendMessage(message);
+        message.setId(msgId);
 
         // 保存到本地数据库
         DataBaseManager.getMessageDao().save(message);
+
+        // todo: 通知发送成功
+
     }
 
     @Override
     protected void onCancel() {
-        System.out.println("calcel Fetch message " + id);
+
     }
 
     @Override
