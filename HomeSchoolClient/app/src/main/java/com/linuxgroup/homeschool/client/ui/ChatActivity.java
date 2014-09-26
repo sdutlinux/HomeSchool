@@ -171,6 +171,12 @@ public class ChatActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 String messageContent = et_message.getText().toString();
+
+                // 如果消息为空, 则不做响应
+                if (messageContent.trim().equals("")) {
+                    return ;
+                }
+
                 // todo： 修改 详细信息，比如 fromAccount
                 Message message = new Message();
                 message.setFromAccount("1");
