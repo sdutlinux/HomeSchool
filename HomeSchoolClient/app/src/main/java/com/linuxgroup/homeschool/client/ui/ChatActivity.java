@@ -1,5 +1,9 @@
 package com.linuxgroup.homeschool.client.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,19 +14,15 @@ import android.widget.ListView;
 
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
-import com.linuxgroup.homeschool.client.api.Api;
+import com.linuxgroup.homeschool.client.api.Constants;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.domain.Message;
 import com.linuxgroup.homeschool.client.request.RequestManager;
 import com.linuxgroup.homeschool.client.request.job.SendMessageJob;
-import com.linuxgroup.homeschool.client.result.Result;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;
-
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
+import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,6 +35,10 @@ public class ChatActivity extends BaseActivity {
 
     private ChatListAdapter chatListAdapter;
 
+    private MessageDao messageDao;
+
+    private BroadcastReceiver broadcastReceiver;
+
     @InjectView(R.id.listview)
     ListView listView;
 
@@ -44,7 +48,7 @@ public class ChatActivity extends BaseActivity {
     @InjectView(R.id.message)
     EditText et_message;
 
-    private MessageDao messageDao;
+
 
     // 添加测试数据
 /*    public void testData() {
@@ -66,25 +70,11 @@ public class ChatActivity extends BaseActivity {
 
         setListener();
 
-        // todo: 测试, 从数据库中读取消息
-        try {
-            messageDao = DataBaseManager.getMessageDao();
-//            Message message = messageDao.get(1);
-            messages = messageDao.queryForAll();
+        // 初始化
+        initListView();
 
-            System.out.println(messages.size());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        registerReceivedNewMessageBroadcast();
 
-        // todo: 测试数据
-//        testData();
-
-        // todo: 测试数据
-        String ownerAccount = "2";
-
-        chatListAdapter = new ChatListAdapter(this, ownerAccount, messages);
-        listView.setAdapter(chatListAdapter);
 
         // todo: 测试 orm
         /*Message testMessage = new Message(2, "2", "1", "test12", new Date(), 1);
@@ -127,6 +117,43 @@ public class ChatActivity extends BaseActivity {
         }).start();*/
     }
 
+    public void initListView() {
+        // todo: 测试, 从数据库中读取消息
+        try {
+            messageDao = DataBaseManager.getMessageDao();
+//            Message message = messageDao.get(1);
+            messages = messageDao.queryForAll();
+
+            System.out.println(messages.size());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // todo: 测试数据
+        String ownerAccount = "2";
+
+        chatListAdapter = new ChatListAdapter(this, ownerAccount, messages);
+        listView.setAdapter(chatListAdapter);
+    }
+
+    /**
+     * 收到消息后，更新 listview
+     */
+    private void registerReceivedNewMessageBroadcast() {
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Constants.ACTION_RECEIVED_MESSAGE);
+
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                // 数据更新显示
+                initListView();
+            }
+        };
+
+        this.registerReceiver(broadcastReceiver, intentFilter);
+    }
+
     private void setListener() {
         bt_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,5 +190,11 @@ public class ChatActivity extends BaseActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.unregisterReceiver(broadcastReceiver);
     }
 }
