@@ -8,8 +8,8 @@ import com.linuxgroup.service.UpdateService;
 public class UpdateServiceImpl implements UpdateService {
     //todo: 改成在配置文件中读取
     @Override
-    public String getLatestVerson() {
-        return "1.0.0";
+    public Integer getLatestVersonCode() {
+        return 2;
     }
 
     /**

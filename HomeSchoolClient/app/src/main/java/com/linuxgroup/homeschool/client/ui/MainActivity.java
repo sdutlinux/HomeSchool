@@ -14,17 +14,21 @@ import cn.jpush.android.api.TagAliasCallback;
 
 public class MainActivity extends BaseActivity {
 
+    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        UserInfoService.setAlias(this, "18369905136", new TagAliasCallback() {
+       /* UserInfoService.setAlias(this, "18369905136", new TagAliasCallback() {
             @Override
             public void gotResult(int i, String s, Set<String> strings) {
                 System.out.println(i);
             }
-        });
+        });*/
+
+
     }
 
     @Override
@@ -36,9 +40,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;

@@ -16,6 +16,7 @@ import android.widget.ListView;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Constants;
+import com.linuxgroup.homeschool.client.api.UpdateApi;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.domain.Message;
 import com.linuxgroup.homeschool.client.manager.UpdateManager;

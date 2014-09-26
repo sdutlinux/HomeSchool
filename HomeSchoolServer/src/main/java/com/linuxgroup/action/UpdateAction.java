@@ -22,8 +22,8 @@ public class UpdateAction {
      * @return 版本号
      */
     @RequestMapping(value = "/latestVersion", method = RequestMethod.GET)
-    public @ResponseBody String getLatestVerson() {
-        return updateService.getLatestVerson();
+    public @ResponseBody Integer getLatestVersonCode() {
+        return updateService.getLatestVersonCode();
     }
 
 

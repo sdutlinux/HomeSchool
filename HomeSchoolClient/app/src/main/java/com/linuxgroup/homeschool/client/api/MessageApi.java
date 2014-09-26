@@ -12,17 +12,11 @@ import java.util.Date;
 /**
  * Created by tan on 14-9-25.
  */
-public class MessageApi {
-    private static RestTemplate restTemplate;
-
-    static {
-        restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-    }
+public class MessageApi extends BaseApi {
 
     public static Message getMessage(Integer msgId) {
         Message message = restTemplate.getForObject(
-                Api.BASE_URL + "/restful/message/{id}",
+                Api.PATH_MESSAGE + "/{id}",
                 Message.class,
                 msgId);
 
@@ -35,7 +29,7 @@ public class MessageApi {
      * @return
      */
     public static Integer sendMessage(Message message) {
-        Result result = restTemplate.postForObject(Api.BASE_URL + "/restful/message", message, Result.class);
+        Result result = restTemplate.postForObject(Api.PATH_MESSAGE, message, Result.class);
 
         return result.getMessageId();
     }
