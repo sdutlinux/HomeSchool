@@ -2,7 +2,7 @@ package com.linuxgroup.dao.impl;
 
 import com.linuxgroup.dao.PersonDao;
 import com.linuxgroup.model.Person;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import java.util.List;
 
@@ -70,6 +70,7 @@ public class PersonDaoHibernate extends HibernateDaoSupport implements PersonDao
                 .find("from Person as p where p.account=? and p.password=?",account,password);
 
         if(person.size() == 0) {
+            System.out.println(account + password + "NullPointerException");
             return null;
         }else {
             return person.get(0);
@@ -84,7 +85,7 @@ public class PersonDaoHibernate extends HibernateDaoSupport implements PersonDao
     @Override
     public Person findBy(String account) {
         List<Person> person = (List<Person>) getHibernateTemplate()
-                .find("from Person as p where p.account = ?",account);
+                .find("from Person as p where p.account=?",account);
 
         if (person.size() == 0) {
             return null;

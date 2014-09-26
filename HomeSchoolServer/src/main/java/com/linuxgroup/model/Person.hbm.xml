@@ -14,6 +14,7 @@
         </id>
         <!-- property元素定义常规属性-->
         <property name="account" type="string"/>
+        <property name="password" type="string" />
         <property name="name" type="string"/>
         <property name="sex" type="integer"/>
         <property name="address" type="string"/>

@@ -1,7 +1,9 @@
 package com.linuxgroup.action;
 
 import com.linuxgroup.model.Message;
+import com.linuxgroup.model.Person;
 import com.linuxgroup.service.MessageService;
+import com.linuxgroup.service.PersonService;
 import com.linuxgroup.service.PushService;
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
@@ -18,6 +20,7 @@ public class Communication {
 
     private PushService pushService;
     private MessageService messageService;
+    private PersonService personService;
     private JSONObject jsonObj;
 
 
@@ -28,7 +31,31 @@ public class Communication {
         /**
          *  创建一个Message对象
          */
-        Message msg = new Message();
+        //Message msg = new Message();
+        Person person = new Person();
+
+        person.setAccount("1836944444444444449");
+        person.setPassword("0000444444444444");
+        person.setAddress("zibo");
+        person.setName("huihui");
+        person.setSex(0);
+        person.setCommunication("183699");
+        person.setType(1);
+
+
+        System.out.println(personService);
+
+
+        Integer id = personService.savePerson(person);
+        System.out.println(id);
+
+        person.setName("hhhhh");
+        personService.updatePerson(person);
+        //personService.deletePerson(2);
+        //Person p = personService.getPerson(1);
+        //System.out.println(p);
+        //System.out.println( personService.personFindBy("183699").getId() );
+        //System.out.println(p.getId());
 
 
 
@@ -39,7 +66,8 @@ public class Communication {
             //messageService.saveMessage(msg);
             //Integer id = messageService
 
-            pushService.pushToAll("123");  // 将信息发送至极光推送
+
+            pushService.pushToAll("person存储");  // 将信息发送至极光推送
             result.setStatus("ok");
 
         } catch (Exception e) {
@@ -71,6 +99,14 @@ public class Communication {
 
     public void setMessageService(MessageService messageService) {
         this.messageService = messageService;
+    }
+
+    public PersonService getPersonService() {
+        return personService;
+    }
+
+    public void setPersonService(PersonService personService) {
+        this.personService = personService;
     }
 
     public JSONObject getJsonObj() {
