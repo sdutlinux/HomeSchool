@@ -22,8 +22,6 @@ public class UserRestful {
     public @ResponseBody Result register(@RequestBody Person person) {
         Integer personId = personService.savePerson(person);
 
-        System.out.println("### person " + personId);
-
         Result result = new Result();
         result.setStatus("ok");
         result.setRetId(personId);
@@ -31,11 +29,22 @@ public class UserRestful {
         return result;
     }
 
-    /*@RequestMapping(value = "/login", method = RequestMethod.POST)
-    public @RequestMapping Person login() {
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public @ResponseBody Result login(String account, String password) {
+        Person person = personService.login(account, password);
 
+        Result result = new Result();
 
-    }*/
+        if (person == null) {
+            result.setStatus("error");
+            result.setErrorDesc("账户或密码错误");
+        } else {
+            result.setStatus("ok");
+            result.setPerson(person);
+        }
+
+        return result;
+    }
 
     public PersonService getPersonService() {
         return personService;

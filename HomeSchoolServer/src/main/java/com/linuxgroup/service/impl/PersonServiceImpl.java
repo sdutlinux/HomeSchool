@@ -11,6 +11,22 @@ public class PersonServiceImpl implements PersonService {
 
     private PersonDao personDao;
 
+    /**
+     * 用户名唯一性
+     */
+    public boolean isExist(String username) {
+        return personDao.findBy(username) != null;
+    }
+
+    /**
+     * 登录，如果返回空则登录失败，否则，返回数据库保存的对象
+     * @return
+     */
+    public Person login(String account, String password) {
+        return personDao.findBy(account, password);
+    }
+
+
     public PersonDao getPersonDao() {
         return personDao;
     }
