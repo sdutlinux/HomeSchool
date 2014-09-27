@@ -1,6 +1,5 @@
 package com.linuxgroup.homeschool.client.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,9 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.linuxgroup.homeschool.client.R;
+import com.linuxgroup.homeschool.client.api.UserApi;
 import com.linuxgroup.homeschool.client.model.Person;
-
-import java.util.HashMap;
+import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -24,13 +23,13 @@ public class RegisterActivity extends BaseActivity {
     Button bt_register;
 
     @InjectView(R.id.username)
-    EditText fe_username;
+    EditText et_username;
 
     @InjectView(R.id.password)
-    EditText fe_password;
+    EditText et_password;
 
     @InjectView(R.id.name)
-    EditText fe_name;
+    EditText et_name;
 
     @InjectView(R.id.message)
     TextView tv_message;
@@ -47,9 +46,9 @@ public class RegisterActivity extends BaseActivity {
         bt_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = fe_username.getText().toString();
-                String password = fe_password.getText().toString();
-                String name = fe_name.getText().toString();
+                String username = et_username.getText().toString();
+                String password = et_password.getText().toString();
+                String name = et_name.getText().toString();
 
                 //todo: 更多的信息
 
@@ -59,7 +58,7 @@ public class RegisterActivity extends BaseActivity {
                     tv_message.setVisibility(View.VISIBLE);
 
                     Animation shake = AnimationUtils.loadAnimation(RegisterActivity.this, R.anim.shake);//加载动画资源文件
-                    fe_username.startAnimation(shake); //给组件播放动画效果
+                    et_username.startAnimation(shake); //给组件播放动画效果
 
                     return ;
                 } else if (password.equals("")) {
@@ -67,23 +66,31 @@ public class RegisterActivity extends BaseActivity {
                     tv_message.setVisibility(View.VISIBLE);
 
                     Animation shake = AnimationUtils.loadAnimation(RegisterActivity.this, R.anim.shake);//加载动画资源文件
-                    fe_password.startAnimation(shake); //给组件播放动画效果
+                    et_password.startAnimation(shake); //给组件播放动画效果
 
                 } else if (name.equals("")) {
                     tv_message.setText("真实姓名不能为空");
                     tv_message.setVisibility(View.VISIBLE);
 
                     Animation shake = AnimationUtils.loadAnimation(RegisterActivity.this, R.anim.shake);//加载动画资源文件
-                    fe_name.startAnimation(shake); //给组件播放动画效果
+                    et_name.startAnimation(shake); //给组件播放动画效果
                 }
 
-                Person person = new Person();
+                final Person person = new Person();
                 person.setAccount(username);
                 person.setPassword(password);
                 person.setName(name);
 
                 //todo:
+                ToastUtils.showShort("正在注册");
 
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Integer id = UserApi.register(person);
+                        System.out.println("#### id" + id);
+                    }
+                }).start();
             }
         });
 

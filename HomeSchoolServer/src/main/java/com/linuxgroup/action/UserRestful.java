@@ -22,6 +22,8 @@ public class UserRestful {
     public @ResponseBody Result register(@RequestBody Person person) {
         Integer personId = personService.savePerson(person);
 
+        System.out.println("### person " + personId);
+
         Result result = new Result();
         result.setStatus("ok");
         result.setRetId(personId);
