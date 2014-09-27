@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.api.UserApi;
 import com.linuxgroup.homeschool.client.model.Person;
+import com.linuxgroup.homeschool.client.result.Result;
+import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
 import butterknife.ButterKnife;
@@ -81,21 +83,29 @@ public class RegisterActivity extends BaseActivity {
                 person.setPassword(password);
                 person.setName(name);
 
-                //todo:
-                ToastUtils.showShort("正在注册");
-
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Integer id = UserApi.register(person);
-                        System.out.println("#### id" + id);
-                    }
-                }).start();
+                register(person);
             }
         });
 
     }
 
+    private void register(final Person person) {
+        new SimpleBackgroundTask<Integer>(RegisterActivity.this) {
+            @Override
+            protected Integer onRun() {
+                Integer id = UserApi.register(person);
+                return id;
+            }
+
+            @Override
+            protected void onSuccess(Integer id) {
+                if (id > 0) {
+                    finish();
+                }
+                //todo: 设置其他错误，例如用户名已被注册之类的
+            }
+        }.execute();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
