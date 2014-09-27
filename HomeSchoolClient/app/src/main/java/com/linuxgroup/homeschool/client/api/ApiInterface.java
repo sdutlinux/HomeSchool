@@ -11,4 +11,5 @@ public class ApiInterface {
     public static final String PATH_GET_LATEST_VERSION = BASE_URL + "/restful/update/latestVersion";
     public static final String PATH_DOWNLOAD_PATH = BASE_URL + "/restful/update/latestVersion";
     public static final String PATH_REGISTER = BASE_URL + "/restful/user/register";
+    public static final String PATH_LOGIN = BASE_URL + "/restful/user/login";
 }

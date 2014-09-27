@@ -3,6 +3,9 @@ package com.linuxgroup.homeschool.client.api;
 import com.linuxgroup.homeschool.client.model.Person;
 import com.linuxgroup.homeschool.client.result.Result;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by tan on 14-9-27.
  */
@@ -24,5 +27,24 @@ public class UserApi extends BaseApi {
         }
     }
 
+    /**
+     * 登录认证暂时没有找到好的解决方案
+     *
+     * @param account
+     * @param password
+     * @return
+     */
+    public static Person login(String account, String password) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("account", account);
+        params.put("password", password);
 
+        Result result = restTemplate.getForObject(ApiInterface.PATH_LOGIN+"/{account}/{password}", Result.class, params);
+
+        if (result.getStatus().equals("ok")) {
+            return result.getPerson();
+        } else {
+            return null;
+        }
+    }
 }

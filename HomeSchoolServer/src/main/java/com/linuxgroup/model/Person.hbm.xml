@@ -21,7 +21,7 @@
         <property name="communication" type="string"/>
         <property name="type" type="integer"/>
         <!--Person和student的多对多关系-->
-        <set name="studentsId" table="person_student">
+        <set name="studentsId" table="person_student" lazy="false">
             <!--指定关联的外键到-->
             <key column="person_id" />
             <!--用以映射到关联类属性-->

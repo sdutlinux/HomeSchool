@@ -5,15 +5,11 @@ import com.linuxgroup.result.Result;
 import com.linuxgroup.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/user")
 public class UserRestful {
-
     @Autowired
     private PersonService personService;
 
@@ -29,8 +25,16 @@ public class UserRestful {
         return result;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public @ResponseBody Result login(String account, String password) {
+    /**
+     * todo 接口暂且这样搞
+     * @param account
+     * @param password
+     * @return
+     */
+    @RequestMapping(value = "/login/{account}/{password}", method = RequestMethod.GET)
+    public @ResponseBody Result login(@PathVariable String account, @PathVariable String password) {
+        System.out.println("account:" + account + " password:" + password);
+
         Person person = personService.login(account, password);
 
         Result result = new Result();

@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.linuxgroup.homeschool.client.R;
+import com.linuxgroup.homeschool.client.api.UserApi;
+import com.linuxgroup.homeschool.client.model.Person;
+import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
 import butterknife.ButterKnife;
@@ -65,6 +68,24 @@ public class LoginActivity extends BaseActivity {
                     ToastUtils.showShort("密码不能为空");
                     return ;
                 }
+
+                //  登录
+                new SimpleBackgroundTask<Person>(LoginActivity.this) {
+                    @Override
+                    protected Person onRun() {
+                        return UserApi.login(username, password);
+                    }
+
+                    @Override
+                    protected void onSuccess(Person person) {
+                        if (person != null) {
+                            System.out.println("登录成功");
+                        } else {
+                            System.out.println("登陆失败");
+                        }
+                    }
+                }.execute();
+
             }
         });
 

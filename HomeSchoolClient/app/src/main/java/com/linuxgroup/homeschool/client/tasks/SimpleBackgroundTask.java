@@ -13,6 +13,7 @@ abstract public class SimpleBackgroundTask<T> extends AsyncTask<Void, Void, T> {
     public SimpleBackgroundTask(Activity activity) {
         weakActivity = new WeakReference<Activity>(activity);
     }
+
     @Override
     protected final T doInBackground(Void... voids) {
         return onRun();
