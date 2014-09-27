@@ -13,14 +13,20 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.api.UserApi;
 import com.linuxgroup.homeschool.client.model.Person;
+import com.linuxgroup.homeschool.client.service.UserInfoService;
 import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
+import java.util.Set;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 
 public class LoginActivity extends BaseActivity {
     @InjectView(R.id.tv_register)
@@ -54,10 +60,10 @@ public class LoginActivity extends BaseActivity {
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String username = et_username.getText().toString();
+                final String account = et_username.getText().toString();
                 final String password = et_password.getText().toString();
 
-                if (username.equals("")) {
+                if (account.equals("")) {
                     Animation shake = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.shake);//加载动画资源文件
                     et_username.startAnimation(shake); //给组件播放动画效果
                     ToastUtils.showShort("用户名不能为空");
@@ -73,13 +79,24 @@ public class LoginActivity extends BaseActivity {
                 new SimpleBackgroundTask<Person>(LoginActivity.this) {
                     @Override
                     protected Person onRun() {
-                        return UserApi.login(username, password);
+                        return UserApi.login(account, password);
                     }
 
                     @Override
                     protected void onSuccess(Person person) {
                         if (person != null) {
                             System.out.println("登录成功");
+                            App.put(App.ACCOUNT, account);
+                            App.put(App.PASSWORD, password);
+
+                            // todo: jpush 设置标签
+                            UserInfoService.setAlias(LoginActivity.this, account, new TagAliasCallback() {
+                                @Override
+                                public void gotResult(int i, String s, Set<String> strings) {
+                                    System.out.println("### 设置标签返回值:" + i);
+                                }
+                            });
+
                         } else {
                             System.out.println("登陆失败");
                         }
