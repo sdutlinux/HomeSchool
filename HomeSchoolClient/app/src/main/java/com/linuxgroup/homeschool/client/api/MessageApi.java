@@ -10,7 +10,7 @@ public class MessageApi extends BaseApi {
 
     public static Message getMessage(Integer msgId) {
         Message message = restTemplate.getForObject(
-                Api.PATH_MESSAGE + "/{id}",
+                ApiInterface.PATH_MESSAGE + "/{id}",
                 Message.class,
                 msgId);
 
@@ -23,8 +23,8 @@ public class MessageApi extends BaseApi {
      * @return
      */
     public static Integer sendMessage(Message message) {
-        Result result = restTemplate.postForObject(Api.PATH_MESSAGE, message, Result.class);
+        Result result = restTemplate.postForObject(ApiInterface.PATH_MESSAGE, message, Result.class);
 
-        return result.getMessageId();
+        return result.getRetId();
     }
 }

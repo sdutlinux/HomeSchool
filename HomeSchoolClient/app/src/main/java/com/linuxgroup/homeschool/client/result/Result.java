@@ -1,6 +1,5 @@
 package com.linuxgroup.homeschool.client.result;
 
-
 /**
  * Created by tan on 14-9-20.
  */
@@ -10,7 +9,7 @@ public class Result {
     /**
      * 发送消息时，保存在服务数据库中的 id
      */
-    private Integer messageId;
+    private Integer retId;
 
     // set and get methods
 
@@ -22,11 +21,11 @@ public class Result {
         this.status = status;
     }
 
-    public Integer getMessageId() {
-        return messageId;
+    public Integer getRetId() {
+        return retId;
     }
 
-    public void setMessageId(Integer messageId) {
-        this.messageId = messageId;
+    public void setRetId(Integer retId) {
+        this.retId = retId;
     }
 }

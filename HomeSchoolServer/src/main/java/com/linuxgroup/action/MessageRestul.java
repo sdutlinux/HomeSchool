@@ -1,23 +1,15 @@
 package com.linuxgroup.action;
 
-import cn.jpush.api.common.APIConnectionException;
-import cn.jpush.api.common.APIRequestException;
 import com.linuxgroup.model.Message;
 import com.linuxgroup.result.Result;
 import com.linuxgroup.service.MessageService;
 import com.linuxgroup.service.PushService;
-import com.linuxgroup.service.impl.MessageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.sql.Time;
-import java.util.Date;
-import java.util.HashMap;
 
 /**
  * Created by tan on 14-9-22.
@@ -60,7 +52,7 @@ public class MessageRestul {
             pushService.pushMessageToAll(""+msgId);
 
             result.setStatus("ok");
-            result.setMessageId(msgId);
+            result.setRetId(msgId);
         } catch (Exception  e) {
             result.setStatus("error");
         }

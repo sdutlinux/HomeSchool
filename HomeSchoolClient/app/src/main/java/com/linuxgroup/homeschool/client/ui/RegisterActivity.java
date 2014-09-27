@@ -83,7 +83,7 @@ public class RegisterActivity extends BaseActivity {
                 person.setName(name);
 
                 //todo:
-                
+
             }
         });
 
