@@ -2,6 +2,8 @@ package com.linuxgroup.homeschool.client.api;
 
 import com.fasterxml.jackson.databind.deser.Deserializers;
 
+import java.security.PublicKey;
+
 /**
  * Created by tan on 14-9-21.
  */
@@ -12,4 +14,6 @@ public class ApiInterface {
     public static final String PATH_DOWNLOAD_PATH = BASE_URL + "/restful/update/downloadPath";
     public static final String PATH_REGISTER = BASE_URL + "/restful/user/register";
     public static final String PATH_LOGIN = BASE_URL + "/restful/user/login";
+    public static final String PATH_SEARCH = BASE_URL + "/restful/user/search";
+
 }

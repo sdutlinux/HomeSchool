@@ -16,10 +16,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <ListView
-        android:id="@id/listview"
+    <TextView
+        android:id="@id/name"
+        android:text="描述"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
+
+    <Button
+        android:id="@id/add_friend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加为好友"
+        android:visibility="gone"/>
+    
 </LinearLayout>
 

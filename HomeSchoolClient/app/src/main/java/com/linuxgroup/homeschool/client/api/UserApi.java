@@ -39,12 +39,21 @@ public class UserApi extends BaseApi {
         params.put("account", account);
         params.put("password", password);
 
-        Result result = restTemplate.getForObject(ApiInterface.PATH_LOGIN+"/{account}/{password}", Result.class, params);
+        Result result = restTemplate.getForObject(ApiInterface.PATH_LOGIN
+                +"/{account}/{password}",
+                Result.class, params);
 
         if (result.getStatus().equals("ok")) {
             return result.getPerson();
         } else {
             return null;
         }
+    }
+
+    public static Person search(String account) {
+        Person person = restTemplate.getForObject(ApiInterface.PATH_SEARCH
+                + "/{account}",
+                Person.class, account);
+        return person;
     }
 }
