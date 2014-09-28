@@ -85,17 +85,18 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     protected void onSuccess(Person person) {
                         if (person != null) {
-                            System.out.println("登录成功");
                             App.put(App.ACCOUNT, account);
                             App.put(App.PASSWORD, password);
 
-                            // todo: jpush 设置标签
                             UserInfoService.setAlias(LoginActivity.this, account, new TagAliasCallback() {
                                 @Override
                                 public void gotResult(int i, String s, Set<String> strings) {
                                     System.out.println("### 设置标签返回值:" + i);
                                 }
                             });
+
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
 
                         } else {
                             System.out.println("登陆失败");

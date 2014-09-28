@@ -62,10 +62,6 @@ public class ChatActivity extends BaseActivity {
         initListView();
 
         registerReceivedNewMessageBroadcast();
-
-        // 检查更新
-        UpdateManager updateManager = new UpdateManager(this);
-        updateManager.checkUpdate();
     }
 
     public void initListView() {

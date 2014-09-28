@@ -17,8 +17,8 @@
     <item type="id" name="username"/>
     <item type="id" name="name"/>
     <item type="id" name="bt_register"/>
-
-
+    <item type="id" name="search_friend"/>
+    <item type="id" name="check_update"/>
 
 
 

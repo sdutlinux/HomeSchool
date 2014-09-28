@@ -11,4 +11,16 @@ public class UpdateApi extends BaseApi {
 
         return latestVersion;
     }
+
+    public static String getLatestDownloadUrl() {
+        // 获取最新的下载地址
+        String lastestDownloadUrl = restTemplate.getForObject(
+                ApiInterface.PATH_DOWNLOAD_PATH,
+                String.class);
+
+        //todo: 返回的会有引号，需要去掉
+        lastestDownloadUrl = lastestDownloadUrl.subSequence(1, lastestDownloadUrl.length()-1).toString();
+
+        return lastestDownloadUrl;
+    }
 }

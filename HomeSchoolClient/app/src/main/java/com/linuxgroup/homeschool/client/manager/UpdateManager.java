@@ -38,7 +38,7 @@ public class UpdateManager {
     private String updateMsg = "有最新软件包哦，亲快下载吧";
 
     //todo: url 动态获取
-    private String apkUrl = "http://raining.qiniudn.com/homeschool.apk";
+    private String apkUrl;/* = "http://raining.qiniudn.com/homeschool.apk";*/
 
     private Dialog downloadDialog;
 
@@ -90,6 +90,10 @@ public class UpdateManager {
                 Integer latestVersion = UpdateApi.getLatestVersion();
 
                 if (latestVersion > version) {
+                    // 动态 获取 下载 url
+                    apkUrl = UpdateApi.getLatestDownloadUrl();
+
+
                     mHandler.sendEmptyMessage(NEW_VERSION);
                 }
             }
