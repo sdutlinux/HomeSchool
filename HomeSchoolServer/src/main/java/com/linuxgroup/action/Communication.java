@@ -54,7 +54,7 @@ public class Communication {
         //personService.deletePerson(2);
         //Person p = personService.getPerson(1);
         //System.out.println(p);
-        //System.out.println( personService.personFindBy("183699").getId() );
+        //System.out.println( personService.findBy("183699").getId() );
         //System.out.println(p.getId());
 
 

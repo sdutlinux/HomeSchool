@@ -13,7 +13,7 @@ public class UpdateApi extends BaseApi {
     }
 
     public static String getLatestDownloadUrl() {
-        // 获取最新的下载地址
+        // 获z取最新的下载地址
         String lastestDownloadUrl = restTemplate.getForObject(
                 ApiInterface.PATH_DOWNLOAD_PATH,
                 String.class);

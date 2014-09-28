@@ -61,14 +61,12 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person personFindBy(String account,String password) {
-
-        System.out.println(personDao);
+    public Person findBy(String account, String password) {
         return personDao.findBy(account,password);
     }
 
     @Override
-    public Person personFindBy(String account) {
+    public Person findBy(String account) {
         return personDao.findBy(account);
     }
 

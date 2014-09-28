@@ -151,6 +151,10 @@
             android:name=".ui.RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
+        <activity
+            android:name=".ui.SearchActivity"
+            android:label="@string/title_activity_search_person" >
+        </activity>
     </application>
 
 </manifest>

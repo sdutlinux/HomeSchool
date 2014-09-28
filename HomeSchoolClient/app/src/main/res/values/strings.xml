@@ -8,5 +8,6 @@
     <string name="title_activity_chat">ChatActivity</string>
     <string name="register_link"><a href="http://xiayule.net">注册</a></string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_search_person">SearchPerson</string>
 
 </resources>

@@ -1,6 +1,5 @@
 package com.linuxgroup.homeschool.client.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,29 +8,33 @@ import android.view.View;
 import android.widget.Button;
 
 import com.linuxgroup.homeschool.client.R;
-import com.linuxgroup.homeschool.client.api.UpdateApi;
 import com.linuxgroup.homeschool.client.manager.UpdateManager;
-import com.linuxgroup.homeschool.client.service.UserInfoService;
-
-import java.util.Set;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import cn.jpush.android.api.TagAliasCallback;
 
 public class MainActivity extends BaseActivity {
 
     @InjectView(R.id.check_update)
     Button bt_check_update;
 
+    @InjectView(R.id.search_friend)
+    Button bt_search_friend;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
+        setContentView(R.layout.activity_main);
 
         ButterKnife.inject(this);
 
-
+        bt_search_friend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // 检查更新
         bt_check_update.setOnClickListener(new View.OnClickListener() {

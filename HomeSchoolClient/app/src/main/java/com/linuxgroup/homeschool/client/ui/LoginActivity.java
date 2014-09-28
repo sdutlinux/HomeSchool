@@ -1,6 +1,5 @@
 package com.linuxgroup.homeschool.client.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,7 +24,6 @@ import java.util.Set;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
 public class LoginActivity extends BaseActivity {
@@ -35,7 +33,7 @@ public class LoginActivity extends BaseActivity {
     @InjectView(R.id.bt_login)
     Button bt_login;
 
-    @InjectView(R.id.username)
+    @InjectView(R.id.account)
     EditText et_username;
 
     @InjectView(R.id.password)

@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 public class UserRestful {
@@ -47,10 +50,16 @@ public class UserRestful {
             result.setPerson(person);
         }
 
+
         return result;
     }
 
+    @RequestMapping(value = "/search/{account}", method = RequestMethod.GET)
+    public @ResponseBody Person search(@PathVariable String account) {
+        Person person = personService.findBy(account);
 
+        return person;
+    }
 
     public PersonService getPersonService() {
         return personService;

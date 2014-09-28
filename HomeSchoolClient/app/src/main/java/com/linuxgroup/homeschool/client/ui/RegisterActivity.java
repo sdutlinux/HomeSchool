@@ -13,9 +13,7 @@ import android.widget.TextView;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.api.UserApi;
 import com.linuxgroup.homeschool.client.model.Person;
-import com.linuxgroup.homeschool.client.result.Result;
 import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
-import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -24,7 +22,7 @@ public class RegisterActivity extends BaseActivity {
     @InjectView(R.id.bt_register)
     Button bt_register;
 
-    @InjectView(R.id.username)
+    @InjectView(R.id.account)
     EditText et_username;
 
     @InjectView(R.id.password)

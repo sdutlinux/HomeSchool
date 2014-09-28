@@ -14,14 +14,11 @@
     <item type="id" name="tv_register"/>
     <item type="id" name="bt_login"/>
     <item type="id" name="password"/>
-    <item type="id" name="username"/>
+    <item type="id" name="account"/>
     <item type="id" name="name"/>
     <item type="id" name="bt_register"/>
     <item type="id" name="search_friend"/>
     <item type="id" name="check_update"/>
-
-
-
 
 
 

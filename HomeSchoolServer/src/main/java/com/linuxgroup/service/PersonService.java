@@ -27,7 +27,7 @@ public interface PersonService {
 
     public void updatePerson(Person person);
 
-    public Person personFindBy(String account,String password);
+    public Person findBy(String account, String password);
 
-    public Person personFindBy(String account);
+    public Person findBy(String account);
 }

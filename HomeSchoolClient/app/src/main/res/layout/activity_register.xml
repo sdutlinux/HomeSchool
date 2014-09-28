@@ -23,7 +23,7 @@
             android:visibility="gone"/>
 
         <EditText
-            android:id="@id/username"
+            android:id="@id/account"
             android:layout_marginTop="@dimen/margin_large"
             android:hint="用户名"
             android:layout_width="match_parent"
