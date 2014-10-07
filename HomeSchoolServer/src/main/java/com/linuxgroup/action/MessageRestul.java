@@ -1,6 +1,6 @@
 package com.linuxgroup.action;
 
-import com.linuxgroup.model.Message;
+import com.linuxgroup.model.ChatMessage;
 import com.linuxgroup.result.Result;
 import com.linuxgroup.service.MessageService;
 import com.linuxgroup.service.PushService;
@@ -31,18 +31,18 @@ public class MessageRestul {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody
-    Message get(HttpServletRequest request, HttpServletResponse response,
+    ChatMessage get(HttpServletRequest request, HttpServletResponse response,
                     @PathVariable Integer id) {
 
-        Message message = messageService.get(id);
+        ChatMessage chatMessage = messageService.get(id);
 
-        return message;
+        return chatMessage;
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    Result sendMessage(@RequestBody Message message) {
-        Integer msgId = messageService.saveMessage(message);
+    Result sendMessage(@RequestBody ChatMessage chatMessage) {
+        Integer msgId = messageService.saveMessage(chatMessage);
 
         Result result = new Result();
 

@@ -1,8 +1,7 @@
 package com.linuxgroup.service.impl;
 
 import com.linuxgroup.dao.MessageDao;
-import com.linuxgroup.dao.impl.MessageDaoHibernate;
-import com.linuxgroup.model.Message;
+import com.linuxgroup.model.ChatMessage;
 import com.linuxgroup.service.MessageService;
 
 /**
@@ -21,7 +20,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public Integer saveMessage(Message msg) {
+    public Integer saveMessage(ChatMessage msg) {
         return messageDao.save(msg);
     }
 
@@ -30,7 +29,7 @@ public class MessageServiceImpl implements MessageService {
         messageDao.delete(id);
     }
     @Override
-    public Message get(Integer id) {
+    public ChatMessage get(Integer id) {
         return messageDao.get(id);
     }
 }

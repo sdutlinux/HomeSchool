@@ -1,17 +1,13 @@
 package com.linuxgroup.action;
 
-import com.linuxgroup.model.Message;
 import com.linuxgroup.model.Person;
 import com.linuxgroup.service.MessageService;
 import com.linuxgroup.service.PersonService;
 import com.linuxgroup.service.PushService;
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import com.linuxgroup.result.Result;
 import com.linuxgroup.utils.JsonUtils;
 import com.opensymphony.xwork2.Action;
-
-import java.util.Date;
 
 /**
  * Created by tan on 14-9-20.
@@ -31,7 +27,7 @@ public class Communication {
         /**
          *  创建一个Message对象
          */
-        //Message msg = new Message();
+        //ChatMessage msg = new ChatMessage();
         Person person = new Person();
 
         person.setAccount("1836944444444444449");
@@ -62,7 +58,7 @@ public class Communication {
         try {
 
             //jsonObj = JSONObject.fromObject(str);
-            //msg  = JSONObject.toBean(jsonObj,Message.class);
+            //msg  = JSONObject.toBean(jsonObj,ChatMessage.class);
             //messageService.saveMessage(msg);
             //Integer id = messageService
 

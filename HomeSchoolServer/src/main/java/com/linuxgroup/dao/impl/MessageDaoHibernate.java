@@ -1,10 +1,8 @@
 package com.linuxgroup.dao.impl;
 
 import com.linuxgroup.dao.MessageDao;
-import com.linuxgroup.model.Message;
+import com.linuxgroup.model.ChatMessage;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
-
-import java.util.List;
 
 
 /**
@@ -13,12 +11,12 @@ import java.util.List;
 public class MessageDaoHibernate extends HibernateDaoSupport implements MessageDao {
 
     @Override
-    public Message get(Integer id) {
-        return getHibernateTemplate().get(Message.class,id);
+    public ChatMessage get(Integer id) {
+        return getHibernateTemplate().get(ChatMessage.class,id);
     }
 
     @Override
-    public Integer save(Message msg) {
+    public Integer save(ChatMessage msg) {
         return (Integer) getHibernateTemplate().save(msg);
     }
 
