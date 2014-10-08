@@ -1,6 +1,7 @@
 package com.linuxgroup.homeschool.client.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +32,12 @@ public class SearchActivity extends Activity {
     @InjectView(R.id.add_friend)
     Button bt_add_friend;
 
+    @InjectView(R.id.chat_with)
+    Button bt_chat_with;
+
+    //todo: 暂时保存搜索到的 person
+    private Person person;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +57,7 @@ public class SearchActivity extends Activity {
                 new SimpleBackgroundTask<Person>(SearchActivity.this) {
                     @Override
                     protected Person onRun() {
-                        Person person = UserApi.search(account);
+                        person = UserApi.search(account);
                         return person;
                     }
 
@@ -58,8 +65,20 @@ public class SearchActivity extends Activity {
                     protected void onSuccess(Person person) {
                         tv_name.setText(person.getName());
                         bt_add_friend.setVisibility(View.VISIBLE);
+                        bt_chat_with.setVisibility(View.VISIBLE);
                     }
                 }.execute();
+            }
+        });
+
+        //todo: 聊天
+        bt_chat_with.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchActivity.this, ChatActivity.class);
+                intent.putExtra(ChatActivity.PARAM_FRIEND_ACCOUNT, person.getAccount());
+
+                startActivity(intent);
             }
         });
     }

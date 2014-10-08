@@ -41,9 +41,6 @@ public class App extends Application {
 
     }
 
-
-
-
     // set and get methos
     public static App getInstance() {
         return instance;

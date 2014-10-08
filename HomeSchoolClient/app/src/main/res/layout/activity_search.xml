@@ -30,5 +30,13 @@
         android:text="加为好友"
         android:visibility="gone"/>
     
+    <Button
+        android:id="@id/chat_with"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="聊天"
+        android:visibility="gone"
+        />
+    
 </LinearLayout>
 

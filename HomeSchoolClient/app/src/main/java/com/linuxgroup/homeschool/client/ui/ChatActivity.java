@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Constants;
@@ -33,6 +34,11 @@ import butterknife.InjectView;
 
 public class ChatActivity extends BaseActivity {
     private static final String TAG = "ChatAcivity";
+
+    /**
+     * 好友的帐号
+     */
+    public static final String PARAM_FRIEND_ACCOUNT = "friend_account";
 
     private ChatListAdapter chatListAdapter;
 
@@ -65,8 +71,7 @@ public class ChatActivity extends BaseActivity {
     }
 
     public void initListView() {
-        // todo: 测试数据
-        String ownerAccount = "2";
+        String ownerAccount = (String) App.get(App.ACCOUNT);
 
         chatListAdapter = new ChatListAdapter(getLayoutInflater(), ownerAccount);
         listView.setAdapter(chatListAdapter);

@@ -103,5 +103,4 @@ public class Message {
     public void setType(int type) {
         this.type = type;
     }
-
 }
