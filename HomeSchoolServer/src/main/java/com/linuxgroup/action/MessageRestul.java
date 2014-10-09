@@ -48,17 +48,17 @@ public class MessageRestul {
 
         Result result = new Result();
 
-        //todo: 修改为对指定用户发送消息
+        //对指定用户发送消息
         try {
-            // 推送消息的 id
-            pushService.pushMessageToAll(""+msgId);
-//            pushService.pushMessageTo(message.getToAccount(), msgId+"");
+            // 如果 alias 不存在，则会报错误
+            pushService.pushMessageTo(message.getToAccount(), msgId+"");
 
             System.out.println("新消息发送成功");
 
             result.setStatus("ok");
             result.setRetId(msgId);
         } catch (Exception  e) {
+            e.printStackTrace();
             result.setStatus("error");
         }
 

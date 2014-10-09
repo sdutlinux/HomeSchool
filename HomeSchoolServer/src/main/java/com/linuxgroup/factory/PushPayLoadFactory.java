@@ -8,6 +8,8 @@ import cn.jpush.api.push.model.audience.AudienceTarget;
 import cn.jpush.api.push.model.notification.IosNotification;
 import cn.jpush.api.push.model.notification.Notification;
 
+import java.util.HashMap;
+
 /**
  * Created by tan on 14-9-12.
  */
@@ -32,7 +34,9 @@ public class PushPayLoadFactory {
         return PushPayload.newBuilder()
                 .setPlatform(Platform.all())
                 .setAudience(Audience.alias(alias))
+                ///todo: 自定义消息出错
                 .setMessage(Message.content(msg))
+//                .setNotification(Notification.alert(msg))
                 .build();
     }
 

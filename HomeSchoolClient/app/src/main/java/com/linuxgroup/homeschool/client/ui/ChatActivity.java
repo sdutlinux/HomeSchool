@@ -73,6 +73,8 @@ public class ChatActivity extends BaseActivity {
         mFriendAccount = getIntent().getStringExtra(ChatActivity.PARAM_FRIEND_ACCOUNT);
         mOwnerAccount = (String) App.get(App.ACCOUNT);
 
+        System.out.println("chatactivity: 初始化成功: ownerAccount: " + mOwnerAccount + " friendAccont: " + mFriendAccount);
+
         setListener();
 
         // 初始化ListView
@@ -99,7 +101,6 @@ public class ChatActivity extends BaseActivity {
 
 //                    if (mOwnerAccount != null
 
-                    System.out.println("chatactivity: 初始化成功: ownerAccount: " + mOwnerAccount + " friendAccont: " + mFriendAccount);
 
                     // todo:这一句有问题
                     return messageDao.queryFor(mOwnerAccount, mFriendAccount);
