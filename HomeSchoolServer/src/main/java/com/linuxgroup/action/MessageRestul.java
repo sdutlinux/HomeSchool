@@ -50,6 +50,9 @@ public class MessageRestul {
         try {
             // 推送消息的 id
             pushService.pushMessageToAll(""+msgId);
+            pushService.pushMessageTo(message.getToAccount(), msgId+"");
+
+            System.out.println("接受到新消息: mesgId:" + msgId + " msgcontent:" + message.getContent());
 
             result.setStatus("ok");
             result.setRetId(msgId);

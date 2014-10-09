@@ -90,18 +90,20 @@ public class LoginActivity extends BaseActivity {
                                 @Override
                                 public void gotResult(int i, String s, Set<String> strings) {
                                     System.out.println("### 设置标签返回值:" + i);
+
+                                    if (i ==  6002) {
+                                        ToastUtils.showShort("设置别名失败");
+                                    } else {
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        startActivity(intent);
+                                    }
                                 }
                             });
-
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-
                         } else {
                             System.out.println("登陆失败");
                         }
                     }
                 }.execute();
-
             }
         });
 

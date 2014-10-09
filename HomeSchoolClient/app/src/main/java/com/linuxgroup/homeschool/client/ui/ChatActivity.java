@@ -96,7 +96,14 @@ public class ChatActivity extends BaseActivity {
             protected List<Message> onRun() {
                 try {
                     MessageDao messageDao = DataBaseManager.getMessageDao();
-                    return messageDao.queryForAll();
+
+//                    if (mOwnerAccount != null
+
+                    System.out.println("chatactivity: 初始化成功: ownerAccount: " + mOwnerAccount + " friendAccont: " + mFriendAccount);
+
+                    //todo:这一句有问题
+                    return messageDao.queryFor(mOwnerAccount, mFriendAccount);
+//                    return messageDao.queryForAll();
                 } catch (SQLException e) {
                     Log.d(TAG, "从数据库读取messages出错");
                     return null;
@@ -105,6 +112,8 @@ public class ChatActivity extends BaseActivity {
 
             @Override
             protected void onSuccess(List<Message> messages) {
+                //todo: 显示列表
+
                 chatListAdapter.replaceLazyList(messages);
             }
         }.execute();
@@ -121,7 +130,7 @@ public class ChatActivity extends BaseActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 // 数据更新显示
-                initListView();
+                refreshList();
             }
         };
 
@@ -150,7 +159,7 @@ public class ChatActivity extends BaseActivity {
                 // 后台发送消息
                 RequestManager.addBackgroundJob(new SendMessageJob(message));
 
-                // 清空输入栏
+                // TODO: 发送成功后，清空输入栏
                 et_message.setText("");
             }
         });

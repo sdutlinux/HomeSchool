@@ -22,4 +22,14 @@ public interface PushService {
      * @throws APIRequestException
      */
     public PushResult pushMessageToAll(String message) throws APIConnectionException, APIRequestException;
+
+    /**
+     * 将自定义消息发送给指定的人
+     * @param alias 要发送的别名
+     * @param message 要发送的内容
+     * @return
+     * @throws APIConnectionException
+     * @throws APIRequestException
+     */
+    public PushResult pushMessageTo(String alias, String message) throws APIConnectionException, APIRequestException;
 }

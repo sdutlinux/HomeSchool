@@ -42,7 +42,6 @@ public class PushServiceImpl implements PushService {
 
         PushResult result = jPushClient.sendPush(payload);
 
-
         return result;
     }
 
@@ -54,7 +53,21 @@ public class PushServiceImpl implements PushService {
         return result;
     }
 
+    /**
+     * 将自定义消息发送给指定的人
+     * @param alias 要发送的别名
+     * @param message 要发送的内容
+     * @return
+     * @throws APIConnectionException
+     * @throws APIRequestException
+     */
+    public PushResult pushMessageTo(String alias, String message) throws APIConnectionException, APIRequestException {
+        PushPayload payload = PushPayLoadFactory.buildMessageTo(alias, message);
 
+        PushResult result = jPushClient.sendPush(payload);
+
+        return result;
+    }
 
     /*
     public static void main(String[] args) {

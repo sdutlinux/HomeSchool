@@ -1,5 +1,6 @@
 package com.linuxgroup.factory;
 
+import cn.jpush.api.push.model.Message;
 import cn.jpush.api.push.model.Platform;
 import cn.jpush.api.push.model.PushPayload;
 import cn.jpush.api.push.model.audience.Audience;
@@ -25,6 +26,16 @@ public class PushPayLoadFactory {
     public static PushPayload buildMessage(String msg) {
         return PushPayload.messageAll(msg);
     }
+
+
+    public static PushPayload buildMessageTo(String alias, String msg) {
+        return PushPayload.newBuilder()
+                .setPlatform(Platform.all())
+                .setAudience(Audience.alias(alias))
+                .setMessage(Message.content(msg))
+                .build();
+    }
+
 
     // 构建推送对象：所有平台，推送目标是别名为 "alias1"，通知内容为 ALERT
     public static PushPayload buildAllAliasAlert(String alias, String alert) {
