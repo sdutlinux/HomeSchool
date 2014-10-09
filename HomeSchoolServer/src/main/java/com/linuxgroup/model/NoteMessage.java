@@ -19,4 +19,8 @@ public class NoteMessage extends Message{
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String toString() {
+        return super.toString() + "title: " + getTitle();
+    }
 }

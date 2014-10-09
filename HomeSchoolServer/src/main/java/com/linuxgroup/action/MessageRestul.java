@@ -34,7 +34,7 @@ public class MessageRestul {
     ChatMessage get(HttpServletRequest request, HttpServletResponse response,
                     @PathVariable Integer id) {
 
-        ChatMessage chatMessage = messageService.get(id);
+        ChatMessage chatMessage = (ChatMessage)messageService.get(id);
 
         return chatMessage;
     }

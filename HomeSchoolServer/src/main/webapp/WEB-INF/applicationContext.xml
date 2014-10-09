@@ -44,11 +44,12 @@
         <property name="mappingResources">
             <list>
                 <!-- 以下列出所有的 PO 映射文件 -->
-                <value>com/linuxgroup/model/ChatMessage.hbm.xml</value>
+                <!--<value>com/linuxgroup/model/ChatMessage.hbm.xml</value>-->
                 <value>com/linuxgroup/model/Person.hbm.xml</value>
                 <value>com/linuxgroup/model/Student.hbm.xml</value>
-                <value>com/linuxgroup/model/NoteMessage.hbm.xml</value>
-                <value>com/linuxgroup/model/RequestMessage.hbm.xml</value>
+                <!--<value>com/linuxgroup/model/NoteMessage.hbm.xml</value>-->
+                <!--<value>com/linuxgroup/model/RequestMessage.hbm.xml</value>-->
+                <value>com/linuxgroup/model/Message.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">

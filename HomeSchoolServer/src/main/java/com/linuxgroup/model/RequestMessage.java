@@ -33,4 +33,8 @@ public class RequestMessage extends Message {
     public void setToAccount(String toAccount) {
         this.toAccount = toAccount;
     }
+
+    public String toString() {
+        return super.toString() + "fromAccount: "+getFromAccount() + "toAccount: " + getToAccount();
+    }
 }

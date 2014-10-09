@@ -55,4 +55,9 @@ public class Message {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public String toString() {
+        return "id: " + getId() + "content: " + getContent() +
+                "time: " + getTime();
+    }
 }

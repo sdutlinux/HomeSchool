@@ -66,4 +66,8 @@ public class ChatMessage extends  Message{
         this.type = type;
     }
 
+    public String toString() {
+        return  super.toString() + "fromAccount: " + getFromAccount() + "toAccount: " + getToAccount() + "type: " + getType();
+    }
+
 }

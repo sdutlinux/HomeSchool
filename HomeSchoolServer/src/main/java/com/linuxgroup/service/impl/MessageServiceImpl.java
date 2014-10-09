@@ -1,8 +1,10 @@
 package com.linuxgroup.service.impl;
 
 import com.linuxgroup.dao.MessageDao;
-import com.linuxgroup.model.ChatMessage;
+import com.linuxgroup.model.Message;
 import com.linuxgroup.service.MessageService;
+
+import java.util.List;
 
 /**
  * Created by huihui on 14-9-21.
@@ -20,7 +22,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public Integer saveMessage(ChatMessage msg) {
+    public Integer saveMessage(Message msg) {
         return messageDao.save(msg);
     }
 
@@ -29,7 +31,12 @@ public class MessageServiceImpl implements MessageService {
         messageDao.delete(id);
     }
     @Override
-    public ChatMessage get(Integer id) {
+    public Message get(Integer id) {
         return messageDao.get(id);
+    }
+
+    @Override
+    public List<Message> findByType(int type) {
+        return messageDao.findByType(type);
     }
 }

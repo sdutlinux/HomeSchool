@@ -1,6 +1,8 @@
 package com.linuxgroup.dao;
 
-import com.linuxgroup.model.ChatMessage;
+import com.linuxgroup.model.Message;
+
+import java.util.List;
 
 
 /**
@@ -8,11 +10,13 @@ import com.linuxgroup.model.ChatMessage;
  */
 public interface MessageDao {
 
-    public ChatMessage get(Integer id);
+    public Message get(Integer id);
 
-    public Integer save(ChatMessage msg);
+    public Integer save(Message msg);
 
     public void delete(Integer id);
+
+    public List<Message> findByType(int type);
 
     //public List<ChatMessage> fingById(Integer id);   // 保留，有待商议
 }
