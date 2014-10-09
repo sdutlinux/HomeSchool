@@ -19,7 +19,6 @@ import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Constants;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
 import com.linuxgroup.homeschool.client.model.Message;
-import com.linuxgroup.homeschool.client.manager.UpdateManager;
 import com.linuxgroup.homeschool.client.request.RequestManager;
 import com.linuxgroup.homeschool.client.request.job.SendMessageJob;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;
@@ -44,6 +43,9 @@ public class ChatActivity extends BaseActivity {
 
     private BroadcastReceiver broadcastReceiver;
 
+    private String mFriendAccount;
+    private String mOwnerAccount;
+
     @InjectView(R.id.listview)
     ListView listView;
 
@@ -62,18 +64,25 @@ public class ChatActivity extends BaseActivity {
 
         ButterKnife.inject(this);
 
+        // 初始化
+        init();
+
+    }
+
+    private void init() {
+        mFriendAccount = getIntent().getStringExtra(ChatActivity.PARAM_FRIEND_ACCOUNT);
+        mOwnerAccount = (String) App.get(App.ACCOUNT);
+
         setListener();
 
-        // 初始化
+        // 初始化ListView
         initListView();
 
         registerReceivedNewMessageBroadcast();
     }
 
     public void initListView() {
-        String ownerAccount = (String) App.get(App.ACCOUNT);
-
-        chatListAdapter = new ChatListAdapter(getLayoutInflater(), ownerAccount);
+        chatListAdapter = new ChatListAdapter(getLayoutInflater(), mOwnerAccount);
         listView.setAdapter(chatListAdapter);
 
         refreshList();
@@ -130,10 +139,10 @@ public class ChatActivity extends BaseActivity {
                     return ;
                 }
 
-                // todo： 修改 详细信息，比如 fromAccount
+                // todo： 修改 详细信息，比如 fromAccount, 修改type
                 Message message = new Message();
-                message.setFromAccount("1");
-                message.setToAccount("2");
+                message.setFromAccount(mOwnerAccount);
+                message.setToAccount(mFriendAccount);
                 message.setContent(messageContent);
                 message.setTime(new Date());
                 message.setType(1);
