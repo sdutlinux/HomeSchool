@@ -12,7 +12,6 @@ import com.linuxgroup.homeschool.client.utils.ToastUtils;
 public class BroadcastSender {
     public static void sendReceivedNewMessage(Context context) {
         Intent intent = new Intent(Constants.ACTION_RECEIVED_MESSAGE);
-        ToastUtils.showShort("收到新的消息");
         context.sendBroadcast(intent);
     }
 }

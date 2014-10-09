@@ -44,15 +44,17 @@ public class MessageRestul {
     Result sendMessage(@RequestBody Message message) {
         Integer msgId = messageService.saveMessage(message);
 
+        System.out.println("接受到新消息: mesgId:" + msgId + " msgcontent:" + message.getContent());
+
         Result result = new Result();
 
         //todo: 修改为对指定用户发送消息
         try {
             // 推送消息的 id
             pushService.pushMessageToAll(""+msgId);
-            pushService.pushMessageTo(message.getToAccount(), msgId+"");
+//            pushService.pushMessageTo(message.getToAccount(), msgId+"");
 
-            System.out.println("接受到新消息: mesgId:" + msgId + " msgcontent:" + message.getContent());
+            System.out.println("新消息发送成功");
 
             result.setStatus("ok");
             result.setRetId(msgId);

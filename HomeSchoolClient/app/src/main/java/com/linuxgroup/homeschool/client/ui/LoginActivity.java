@@ -89,9 +89,7 @@ public class LoginActivity extends BaseActivity {
                             UserInfoService.setAlias(LoginActivity.this, account, new TagAliasCallback() {
                                 @Override
                                 public void gotResult(int i, String s, Set<String> strings) {
-                                    System.out.println("### 设置标签返回值:" + i);
-
-                                    if (i ==  6002) {
+                                    if (i != 0) {
                                         ToastUtils.showShort("设置别名失败");
                                     } else {
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);

@@ -101,7 +101,7 @@ public class ChatActivity extends BaseActivity {
 
                     System.out.println("chatactivity: 初始化成功: ownerAccount: " + mOwnerAccount + " friendAccont: " + mFriendAccount);
 
-                    //todo:这一句有问题
+                    // todo:这一句有问题
                     return messageDao.queryFor(mOwnerAccount, mFriendAccount);
 //                    return messageDao.queryForAll();
                 } catch (SQLException e) {
@@ -113,8 +113,8 @@ public class ChatActivity extends BaseActivity {
             @Override
             protected void onSuccess(List<Message> messages) {
                 //todo: 显示列表
-
                 chatListAdapter.replaceLazyList(messages);
+
             }
         }.execute();
     }
