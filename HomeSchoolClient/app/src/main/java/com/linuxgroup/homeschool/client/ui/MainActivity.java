@@ -72,6 +72,4 @@ public class MainActivity extends BaseActivity {
         intent.addCategory(Intent.CATEGORY_HOME);
         startActivity(intent);
     }
-
-
 }

@@ -64,7 +64,6 @@ public class ChatListAdapter extends LazyListAdapter<Message> {
         // 展示信息
         cacheView.render(message);
 
-
         return view;
     }
 

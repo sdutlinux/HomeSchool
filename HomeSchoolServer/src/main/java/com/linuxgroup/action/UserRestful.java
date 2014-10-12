@@ -50,7 +50,6 @@ public class UserRestful {
             result.setPerson(person);
         }
 
-
         return result;
     }
 

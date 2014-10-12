@@ -91,7 +91,6 @@ public class ChatActivity extends BaseActivity {
     }
 
     public void refreshList() {
-
         // 异步刷新消息，从数据库中读取、更新到 listview
         new SimpleBackgroundTask<List<Message>>(this) {
             @Override
@@ -101,8 +100,7 @@ public class ChatActivity extends BaseActivity {
 
 //                    if (mOwnerAccount != null
 
-
-                    // todo:这一句有问题
+                    // 这一句可能有效率问题
                     return messageDao.queryFor(mOwnerAccount, mFriendAccount);
 //                    return messageDao.queryForAll();
                 } catch (SQLException e) {

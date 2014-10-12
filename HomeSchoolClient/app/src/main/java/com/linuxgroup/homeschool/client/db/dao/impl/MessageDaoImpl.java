@@ -30,8 +30,6 @@ public class MessageDaoImpl extends BaseDaoImpl<Message, Integer> implements Mes
                 .where()
                 .eq("id", id)
                 .queryForFirst();
-//                .query()
-//                .get(0);
 
         return mes;
     }
@@ -55,10 +53,6 @@ public class MessageDaoImpl extends BaseDaoImpl<Message, Integer> implements Mes
                 ));
 
         List<Message> messages = where.query();
-
-        /*List<Message> messages = this.queryBuilder()
-                .where()
-                .or().query();*/
 
         return messages;
     }

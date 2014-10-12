@@ -34,7 +34,7 @@ public class PushPayLoadFactory {
         return PushPayload.newBuilder()
                 .setPlatform(Platform.all())
                 .setAudience(Audience.alias(alias))
-                ///todo: 自定义消息出错
+                ///自定义消息如果发送给不存在的 alias 出错
                 .setMessage(Message.content(msg))
 //                .setNotification(Notification.alert(msg))
                 .build();
