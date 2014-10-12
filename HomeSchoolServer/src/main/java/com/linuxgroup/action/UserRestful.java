@@ -17,7 +17,7 @@ public class UserRestful {
     private PersonService personService;
 
     //todo: 没有检测用户名是否存在
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public @ResponseBody Result register(@RequestBody Person person) {
         Integer personId = personService.savePerson(person);
 
@@ -59,6 +59,7 @@ public class UserRestful {
 
         return person;
     }
+
 
     public PersonService getPersonService() {
         return personService;
