@@ -4,6 +4,10 @@ import com.linuxgroup.dao.PersonDao;
 import com.linuxgroup.model.Person;
 import com.linuxgroup.service.PersonService;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Created by huihui on 14-9-24.
  */
@@ -69,5 +73,16 @@ public class PersonServiceImpl implements PersonService {
     public Person findBy(String account) {
         return personDao.findBy(account);
     }
+
+    @Override
+    public Person findBy(int id) {
+        return  personDao.findBy(id);
+    }
+
+//    public void getFriends(String account) {
+//        List<Person> frinedList = new LinkedList<Person>();
+//
+//
+//    }
 
 }

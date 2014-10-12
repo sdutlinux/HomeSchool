@@ -13,69 +13,68 @@ import java.util.Set;
  * 教师/家长性别(0.女，1.男)(sex)
  * 教师/家长家庭住址(address)
  * 教师/家长的联系方式(communication)
- * 教师/家长对应管理所的学生(studentId)
+ * 教师/家长对应管理所的学生(personsId)
  * Person类型（0.老师，1.家长）(type)
  */
 public class Person {
 
     /**
      * id
-     * 教师/家长id
+     * @param 教师/家长id
      */
     private int id;
 
     /**
      * account
-     * 用户帐号（暂时用手机号）
+     * @param 用户帐号（暂时用手机号）
      */
     private String account;
 
     /**
      * password
-     * 用户登录密码
+     * @param 用户登录密码
      */
     private String password;
 
     /**
      * name
-     * 教师/家长姓名
+     * @param 教师/家长/学生姓名
      */
     private String name;
 
     /**
      * sex
-     * 教师/家长性别(0.女，1.男)
+     * @param 教师/家长/学生性别(0.女，1.男)
      */
     private int sex;
 
     /**
      * address
-     * 教师/家长家庭住址
+     * @param 教师/家长/学生家庭住址
      */
     private String address;
 
     /**
      * communication
-     * 教师/家长的联系方式
+     * @param 教师/家长/学生的联系方式
      */
     private String communication;
 
     /**
-     * studentId
-     * 教师/家长对应管理所的学生
+     * personsId
+     * @param Person与Person之间的一对多关系
      */
-    private Set<Student>  studentsId = new HashSet<Student>();
+    private Set<Integer>  friendsId = new HashSet<Integer>();
 
     /**
      *  type
-     * person类型（0.老师，1.家长）
+     * @param person类型（0.老师/家长,1.学生）
      */
     private int type;
 
-    public Person() {
-    }
+    public Person() { }
 
-    public Person(int id, String account,String password,String name, int sex, String address, String communication, Set<Student> studentsId, int type) {
+    public Person(int id, String account,String password,String name, int sex, String address, String communication, Set<Integer> friendsId, int type) {
         this.id = id;
         this.account = account;
         this.password = password;
@@ -83,7 +82,7 @@ public class Person {
         this.address = address;
         this.sex = sex;
         this.communication = communication;
-        this.studentsId = studentsId;
+        this.friendsId = friendsId;
         this.type = type;
     }
 
@@ -143,12 +142,12 @@ public class Person {
         this.communication = communication;
     }
 
-    public Set<Student> getStudentsId() {
-        return studentsId;
+    public Set<Integer> getFriendsId() {
+        return friendsId;
     }
 
-    public void setStudentsId(Set<Student> studentsId) {
-        this.studentsId = studentsId;
+    public void setFriendsId(Set<Integer> friendsId) {
+        this.friendsId = friendsId;
     }
 
     public int getType() {
@@ -157,6 +156,13 @@ public class Person {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String toString() {
+        return "id: " + getId() + " account: " + getAccount() + " password: " +
+                getPassword() + " name: " + getName() + " sex: " + getSex() +
+                " address: " + getAddress() + "communication: " + getCommunication() +
+                " personsId: " + getFriendsId();
     }
 
 }
