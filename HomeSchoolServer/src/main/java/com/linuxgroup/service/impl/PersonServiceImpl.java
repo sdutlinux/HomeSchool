@@ -88,5 +88,4 @@ public class PersonServiceImpl implements PersonService {
     public Set<Integer> getFriendsList(int id) {
        return personDao.findBy(id).getFriendsId();
     }
-
 }
