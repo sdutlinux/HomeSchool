@@ -69,20 +69,24 @@ public class PersonServiceImpl implements PersonService {
         return personDao.findBy(account,password);
     }
 
+    /**
+     * findBy 根据person的account获得person的信息
+     * @param account 传入的是person的用户帐号
+     * @return 返回的是用户的信息
+     */
     @Override
     public Person findBy(String account) {
         return personDao.findBy(account);
     }
 
+    /**
+     * getFriends 获得person对应的好友列表
+     * @param id person的id
+     * @return 返回的是好友的set表
+     */
     @Override
-    public Person findBy(int id) {
-        return  personDao.findBy(id);
+    public Set<Integer> getFriendsList(int id) {
+       return personDao.findBy(id).getFriendsId();
     }
-
-//    public void getFriends(String account) {
-//        List<Person> frinedList = new LinkedList<Person>();
-//
-//
-//    }
 
 }

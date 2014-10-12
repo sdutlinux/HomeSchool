@@ -102,7 +102,7 @@ public class PersonDaoHibernate extends HibernateDaoSupport implements PersonDao
     @Override
     public Person findBy(int id) {
         List<Person> person = (List<Person>) getHibernateTemplate()
-                .find("select * from Person as p where p.id=?",id);
+                .find("select friendsId from Person as p where p.id=?",id);
 
         if (person.size() == 0) {
             return null;
@@ -110,5 +110,4 @@ public class PersonDaoHibernate extends HibernateDaoSupport implements PersonDao
             return person.get(0);
         }
     }
-
 }

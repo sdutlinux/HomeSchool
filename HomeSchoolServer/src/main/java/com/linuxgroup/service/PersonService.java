@@ -2,6 +2,8 @@ package com.linuxgroup.service;
 
 import com.linuxgroup.model.Person;
 
+import java.util.Set;
+
 /**
  * Created by huihui on 14-9-24.
  */
@@ -31,5 +33,5 @@ public interface PersonService {
 
     public Person findBy(String account);
 
-    public Person findBy(int id);
+    public Set<Integer> getFriendsList(int id);
 }
