@@ -65,6 +65,8 @@ public class Communication {
         chatMsg.setFromAccount("1002");
         chatMsg.setType(1);
 
+        messageService.saveMessage(chatMsg);
+
         System.out.println(chatMsg);
 
         //messageService.saveMessage(chatMsg);

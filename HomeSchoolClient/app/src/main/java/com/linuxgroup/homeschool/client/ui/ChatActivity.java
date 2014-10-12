@@ -18,6 +18,7 @@ import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Constants;
 import com.linuxgroup.homeschool.client.db.dao.MessageDao;
+import com.linuxgroup.homeschool.client.model.ChatMessage;
 import com.linuxgroup.homeschool.client.model.Message;
 import com.linuxgroup.homeschool.client.request.RequestManager;
 import com.linuxgroup.homeschool.client.request.job.SendMessageJob;
@@ -92,9 +93,9 @@ public class ChatActivity extends BaseActivity {
 
     public void refreshList() {
         // 异步刷新消息，从数据库中读取、更新到 listview
-        new SimpleBackgroundTask<List<Message>>(this) {
+        new SimpleBackgroundTask<List<ChatMessage>>(this) {
             @Override
-            protected List<Message> onRun() {
+            protected List<ChatMessage> onRun() {
                 try {
                     MessageDao messageDao = DataBaseManager.getMessageDao();
 
@@ -110,7 +111,7 @@ public class ChatActivity extends BaseActivity {
             }
 
             @Override
-            protected void onSuccess(List<Message> messages) {
+            protected void onSuccess(List<ChatMessage> messages) {
                 //todo: 显示列表
                 chatListAdapter.replaceLazyList(messages);
 
@@ -148,7 +149,7 @@ public class ChatActivity extends BaseActivity {
                 }
 
                 // todo： 修改 详细信息，比如 fromAccount, 修改type
-                Message message = new Message();
+                ChatMessage message = new ChatMessage();
                 message.setFromAccount(mOwnerAccount);
                 message.setToAccount(mFriendAccount);
                 message.setContent(messageContent);

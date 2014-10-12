@@ -8,10 +8,10 @@ import com.linuxgroup.homeschool.client.result.Result;
  */
 public class MessageApi extends BaseApi {
 
-    public static Message getMessage(Integer msgId) {
-        Message message = restTemplate.getForObject(
+    public static <T> T getMessage(Integer msgId, Class<T> clazz) {
+        T message = restTemplate.getForObject(
                 ApiInterface.PATH_MESSAGE + "/{id}",
-                Message.class,
+                clazz,
                 msgId);
 
         return message;

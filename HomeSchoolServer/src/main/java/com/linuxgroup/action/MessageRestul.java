@@ -44,14 +44,14 @@ public class MessageRestul {
     Result sendMessage(@RequestBody ChatMessage chatMessage) {
         Integer msgId = messageService.saveMessage(chatMessage);
 
-        System.out.println("接受到新消息: mesgId:" + msgId + " msgcontent:" + message.getContent());
+        System.out.println("接受到新消息: (" + chatMessage.toString() + ");");
 
         Result result = new Result();
 
         //对指定用户发送消息
         try {
             // 如果 alias 不存在，则会报错误
-            pushService.pushMessageTo(message.getToAccount(), msgId+"");
+            pushService.pushMessageTo(chatMessage.getToAccount(), msgId+"");
 
             System.out.println("新消息发送成功");
 

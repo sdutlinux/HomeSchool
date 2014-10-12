@@ -57,7 +57,7 @@ public class Message {
     }
 
     public String toString() {
-        return "id: " + getId() + "content: " + getContent() +
-                "time: " + getTime();
+        return "id: " + getId() + " content: " + getContent() +
+                " time: " + getTime();
     }
 }

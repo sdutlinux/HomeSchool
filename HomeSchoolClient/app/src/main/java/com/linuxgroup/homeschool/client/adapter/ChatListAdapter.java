@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.linuxgroup.homeschool.client.R;
+import com.linuxgroup.homeschool.client.model.ChatMessage;
 import com.linuxgroup.homeschool.client.model.Message;
 
 import butterknife.ButterKnife;
@@ -15,7 +16,7 @@ import butterknife.InjectView;
 /**
  * Created by tan on 14-9-20.
  */
-public class ChatListAdapter extends LazyListAdapter<Message> {
+public class ChatListAdapter extends LazyListAdapter<ChatMessage> {
     // 用户的 Account, 用它来辨别是接收的消息还是发送的消息
     private String ownerAccount;
 
@@ -35,7 +36,7 @@ public class ChatListAdapter extends LazyListAdapter<Message> {
     public View getView(int i, View view, ViewGroup viewGroup) {
         CacheView cacheView = null;
 
-        Message message = getItem(i);
+        ChatMessage message = getItem(i);
 
         if (message.getFromAccount().equals(ownerAccount)) { // 表示发送的消息
 

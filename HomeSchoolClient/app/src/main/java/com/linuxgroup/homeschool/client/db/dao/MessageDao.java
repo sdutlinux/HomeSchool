@@ -1,6 +1,7 @@
 package com.linuxgroup.homeschool.client.db.dao;
 
 import com.j256.ormlite.dao.Dao;
+import com.linuxgroup.homeschool.client.model.ChatMessage;
 import com.linuxgroup.homeschool.client.model.Message;
 
 import java.sql.SQLException;
@@ -17,6 +18,6 @@ public interface MessageDao extends Dao<Message, Integer> {
     /**
      * 获取 account1 与 account2 的所有聊天记录
      */
-    public List<Message> queryFor(String account1, String account2) throws SQLException;
+    public List<ChatMessage> queryFor(String account1, String account2) throws SQLException;
 
 }

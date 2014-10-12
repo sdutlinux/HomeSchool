@@ -7,7 +7,6 @@ import com.linuxgroup.homeschool.client.db.dao.impl.MessageDaoImpl;
 import java.util.Date;
 
 /**
- * Created by huihui on 14-9-9.
  *
  * Message类
  * 老师与家长交流信息的模型，其中包括属性：
@@ -26,18 +25,6 @@ public class Message {
     private int id;
 
     /**
-     *  发送信息人的 account
-     */
-    @DatabaseField
-    private String fromAccount;
-
-    /**
-     * to 信息接受人的 account
-     */
-    @DatabaseField
-    private String toAccount;
-
-    /**
      * time 信息发送时间
      * 以服务器时间为准
      */
@@ -50,36 +37,14 @@ public class Message {
     @DatabaseField
     private String content;
 
-    /**
-     * type 信息发送类型（1.文字，2.图片，3.文件）
-     */
-    @DatabaseField
-    private int  type;
+    public String toString() {
+        return "id: " + getId() + " content: " + getContent() +
+                " time: " + getTime();
+    }
+
+    // get and set methods
 
     public Message() { }
-
-    public Message(int id, String fromAccount, String toAccount, String content, Date time, int type) {
-        this.id = id;
-        this.fromAccount = fromAccount;
-        this.toAccount = toAccount;
-        this.content = content;
-        this.time = time;
-        this.type = type;
-    }
-
-    public String getFromAccount() {
-        return fromAccount;
-    }
-    public void setFromAccount(String from) {
-        this.fromAccount = from;
-    }
-
-    public String getToAccount() {
-        return toAccount;
-    }
-    public void setToAccount(String to) {
-        this.toAccount = to;
-    }
 
     public String getContent() {
         return content;
@@ -94,13 +59,6 @@ public class Message {
     }
     public void setTime(Date time) {
         this.time = time;
-    }
-
-    public int getType() {
-        return type;
-    }
-    public void setType(int type) {
-        this.type = type;
     }
 
     public int getId() {
