@@ -3,7 +3,7 @@ package com.linuxgroup.homeschool.client.service;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.db.DatabaseHelper;
-import com.linuxgroup.homeschool.client.db.dao.MessageDao;
+import com.linuxgroup.homeschool.client.db.dao.ChatMessageDao;
 
 import java.sql.SQLException;
 
@@ -21,8 +21,8 @@ public class DataBaseManager {
         return databaseHelper;
     }
 
-    public static MessageDao getMessageDao() throws SQLException {
-        return getHelper().getMessageDao();
+    public static ChatMessageDao getMessageDao() throws SQLException {
+        return getHelper().getChatMessageDao();
     }
 
 }

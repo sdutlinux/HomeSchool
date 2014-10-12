@@ -4,7 +4,7 @@ import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
-import com.linuxgroup.homeschool.client.db.dao.MessageDao;
+import com.linuxgroup.homeschool.client.db.dao.ChatMessageDao;
 import com.linuxgroup.homeschool.client.model.ChatMessage;
 import com.linuxgroup.homeschool.client.model.Message;
 
@@ -14,20 +14,20 @@ import java.util.List;
 /**
  * Created by tan on 14-9-21.
  */
-public class MessageDaoImpl extends BaseDaoImpl<Message, Integer> implements MessageDao {
-    public MessageDaoImpl(ConnectionSource connectionSource) throws SQLException {
-        super(connectionSource, Message.class);
+public class ChatMessageDaoImpl extends BaseDaoImpl<ChatMessage, Integer> implements ChatMessageDao {
+    public ChatMessageDaoImpl(ConnectionSource connectionSource) throws SQLException {
+        super(connectionSource, ChatMessage.class);
     }
 
     @Override
-    public void save(Message message) throws SQLException {
+    public void save(ChatMessage message) throws SQLException {
         // todo: 如果不存在 就 创建, 如果存在，则更新?
         this.createIfNotExists(message);
     }
 
     @Override
-    public Message get(Integer id) throws SQLException {
-        Message mes = this.queryBuilder()
+    public ChatMessage get(Integer id) throws SQLException {
+        ChatMessage mes = this.queryBuilder()
                 .where()
                 .eq("id", id)
                 .queryForFirst();

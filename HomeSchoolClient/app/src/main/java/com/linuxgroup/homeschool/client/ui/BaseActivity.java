@@ -3,16 +3,14 @@ package com.linuxgroup.homeschool.client.ui;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.db.DatabaseHelper;
-import com.linuxgroup.homeschool.client.db.dao.MessageDao;
-import com.linuxgroup.homeschool.client.utils.ToastUtils;
+
 
 import java.sql.SQLException;
 
@@ -89,8 +87,8 @@ public class BaseActivity extends FragmentActivity {
         return databaseHelper;
     }
 
-    public MessageDao getMessageDao() throws SQLException {
-        return getHelper().getMessageDao();
+    public MessageDao getChatMessageDao() throws SQLException {
+        return getHelper().getChatMessageDao();
     }*/
 
 //    protected void executeRequest(Request<?> request) {

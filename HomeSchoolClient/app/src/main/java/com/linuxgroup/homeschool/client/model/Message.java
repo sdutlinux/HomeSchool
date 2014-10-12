@@ -1,8 +1,6 @@
 package com.linuxgroup.homeschool.client.model;
 
 import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
-import com.linuxgroup.homeschool.client.db.dao.impl.MessageDaoImpl;
 
 import java.util.Date;
 
@@ -14,7 +12,7 @@ import java.util.Date;
  * time：记录信息存储的时间
  * content：记录信息存储的内容
  */
-public class Message {
+public abstract class Message {
     /**
      * id 信息的id
      */

@@ -3,7 +3,7 @@ package com.linuxgroup.homeschool.client.request.job;
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.api.MessageApi;
 import com.linuxgroup.homeschool.client.broadcast.BroadcastSender;
-import com.linuxgroup.homeschool.client.model.Message;
+import com.linuxgroup.homeschool.client.model.ChatMessage;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.Params;
@@ -21,14 +21,14 @@ public class SendMessageJob extends Job {
     /**
      * 需要发送的 message
      */
-    private Message message;
+    private ChatMessage chatMessage;
 
-    public SendMessageJob(Message message) {
+    public SendMessageJob(ChatMessage chatMessage) {
         super(new Params(Priority.LOW).requireNetwork().groupBy("send_message"));
 
         id = jobCounter.incrementAndGet();
 
-        this.message = message;
+        this.chatMessage = chatMessage;
     }
 
     @Override
@@ -39,17 +39,17 @@ public class SendMessageJob extends Job {
     @Override
     public void onRun() throws Throwable {
         // 获取消息
-        Integer msgId = MessageApi.sendMessage(message);
-        message.setId(msgId);
+        Integer msgId = MessageApi.sendMessage(chatMessage);
+        chatMessage.setId(msgId);
 
         System.out.println("run send message 返回的id:" + msgId);
 
         // 保存到本地数据库
-        DataBaseManager.getMessageDao().save(message);
+        DataBaseManager.getMessageDao().save(chatMessage);
 
         // todo: 通知发送成功
         // 发送收到新消息的广播
-        BroadcastSender.sendReceivedNewMessage(App.getContext());
+        BroadcastSender.sendUpdateMessageBroadcast(App.getContext());
     }
 
     @Override

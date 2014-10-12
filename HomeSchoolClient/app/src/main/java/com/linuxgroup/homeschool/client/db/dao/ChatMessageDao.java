@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * Created by tan on 14-9-21.
  */
-public interface MessageDao extends Dao<Message, Integer> {
-    public void save(Message message) throws SQLException;
-    public Message get(Integer id) throws SQLException;
+public interface ChatMessageDao extends Dao<ChatMessage, Integer> {
+    public void save(ChatMessage chatMessage) throws SQLException;
+    public ChatMessage get(Integer id) throws SQLException;
 
 
     /**

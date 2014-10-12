@@ -1,10 +1,9 @@
 package com.linuxgroup.homeschool.client.model;
 
 
+import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.linuxgroup.homeschool.client.db.dao.impl.MessageDaoImpl;
-
-import java.util.Date;
+import com.linuxgroup.homeschool.client.db.dao.impl.ChatMessageDaoImpl;
 
 /**
  * Created by huihui on 14-9-9.
@@ -17,22 +16,25 @@ import java.util.Date;
  * 信息发送时间 （Date）
  * 信息发送类型（1.文字，2.图片，3.文件）
  */
-@DatabaseTable(tableName = "chat_message", daoClass = MessageDaoImpl.class)
-public class ChatMessage extends  Message {
+@DatabaseTable(tableName = "chat_message", daoClass = ChatMessageDaoImpl.class)
+public class ChatMessage extends Message {
 
     /**
      *  发送信息人的 account
      */
+    @DatabaseField
     private String fromAccount;
 
     /**
      * to 信息接受人的 account
      */
+    @DatabaseField
     private String toAccount;
 
     /**
      * type 信息发送类型（1.文字，2.图片，3.文件）
      */
+    @DatabaseField
     private int  type;
 
     public ChatMessage() { }
@@ -52,15 +54,6 @@ public class ChatMessage extends  Message {
         this.toAccount = to;
     }
 
-////    @JsonSerialize(using = JsonDateSerializer.class)
-//    public Date getTime() {
-//        return time;
-//    }
-//
-//    public void setTime(Date time) {
-//        this.time = time;
-//    }
-
     public int getType() {
         return type;
     }
@@ -69,7 +62,7 @@ public class ChatMessage extends  Message {
     }
 
     public String toString() {
-        return  super.toString() + " fromAccount: " + getFromAccount() + "toAccount: " + getToAccount() + "type: " + getType();
+        return  super.toString() + " fromAccount: " + getFromAccount() + " toAccount: " + getToAccount() + " type: " + getType();
     }
 
 }

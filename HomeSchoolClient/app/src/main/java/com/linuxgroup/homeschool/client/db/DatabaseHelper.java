@@ -6,9 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.linuxgroup.homeschool.client.db.dao.MessageDao;
-import com.linuxgroup.homeschool.client.db.dao.impl.MessageDaoImpl;
-import com.linuxgroup.homeschool.client.model.Message;
+import com.linuxgroup.homeschool.client.db.dao.ChatMessageDao;
+import com.linuxgroup.homeschool.client.db.dao.impl.ChatMessageDaoImpl;
+import com.linuxgroup.homeschool.client.model.ChatMessage;
 
 import java.sql.SQLException;
 
@@ -20,7 +20,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
 //    private Dao<Message, Integer> messageDao = null;
-    private MessageDao messageDao;
+    private ChatMessageDao messageDao;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -33,7 +33,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
             // 建 Message 表, 可以继续添加别的表
-            TableUtils.createTable(connectionSource, Message.class);
+            TableUtils.createTable(connectionSource, ChatMessage.class);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -43,7 +43,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
-            TableUtils.dropTable(connectionSource, Message.class, true);
+            TableUtils.dropTable(connectionSource, ChatMessage.class, true);
 
             onCreate(database, connectionSource);
         } catch (SQLException e) {
@@ -51,11 +51,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
-    public MessageDao getMessageDao() throws SQLException {
+    public ChatMessageDao getChatMessageDao() throws SQLException {
         if (messageDao == null) {
 //            messageDao = getDao(Message.class);
             // 创建自定义的 dao
-            messageDao = new MessageDaoImpl(connectionSource);
+            messageDao = new ChatMessageDaoImpl(connectionSource);
         }
 
         return messageDao;
