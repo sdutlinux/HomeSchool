@@ -29,7 +29,7 @@ public class MessageDaoHibernate extends HibernateDaoSupport implements MessageD
 
     @Override
     public List<Message> findByType(int type) {
-        return (List<Message>)getHibernateTemplate().find("from  Message as msg where msg.type = ?",type);
+        return (List<Message>)getHibernateTemplate().find("from Message as msg where msg.type = ?",type);
     }
 
 }
