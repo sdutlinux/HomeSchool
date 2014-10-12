@@ -28,16 +28,6 @@
         + 请求参数 account, password
         + 返回值: Person 类
 
-### 搜索用户
-
-+ 功能
-  使用已知的帐号信息查询某用户
-+ 接口地址
-  [/restful/user/search/{account}](/restful/user/search)
-+ 请求方式
-    - **get:** 搜索用户, 目前不支持模糊搜索
-        + 返回值 json 格式 Person
-
 ### 注册
 
 + 功能
@@ -56,23 +46,11 @@
 + 接口地址
   [/restful/user/{account}](/restful/user/{account})
 + 请求方式
-    - **post:** 修改用户信息
+    - **put:** 修改用户信息
         + 请求 body: Person
-        + 返回值：状态
+        + 返回值: 服务端的 id
 
-### 获取用户信息
-
-+ 功能
-  获取用户信息
-+ 接口地址
-  [/restful/user/{account}](/restful/user/{account})
-+ 请求方式
-    - **get:** 获取用户信息
-        + 返回值: Person 类（不含密码、好友列表等私密信息)
-
-## 好友接口
-
-### 获取好友列表
+### 获取好友
 
 + 功能
   用于获取好友列表
@@ -80,17 +58,24 @@
   [/restful/user/friend/{acount}](/restful/user/friend)
 + 请求方式
     - **get:** 获取用户好友
-        + 返回值 该用户所有好友的 id
+        + 返回值 json 格式 Person[]
+
+### 搜索用户
+
++ 功能
+  使用已知的帐号信息查询某用户
++ 接口地址
+  [/restful/user/search/{account}](/restful/user/search)
++ 请求方式
+    - **get:** 搜索用户, 目前不支持模糊搜索
+        + 返回值 json 格式 Person
 
 ### 添加好友
 
 + 功能 
    为账户添加好友
-+ 接口地址
-  [/restful/user/friend/{account}](/restful/user/friend/{account})
-+ 请求方式
-    - **post:** 添加好友
-        + 返回值: Result 状态
++ 接口好友
+  [/]
 
 ## 注意
 1. 客户端、服务端统一使用 Spring, 因此解析都使用 `Jackson`, 无需统一格式，直接使用时间戳即可
