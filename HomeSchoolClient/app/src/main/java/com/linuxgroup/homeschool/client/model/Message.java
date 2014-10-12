@@ -8,15 +8,12 @@ import java.util.Date;
 
 /**
  *
- * Message类
- * 老师与家长交流信息的模型，其中包括属性：
- * 发送信息人（fromPerson）
- * 信息接受人（toPerson）
- * 信息发送的内容(content)
- * 信息发送时间 （Date）
- * 信息发送类型（1.文字，2.图片，3.文件）
+ * Message类是所有 **Message的基类
+ *
+ * id：记录信息的id
+ * time：记录信息存储的时间
+ * content：记录信息存储的内容
  */
-@DatabaseTable(tableName = "message", daoClass = MessageDaoImpl.class)
 public class Message {
     /**
      * id 信息的id

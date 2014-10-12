@@ -13,7 +13,7 @@
         </id>
         <!-- 映射的基本属性 -->
         <property name="content" column="content" type="string"/>
-        <property name="time" column="time" type="time"/>
+        <property name="time" column="time" type="java.util.Date"/>
 
         <!--使用subclass元素映射Message类的子类ChatMessage -->
         <joined-subclass name="ChatMessage">
