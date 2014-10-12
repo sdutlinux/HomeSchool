@@ -76,7 +76,11 @@ public class SearchActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SearchActivity.this, ChatActivity.class);
+
+                // 设置好友的 account
                 intent.putExtra(ChatActivity.PARAM_FRIEND_ACCOUNT, person.getAccount());
+                // 设置好友的 nick
+                intent.putExtra(ChatActivity.PARAM_FRIEND_NICK, person.getName());
 
                 startActivity(intent);
             }

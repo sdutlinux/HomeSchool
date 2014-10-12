@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
@@ -39,11 +40,18 @@ public class ChatActivity extends BaseActivity {
      */
     public static final String PARAM_FRIEND_ACCOUNT = "friend_account";
 
+    /**
+     * 好友的 nick
+     */
+    public static final String PARAM_FRIEND_NICK = "friend_nick";
+
     private ChatListAdapter chatListAdapter;
 
     private BroadcastReceiver broadcastReceiver;
 
     private String mFriendAccount;
+    private String mFriendNick;
+
     private String mOwnerAccount;
 
     @InjectView(R.id.listview)
@@ -54,6 +62,9 @@ public class ChatActivity extends BaseActivity {
 
     @InjectView(R.id.message)
     EditText et_message;
+
+    @InjectView(R.id.chat_top_nick)
+    TextView tv_chat_top_nick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +82,14 @@ public class ChatActivity extends BaseActivity {
 
     private void init() {
         mFriendAccount = getIntent().getStringExtra(ChatActivity.PARAM_FRIEND_ACCOUNT);
+        mFriendNick = getIntent().getStringExtra(ChatActivity.PARAM_FRIEND_NICK);
+
         mOwnerAccount = (String) App.get(App.ACCOUNT);
 
-        System.out.println("chatactivity: 初始化成功: ownerAccount: " + mOwnerAccount + " friendAccont: " + mFriendAccount);
+        // 显示 account
+        tv_chat_top_nick.setText(mFriendNick);
+
+//        System.out.println("chatactivity: 初始化成功: ownerAccount: " + mOwnerAccount + " friendAccont: " + mFriendAccount);
 
         setListener();
 
