@@ -27,4 +27,9 @@ public class MessageDaoHibernate extends HibernateDaoSupport implements MessageD
         getHibernateTemplate().delete(get(id));
     }
 
+    @Override
+    public List<Message> findByType(int type) {
+        return (List<Message>)getHibernateTemplate().find("from  Message as msg where msg.type = ?",type);
+    }
+
 }

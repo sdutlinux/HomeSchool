@@ -1,9 +1,10 @@
 package com.linuxgroup.service.impl;
 
 import com.linuxgroup.dao.MessageDao;
-import com.linuxgroup.dao.impl.MessageDaoHibernate;
 import com.linuxgroup.model.Message;
 import com.linuxgroup.service.MessageService;
+
+import java.util.List;
 
 /**
  * Created by huihui on 14-9-21.
@@ -32,5 +33,10 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public Message get(Integer id) {
         return messageDao.get(id);
+    }
+
+    @Override
+    public List<Message> findByType(int type) {
+        return messageDao.findByType(type);
     }
 }

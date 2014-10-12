@@ -16,5 +16,7 @@ public interface MessageDao {
 
     public void delete(Integer id);
 
-    //public List<Message> fingById(Integer id);   // 保留，有待商议
+    public List<Message> findByType(int type);
+
+    //public List<ChatMessage> fingById(Integer id);   // 保留，有待商议
 }

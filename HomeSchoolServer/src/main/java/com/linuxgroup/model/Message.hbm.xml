@@ -5,17 +5,38 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
 <!--hibernate-mapping是映射文件的根元素-->
 <hibernate-mapping package="com.linuxgroup.model" >
-    <!-- 每个class元素对应一个持久话对象-->
-    <class name="com.linuxgroup.model.Message" table="messages_table">
-            <id name="id" column="id" >
-                <!--定义主键生成器-->
-                <generator class="identity"/>
-            </id>
-            <!-- property元素定义常规属性-->
-            <property name="fromAccount"  type="string"/>
-            <property name="toAccount"  type="string"/>
-            <property name="time"  type="date"/>
-            <property name="content" type="string" />
-            <property name="type"  type="integer"/>
+    <!-- 映射Message类 -->
+    <class name="Message" table="messages_table">
+        <!-- 映射标识属性 -->
+        <id name="id" column="id">
+            <generator class="identity"/>
+        </id>
+        <!-- 映射的基本属性 -->
+        <property name="content" column="content" type="string"/>
+        <property name="time" column="time" type="time"/>
+
+        <!--使用subclass元素映射Message类的子类ChatMessage -->
+        <joined-subclass name="ChatMessage">
+            <!-- 必须使用key元素映射父子类的共有主键-->
+            <key column="chat_id" />
+            <!--映射基本属性 -->
+            <property name="fromAccount" column="fromAccount" type="string" not-null="true"/>
+            <property name="toAccount" column="toAccount" type="string" not-null="true"/>
+            <property name="type" column="type" type="integer" not-null="true"/>
+        </joined-subclass>
+
+        <!-- 使用subclass元素映射Message类的子类NoteMessage -->
+        <joined-subclass name="NoteMessage">
+            <key column="note_id" />
+            <!-- 映射基本属性 -->
+            <property name="title" column="title" type="string" not-null="true"/>
+        </joined-subclass>
+
+        <joined-subclass name="RequestMessage">
+            <key column="request_id" />
+            <!-- 映射基本属性 -->
+            <property name="fromAccount" column="fromAccount" type="string" not-null="true"/>
+            <property name="toAccount" column="toAccount" type="string" not-null="true"/>
+        </joined-subclass>
     </class>
 </hibernate-mapping>
