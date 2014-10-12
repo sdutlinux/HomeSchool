@@ -55,6 +55,9 @@ public interface PersonDao {
     public Person findBy(String account);
 
 
+    public Person findBy(int id);
+
+
 
 
 }

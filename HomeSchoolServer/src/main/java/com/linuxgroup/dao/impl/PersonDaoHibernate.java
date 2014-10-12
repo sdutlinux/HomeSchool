@@ -59,7 +59,7 @@ public class PersonDaoHibernate extends HibernateDaoSupport implements PersonDao
     }
 
     /**
-     * fingBy根据用户名和用户密码，在数据库中查找记录信息
+     * findByAccountAndPassword根据用户名和用户密码，在数据库中查找记录信息
      * @param account
      * @param password
      * @return 返回Person对象
@@ -86,6 +86,23 @@ public class PersonDaoHibernate extends HibernateDaoSupport implements PersonDao
     public Person findBy(String account) {
         List<Person> person = (List<Person>) getHibernateTemplate()
                 .find("from Person as p where p.account=?",account);
+
+        if (person.size() == 0) {
+            return null;
+        }else {
+            return person.get(0);
+        }
+    }
+
+    /**
+     * findBy方法，根据用户名查找数据库，返回Person对象记录的查找信息
+     * @param id
+     * @return 返回Person对象
+     */
+    @Override
+    public Person findBy(int id) {
+        List<Person> person = (List<Person>) getHibernateTemplate()
+                .find("select * from Person as p where p.id=?",id);
 
         if (person.size() == 0) {
             return null;

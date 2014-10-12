@@ -30,4 +30,6 @@ public interface PersonService {
     public Person findBy(String account, String password);
 
     public Person findBy(String account);
+
+    public Person findBy(int id);
 }

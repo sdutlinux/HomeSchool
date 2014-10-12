@@ -33,55 +33,43 @@ public class Communication {
          *  创建一个Message对象
          */
         //ChatMessage msg = new ChatMessage();
-//        Person person = new Person();
+        Person person = new Person();
+
+        person.setAccount("1836944444444444449");
+        person.setPassword("0000444444444444");
+        person.setAddress("zibo");
+        person.setName("huihui");
+        person.setSex(0);
+        person.setCommunication("183699");
+        person.setType(1);
+
+        Integer id = personService.savePerson(person);
+        System.out.println(id);
+        System.out.println(person);
+
+//        ChatMessage chatMsg = new ChatMessage();
+//        chatMsg.setContent("test");
+//        chatMsg.setToAccount("1001");
+//        chatMsg.setFromAccount("1002");
+//        chatMsg.setType(1);
 //
-//        person.setAccount("1836944444444444449");
-//        person.setPassword("0000444444444444");
-//        person.setAddress("zibo");
-//        person.setName("huihui");
-//        person.setSex(0);
-//        person.setCommunication("183699");
-//        person.setType(1);
+//        messageService.saveMessage(chatMsg);
 //
+//        System.out.println(chatMsg);
 //
-//        System.out.println(personService);
+//        //messageService.saveMessage(chatMsg);
+//        //ChatMessage ch = (ChatMessage)messageService.get(1);
+//        //System.out.println(ch.getFromAccount() + " "+ " " + ch.getToAccount());
 //
+//        List<Message> chat = messageService.findByType(1);
 //
-//        Integer id = personService.savePerson(person);
-//        System.out.println(id);
+//        for(int i = 0;i < chat.size();i++) {
+//            Message message = chat.get(i);
+//            ChatMessage chatMessage = (ChatMessage) message;
+//            System.out.println(chatMessage);
 //
-//        person.setName("hhhhh");
-//        personService.updatePerson(person);
-        //personService.deletePerson(2);
-        //Person p = personService.getPerson(1);
-        //System.out.println(p);
-        //System.out.println( personService.findBy("183699").getId() );
-        //System.out.println(p.getId());
-
-
-        ChatMessage chatMsg = new ChatMessage();
-        chatMsg.setContent("test");
-        chatMsg.setToAccount("1001");
-        chatMsg.setFromAccount("1002");
-        chatMsg.setType(1);
-
-        messageService.saveMessage(chatMsg);
-
-        System.out.println(chatMsg);
-
-        //messageService.saveMessage(chatMsg);
-        //ChatMessage ch = (ChatMessage)messageService.get(1);
-        //System.out.println(ch.getFromAccount() + " "+ " " + ch.getToAccount());
-
-        List<Message> chat = messageService.findByType(1);
-
-        for(int i = 0;i < chat.size();i++) {
-            Message message = chat.get(i);
-            ChatMessage chatMessage = (ChatMessage) message;
-            System.out.println(chatMessage);
-
-//            System.out.println(chat.get(i).getId());
-        }
+////            System.out.println(chat.get(i).getId());
+//        }
 
 
         try {
