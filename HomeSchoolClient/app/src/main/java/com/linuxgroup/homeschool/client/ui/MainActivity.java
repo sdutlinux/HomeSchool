@@ -15,8 +15,14 @@ import android.widget.Button;
 
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
+import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
+import com.linuxgroup.homeschool.client.db.model.RecentChat;
+import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.linuxgroup.homeschool.client.manager.UpdateManager;
 import com.linuxgroup.homeschool.client.ui.fragment.RecentChatFragment;
+
+import java.sql.SQLException;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -64,6 +70,29 @@ public class MainActivity extends BaseActivity {
                 updateManager.checkUpdate();
             }
         });*/
+
+        // todo: test recent dao
+
+        RecentChat recentChat = new RecentChat();
+//        recentChat.setId(2);
+        //TODO:  需要设置 自动 generateid
+        recentChat.setRead(true);
+        recentChat.setToAccount("2");
+
+        try {
+            RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
+
+            recentChatDao.save(recentChat);
+
+            List<RecentChat> recentChats = recentChatDao.queryForAll();
+
+            System.out.println(recentChats.size());
+            System.out.println(recentChats.get(0));
+            System.out.println(recentChats.get(1));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void init() {

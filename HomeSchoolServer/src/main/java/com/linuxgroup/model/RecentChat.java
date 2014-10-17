@@ -7,7 +7,7 @@ package com.linuxgroup.model;
 public class RecentChat {
     private String toAccount;
 
-    
+
 
     // set and get methods
 }

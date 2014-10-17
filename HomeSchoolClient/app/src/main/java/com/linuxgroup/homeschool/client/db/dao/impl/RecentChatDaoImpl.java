@@ -17,15 +17,21 @@ public class RecentChatDaoImpl extends BaseDaoImpl<RecentChat, Integer> implemen
         super(connectionSource, RecentChat.class);
     }
 
+    @Override
+    public void save(RecentChat recentChat) throws SQLException {
+        // todo: 如果不存在 就 创建, 如果存在，则更新?
+        this.createIfNotExists(recentChat);
+    }
 
-    /**
+/*    *//**
      * todo: 按时间排序?
+     * todo：已经存在了
      * 返回所有的 会话
      * @return
      * @throws SQLException
-     */
+     *//*
     @Override
     public List<RecentChat> queryForAll() throws SQLException {
         return this.queryForAll();
-    }
+    }*/
 }

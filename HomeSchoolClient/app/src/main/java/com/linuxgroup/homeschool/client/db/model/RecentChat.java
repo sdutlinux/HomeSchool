@@ -12,6 +12,9 @@ import com.linuxgroup.homeschool.client.db.dao.impl.RecentChatDaoImpl;
  */
 @DatabaseTable(tableName = "recent_chat", daoClass = RecentChatDaoImpl.class)
 public class RecentChat {
+    @DatabaseField(id = true)
+    private int id;
+
     @DatabaseField
     private String toAccount;
 //    private String nick;
@@ -20,4 +23,35 @@ public class RecentChat {
 
     @DatabaseField
     private boolean isRead;
+
+    public String toString() {
+        return  "id:" + id + " toAccount:" + toAccount + " isRead:" + isRead;
+    }
+
+
+    // set and get methods
+
+    public String getToAccount() {
+        return toAccount;
+    }
+
+    public void setToAccount(String toAccount) {
+        this.toAccount = toAccount;
+    }
+
+    public boolean isRead() {
+        return isRead;
+    }
+
+    public void setRead(boolean isRead) {
+        this.isRead = isRead;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
