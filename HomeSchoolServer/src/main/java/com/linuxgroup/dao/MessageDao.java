@@ -1,6 +1,7 @@
 package com.linuxgroup.dao;
 
 import com.linuxgroup.model.Message;
+import com.linuxgroup.model.Person;
 
 import java.util.List;
 

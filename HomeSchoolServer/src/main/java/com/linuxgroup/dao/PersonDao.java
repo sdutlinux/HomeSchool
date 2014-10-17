@@ -57,7 +57,11 @@ public interface PersonDao {
 
     public Person findBy(int id);
 
-
-
+    /**
+     * saveOrUpdate方法，根据传入的Person对象，判断出记录，并修改记录信息
+     * 如果person存在，修改信息，不存在，则新建
+     * @param person
+     */
+    public void saveOrUpdate(Person person);
 
 }

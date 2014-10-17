@@ -29,9 +29,21 @@ public interface PersonService {
 
     public void updatePerson(Person person);
 
+
     public Person findBy(String account, String password);
 
+    /**
+     * findBy 根据person的account获得person的信息
+     * @param account 传入的是person的用户帐号
+     * @return 返回的是用户的信息
+     */
     public Person findBy(String account);
 
+    /**
+     * getFriends 获得person对应的好友列表
+     * @param id person的id
+     * @return 返回的是好友的set表
+     */
     public Set<Integer> getFriendsList(int id);
+
 }

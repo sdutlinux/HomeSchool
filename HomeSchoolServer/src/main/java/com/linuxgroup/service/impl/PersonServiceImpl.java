@@ -26,6 +26,7 @@ public class PersonServiceImpl implements PersonService {
      * 登录，如果返回空则登录失败，否则，返回数据库保存的对象
      * @return
      */
+    @Override
     public Person login(String account, String password) {
         return personDao.findBy(account, password);
     }
@@ -72,7 +73,7 @@ public class PersonServiceImpl implements PersonService {
     /**
      * findBy 根据person的account获得person的信息
      * @param account 传入的是person的用户帐号
-     * @return 返回的是用户的信息
+     * @return 返回的是用户的信息就
      */
     @Override
     public Person findBy(String account) {
@@ -88,4 +89,6 @@ public class PersonServiceImpl implements PersonService {
     public Set<Integer> getFriendsList(int id) {
        return personDao.findBy(id).getFriendsId();
     }
+
+
 }
