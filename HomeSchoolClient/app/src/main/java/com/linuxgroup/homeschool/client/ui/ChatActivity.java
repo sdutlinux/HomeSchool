@@ -22,7 +22,7 @@ import com.linuxgroup.homeschool.client.db.dao.ChatMessageDao;
 import com.linuxgroup.homeschool.client.db.model.ChatMessage;
 import com.linuxgroup.homeschool.client.request.RequestManager;
 import com.linuxgroup.homeschool.client.request.job.SendMessageJob;
-import com.linuxgroup.homeschool.client.db.service.DataBaseManager;
+import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
 
 import java.sql.SQLException;
@@ -112,7 +112,7 @@ public class ChatActivity extends BaseActivity {
             @Override
             protected List<ChatMessage> onRun() {
                 try {
-                    ChatMessageDao messageDao = DataBaseManager.getMessageDao();
+                    ChatMessageDao messageDao = DatabaseManager.getMessageDao();
 
 //                    if (mOwnerAccount != null
 

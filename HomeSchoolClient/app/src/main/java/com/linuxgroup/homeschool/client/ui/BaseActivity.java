@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.linuxgroup.homeschool.client.R;
-import com.linuxgroup.homeschool.client.db.DatabaseHelper;
+import com.linuxgroup.homeschool.client.db.service.DatabaseHelper;
 
 
 import java.sql.SQLException;

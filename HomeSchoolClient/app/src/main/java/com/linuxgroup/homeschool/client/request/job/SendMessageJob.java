@@ -4,7 +4,7 @@ import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.api.MessageApi;
 import com.linuxgroup.homeschool.client.broadcast.BroadcastSender;
 import com.linuxgroup.homeschool.client.db.model.ChatMessage;
-import com.linuxgroup.homeschool.client.db.service.DataBaseManager;
+import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.Params;
 
@@ -45,7 +45,7 @@ public class SendMessageJob extends Job {
         System.out.println("run send message 返回的id:" + msgId);
 
         // 保存到本地数据库
-        DataBaseManager.getMessageDao().save(chatMessage);
+        DatabaseManager.getMessageDao().save(chatMessage);
 
         // todo: 通知发送成功
         // 发送收到新消息的广播

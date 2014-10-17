@@ -1,4 +1,4 @@
-package com.linuxgroup.homeschool.client.db;
+package com.linuxgroup.homeschool.client.db.service;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
