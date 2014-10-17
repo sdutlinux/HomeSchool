@@ -1,7 +1,7 @@
 package com.linuxgroup.homeschool.client.result;
 
 
-import com.linuxgroup.homeschool.client.model.Person;
+import com.linuxgroup.homeschool.client.db.model.Person;
 
 /**
  * Created by tan on 14-9-20.

@@ -7,8 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.linuxgroup.homeschool.client.R;
-import com.linuxgroup.homeschool.client.model.ChatMessage;
-import com.linuxgroup.homeschool.client.model.Message;
+import com.linuxgroup.homeschool.client.db.model.ChatMessage;
+import com.linuxgroup.homeschool.client.db.model.Message;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

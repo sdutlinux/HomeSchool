@@ -1,4 +1,4 @@
-package com.linuxgroup.homeschool.client.model;
+package com.linuxgroup.homeschool.client.db.model;
 
 import com.j256.ormlite.field.DatabaseField;
 

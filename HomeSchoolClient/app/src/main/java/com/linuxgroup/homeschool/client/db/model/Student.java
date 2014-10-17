@@ -1,4 +1,4 @@
-package com.linuxgroup.homeschool.client.model;
+package com.linuxgroup.homeschool.client.db.model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -38,7 +38,6 @@ public class Student {
      * PersonId 学生对应老师/家长（person）的id
      */
     private Set<Person> personsId = new HashSet<Person>();
-
 
     public Student() { }
     public Student(int id, String studentId, String name, int sex, Set<Person> personsId) {

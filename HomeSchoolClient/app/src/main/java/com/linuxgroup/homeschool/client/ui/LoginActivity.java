@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.api.UserApi;
-import com.linuxgroup.homeschool.client.model.Person;
+import com.linuxgroup.homeschool.client.db.model.Person;
 import com.linuxgroup.homeschool.client.service.UserInfoService;
 import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;

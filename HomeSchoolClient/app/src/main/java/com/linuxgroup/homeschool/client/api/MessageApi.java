@@ -1,6 +1,6 @@
 package com.linuxgroup.homeschool.client.api;
 
-import com.linuxgroup.homeschool.client.model.Message;
+import com.linuxgroup.homeschool.client.db.model.Message;
 import com.linuxgroup.homeschool.client.result.Result;
 
 /**

@@ -1,4 +1,4 @@
-package com.linuxgroup.homeschool.client.model;
+package com.linuxgroup.homeschool.client.db.model;
 
 /**
  * Created by tan on 14-10-17.

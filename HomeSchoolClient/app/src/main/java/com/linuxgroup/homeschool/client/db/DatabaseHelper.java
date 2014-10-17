@@ -8,7 +8,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.linuxgroup.homeschool.client.db.dao.ChatMessageDao;
 import com.linuxgroup.homeschool.client.db.dao.impl.ChatMessageDaoImpl;
-import com.linuxgroup.homeschool.client.model.ChatMessage;
+import com.linuxgroup.homeschool.client.db.model.ChatMessage;
 
 import java.sql.SQLException;
 

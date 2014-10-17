@@ -19,7 +19,7 @@ import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Constants;
 import com.linuxgroup.homeschool.client.db.dao.ChatMessageDao;
-import com.linuxgroup.homeschool.client.model.ChatMessage;
+import com.linuxgroup.homeschool.client.db.model.ChatMessage;
 import com.linuxgroup.homeschool.client.request.RequestManager;
 import com.linuxgroup.homeschool.client.request.job.SendMessageJob;
 import com.linuxgroup.homeschool.client.service.DataBaseManager;

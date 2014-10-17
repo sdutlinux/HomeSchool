@@ -1,6 +1,6 @@
 package com.linuxgroup.homeschool.client.api;
 
-import com.linuxgroup.homeschool.client.model.Person;
+import com.linuxgroup.homeschool.client.db.model.Person;
 import com.linuxgroup.homeschool.client.result.Result;
 
 import java.util.HashMap;

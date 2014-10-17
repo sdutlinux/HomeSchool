@@ -5,8 +5,8 @@ import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
 import com.linuxgroup.homeschool.client.db.dao.ChatMessageDao;
-import com.linuxgroup.homeschool.client.model.ChatMessage;
-import com.linuxgroup.homeschool.client.model.Message;
+import com.linuxgroup.homeschool.client.db.model.ChatMessage;
+import com.linuxgroup.homeschool.client.db.model.Message;
 
 import java.sql.SQLException;
 import java.util.List;
