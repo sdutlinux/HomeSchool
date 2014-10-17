@@ -61,7 +61,7 @@ public class Person {
     private String communication;
 
     /**
-     * personsId
+     * friendsId
      * @param Person与Person之间的一对多关系
      */
     private Set<Integer>  friendsId = new HashSet<Integer>();

@@ -5,7 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".MyActivity">
 
-    <Button
+    <android.support.v4.view.ViewPager
+        android:id="@id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants"
+        />
+
+    <!--<Button
         android:id="@id/search_friend"
         android:text="加好友"
         android:layout_width="match_parent"
@@ -21,6 +28,6 @@
         android:id="@id/check_update"
         android:text="检查更新"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />-->
 
 </LinearLayout>
