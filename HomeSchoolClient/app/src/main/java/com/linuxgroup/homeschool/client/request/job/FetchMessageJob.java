@@ -4,7 +4,7 @@ import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.broadcast.BroadcastSender;
 import com.linuxgroup.homeschool.client.db.model.ChatMessage;
 import com.linuxgroup.homeschool.client.api.MessageApi;
-import com.linuxgroup.homeschool.client.service.DataBaseManager;
+import com.linuxgroup.homeschool.client.db.service.DataBaseManager;
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.Params;
 

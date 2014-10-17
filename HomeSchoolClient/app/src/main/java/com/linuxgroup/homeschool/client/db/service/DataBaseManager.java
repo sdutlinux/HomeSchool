@@ -1,4 +1,4 @@
-package com.linuxgroup.homeschool.client.service;
+package com.linuxgroup.homeschool.client.db.service;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.linuxgroup.homeschool.client.App;
