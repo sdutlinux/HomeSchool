@@ -4,9 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author huihui
- * @version PersonModel类
- *
  * PersonModel类属性
  * 教师/家长id(id)
  * 教师/家长姓名(name)

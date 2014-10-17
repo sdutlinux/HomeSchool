@@ -1,8 +1,8 @@
 package com.linuxgroup.homeschool.client.db.dao;
 
+
 import com.j256.ormlite.dao.Dao;
 import com.linuxgroup.homeschool.client.db.model.ChatMessage;
-import com.linuxgroup.homeschool.client.db.model.Message;
 
 import java.sql.SQLException;
 import java.util.List;
