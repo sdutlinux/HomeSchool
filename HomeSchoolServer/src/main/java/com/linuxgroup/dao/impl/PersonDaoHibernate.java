@@ -50,6 +50,16 @@ public class PersonDaoHibernate extends HibernateDaoSupport implements PersonDao
     }
 
     /**
+     * saveOrUpdate方法，根据传入的Person对象，判断出记录，并修改记录信息
+     * 如果person存在，修改信息，不存在，则新建
+     * @param person
+     */
+    @Override
+    public void saveOrUpdate(Person person) {
+        getHibernateTemplate().saveOrUpdate(person);
+    }
+
+    /**
      * update方法，根据传入的Person对象，判断出记录，并修改记录信息
      * @param person
      */
