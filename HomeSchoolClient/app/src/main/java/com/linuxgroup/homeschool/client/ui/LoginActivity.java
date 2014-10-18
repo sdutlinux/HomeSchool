@@ -80,6 +80,16 @@ public class LoginActivity extends BaseActivity {
         } catch (SQLException e) {
             e.printStackTrace();
         }*/
+
+
+        //todo: 测试recentChatDao queryBy
+        try {
+            RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
+            RecentChat recentChat = recentChatDao.queryBy("2");
+            System.out.println(recentChat);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setListener() {

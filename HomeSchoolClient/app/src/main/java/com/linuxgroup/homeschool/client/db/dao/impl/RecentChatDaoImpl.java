@@ -24,6 +24,19 @@ public class RecentChatDaoImpl extends BaseDaoImpl<RecentChat, Integer> implemen
         this.createOrUpdate(recentChat);
     }
 
+    /**
+     * 根据 toAccount 查询
+     * @param toAccount 要查询的 toAccount
+     * @return 返回 RecentChat, 如果查询失败，则返回空
+     */
+    public RecentChat queryBy(String toAccount) throws SQLException {
+        RecentChat recentChat = this.queryBuilder()
+                .where()
+                .eq("toAccount", toAccount)
+                .queryForFirst();
+        return recentChat;
+    }
+
 /*    *//**
      * todo: 按时间排序?
      * todo：已经存在了
