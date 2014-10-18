@@ -11,5 +11,5 @@ import java.util.List;
 public interface RecentChatDao {
     public List<RecentChat> queryForAll() throws SQLException;
 
-    public void save(RecentChat recentChat) throws SQLException;
+    public void saveRecentChat(RecentChat recentChat) throws SQLException;
 }

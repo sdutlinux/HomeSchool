@@ -15,11 +15,16 @@ import android.widget.TextView;
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.api.UserApi;
+import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
 import com.linuxgroup.homeschool.client.db.model.Person;
+import com.linuxgroup.homeschool.client.db.model.RecentChat;
+import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.linuxgroup.homeschool.client.service.UserInfoService;
 import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 
 import butterknife.ButterKnife;
@@ -52,6 +57,29 @@ public class LoginActivity extends BaseActivity {
         ButterKnife.inject(this);
 
         setListener();
+
+        // todo: test recent dao
+
+        RecentChat recentChat = new RecentChat();
+//        recentChat.setId(4);
+        //TODO:  需要设置 自动 generateid
+        recentChat.setRead(true);
+        recentChat.setToAccount("5");
+
+        try {
+            RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
+
+            recentChatDao.saveRecentChat(recentChat);
+
+            List<RecentChat> recentChats = recentChatDao.queryForAll();
+
+            for (RecentChat recentChat1 : recentChats) {
+                System.out.println(recentChat1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setListener() {

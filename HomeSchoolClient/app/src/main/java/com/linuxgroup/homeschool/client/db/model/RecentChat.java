@@ -12,8 +12,11 @@ import com.linuxgroup.homeschool.client.db.dao.impl.RecentChatDaoImpl;
  */
 @DatabaseTable(tableName = "recent_chat", daoClass = RecentChatDaoImpl.class)
 public class RecentChat {
-    @DatabaseField(id = true)
-    private int id;
+    /**
+     * todo:(记入笔记)不能使用 int，会导致不能自动生成id，原因可能是不能判断 null
+     */
+    @DatabaseField(generatedId = true)
+    private Integer id;
 
     @DatabaseField
     private String toAccount;
@@ -22,7 +25,7 @@ public class RecentChat {
 //    private String time;
 
     @DatabaseField
-    private boolean isRead;
+    private Boolean isRead;
 
     public String toString() {
         return  "id:" + id + " toAccount:" + toAccount + " isRead:" + isRead;

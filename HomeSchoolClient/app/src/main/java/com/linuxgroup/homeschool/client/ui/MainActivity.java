@@ -70,29 +70,6 @@ public class MainActivity extends BaseActivity {
                 updateManager.checkUpdate();
             }
         });*/
-
-        // todo: test recent dao
-
-        RecentChat recentChat = new RecentChat();
-//        recentChat.setId(2);
-        //TODO:  需要设置 自动 generateid
-        recentChat.setRead(true);
-        recentChat.setToAccount("2");
-
-        try {
-            RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
-
-            recentChatDao.save(recentChat);
-
-            List<RecentChat> recentChats = recentChatDao.queryForAll();
-
-            System.out.println(recentChats.size());
-            System.out.println(recentChats.get(0));
-            System.out.println(recentChats.get(1));
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     public void init() {

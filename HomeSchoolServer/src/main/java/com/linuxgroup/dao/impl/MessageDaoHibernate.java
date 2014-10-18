@@ -32,6 +32,4 @@ public class MessageDaoHibernate extends HibernateDaoSupport implements MessageD
         return (List<Message>)getHibernateTemplate().find("from Message as msg where msg.type = ?",type);
     }
 
-
-
 }

@@ -18,9 +18,10 @@ public class RecentChatDaoImpl extends BaseDaoImpl<RecentChat, Integer> implemen
     }
 
     @Override
-    public void save(RecentChat recentChat) throws SQLException {
+    public void saveRecentChat(RecentChat recentChat) throws SQLException {
         // todo: 如果不存在 就 创建, 如果存在，则更新?
-        this.createIfNotExists(recentChat);
+//        this.create(recentChat);
+        this.createOrUpdate(recentChat);
     }
 
 /*    *//**
