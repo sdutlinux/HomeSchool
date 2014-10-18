@@ -58,7 +58,7 @@ public class LoginActivity extends BaseActivity {
 
         setListener();
 
-        // todo: test recent dao
+        /*// todo: test recent dao
 
         RecentChat recentChat = new RecentChat();
 //        recentChat.setId(4);
@@ -79,7 +79,7 @@ public class LoginActivity extends BaseActivity {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private void setListener() {

@@ -1,4 +1,4 @@
-package com.linuxgroup.homeschool.client.result;
+package com.linuxgroup.homeschool.client.request.domain;
 
 
 import com.linuxgroup.homeschool.client.db.model.Person;

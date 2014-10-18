@@ -1,7 +1,7 @@
 package com.linuxgroup.homeschool.client.api;
 
 import com.linuxgroup.homeschool.client.db.model.Message;
-import com.linuxgroup.homeschool.client.result.Result;
+import com.linuxgroup.homeschool.client.request.domain.Result;
 
 /**
  * Created by tan on 14-9-25.
