@@ -58,13 +58,14 @@ public class LoginActivity extends BaseActivity {
 
         setListener();
 
-        /*// todo: test recent dao
+    /*    // todo: test recent dao
 
         RecentChat recentChat = new RecentChat();
 //        recentChat.setId(4);
         //TODO:  需要设置 自动 generateid
-        recentChat.setRead(true);
-        recentChat.setToAccount("5");
+        recentChat.setIsRead(true);
+        recentChat.setFriendAccount("5");
+        recentChat.setUserAccount("1");
 
         try {
             RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
@@ -79,17 +80,16 @@ public class LoginActivity extends BaseActivity {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
-
-
-        //todo: 测试recentChatDao queryBy
+        }
+*/
+/*        //todo: 测试recentChatDao queryBy
         try {
             RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
-            RecentChat recentChat = recentChatDao.queryBy("2");
+            RecentChat recentChat = recentChatDao.queryBy("1", "5");
             System.out.println(recentChat);
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private void setListener() {

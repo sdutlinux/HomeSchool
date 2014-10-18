@@ -18,8 +18,18 @@ public class RecentChat {
     @DatabaseField(generatedId = true)
     private Integer id;
 
+    /**
+     * 会话所属的user
+     * 获取最近会话时，只会回去该用户的最近会话
+     */
     @DatabaseField
-    private String toAccount;
+    private String userAccount;
+
+    /**
+     * 会话朋友的 Account
+     */
+    @DatabaseField
+    private String friendAccount;
 //    private String nick;
 //    private String content;
 //    private String time;
@@ -28,26 +38,18 @@ public class RecentChat {
     private Boolean isRead;
 
     public String toString() {
-        return  "id:" + id + " toAccount:" + toAccount + " isRead:" + isRead;
+        return  "id:" + id + " userAccount:" + userAccount + " friendAccount:" + friendAccount + " isRead:" + isRead;
     }
 
 
     // set and get methods
 
-    public String getToAccount() {
-        return toAccount;
+    public String getFriendAccount() {
+        return friendAccount;
     }
 
-    public void setToAccount(String toAccount) {
-        this.toAccount = toAccount;
-    }
-
-    public boolean isRead() {
-        return isRead;
-    }
-
-    public void setRead(boolean isRead) {
-        this.isRead = isRead;
+    public void setFriendAccount(String friendAccount) {
+        this.friendAccount = friendAccount;
     }
 
     public int getId() {
@@ -56,5 +58,25 @@ public class RecentChat {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount;
+    }
+
+    public Boolean getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(Boolean isRead) {
+        this.isRead = isRead;
     }
 }

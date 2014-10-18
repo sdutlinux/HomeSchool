@@ -4,6 +4,7 @@ import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.broadcast.BroadcastSender;
 import com.linuxgroup.homeschool.client.db.model.ChatMessage;
 import com.linuxgroup.homeschool.client.api.MessageApi;
+import com.linuxgroup.homeschool.client.db.model.RecentChat;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.Params;
@@ -43,8 +44,17 @@ public class FetchMessageJob extends Job {
         ChatMessage chatMessage = MessageApi.getMessage(requestMsgId, ChatMessage.class);
         System.out.println(chatMessage.toString());
 
-        // 保存到本地数据库
+        // 保存消息到本地数据库
         DatabaseManager.getMessageDao().save(chatMessage);
+
+
+        // 保存会话到本地数据库
+        RecentChat recentChat = new RecentChat();
+        recentChat.setFriendAccount(chatMessage.getToAccount());
+        recentChat.setIsRead(false);
+
+        DatabaseManager.getRecentChatDao().saveRecentChat(recentChat);
+
 
         // 发送收到新消息的广播
         BroadcastSender.sendUpdateMessageBroadcast(App.getContext());

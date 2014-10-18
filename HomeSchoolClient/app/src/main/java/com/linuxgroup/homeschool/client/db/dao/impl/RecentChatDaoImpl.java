@@ -1,6 +1,7 @@
 package com.linuxgroup.homeschool.client.db.dao.impl;
 
 import com.j256.ormlite.dao.BaseDaoImpl;
+import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
 import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
 import com.linuxgroup.homeschool.client.db.model.RecentChat;
@@ -25,15 +26,18 @@ public class RecentChatDaoImpl extends BaseDaoImpl<RecentChat, Integer> implemen
     }
 
     /**
-     * 根据 toAccount 查询
-     * @param toAccount 要查询的 toAccount
+     * 根据 friendAccount 查询
+     * @param friendAccount 要查询的 toAccount
      * @return 返回 RecentChat, 如果查询失败，则返回空
      */
-    public RecentChat queryBy(String toAccount) throws SQLException {
-        RecentChat recentChat = this.queryBuilder()
-                .where()
-                .eq("toAccount", toAccount)
-                .queryForFirst();
+    public RecentChat queryBy(String userAccount, String friendAccount) throws SQLException {
+        Where<RecentChat, Integer> where = this.queryBuilder().where();
+
+        where.and(where.eq("userAccount", userAccount),
+                where.eq("friendAccount", friendAccount));
+
+        RecentChat recentChat = where.queryForFirst();
+
         return recentChat;
     }
 

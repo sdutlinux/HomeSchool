@@ -52,6 +52,7 @@ public class ChatMessageDaoImpl extends BaseDaoImpl<ChatMessage, Integer> implem
                         where.eq("toAccount", account1)
                 ));
 
+
         List<ChatMessage> messages = where.query();
 
         return messages;
