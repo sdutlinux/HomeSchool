@@ -15,6 +15,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by tan on 14-9-25.
  */
 public class FetchMessageJob extends Job {
+    private static String ownerAccount;
+
     private static final AtomicInteger jobCounter = new AtomicInteger(0);
 
     private final int id;
@@ -50,7 +52,9 @@ public class FetchMessageJob extends Job {
 
         // 保存会话到本地数据库
         RecentChat recentChat = new RecentChat();
-        recentChat.setFriendAccount(chatMessage.getToAccount());
+
+        recentChat.setUserAccount(getOwnerAccount());
+        recentChat.setFriendAccount(chatMessage.getFromAccount());
         recentChat.setIsRead(false);
 
         DatabaseManager.getRecentChatDao().saveRecentChat(recentChat);
@@ -58,6 +62,14 @@ public class FetchMessageJob extends Job {
 
         // 发送收到新消息的广播
         BroadcastSender.sendUpdateMessageBroadcast(App.getContext());
+    }
+
+    public static String getOwnerAccount() {
+        if (ownerAccount == null) {
+            ownerAccount = (String) App.get(App.ACCOUNT);
+        }
+
+        return ownerAccount;
     }
 
     @Override

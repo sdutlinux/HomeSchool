@@ -58,7 +58,7 @@ public class LoginActivity extends BaseActivity {
 
         setListener();
 
-    /*    // todo: test recent dao
+      /*  // todo: test recent dao
 
         RecentChat recentChat = new RecentChat();
 //        recentChat.setId(4);
@@ -66,11 +66,11 @@ public class LoginActivity extends BaseActivity {
         recentChat.setIsRead(true);
         recentChat.setFriendAccount("5");
         recentChat.setUserAccount("1");
-
+*/
         try {
             RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
 
-            recentChatDao.saveRecentChat(recentChat);
+//            recentChatDao.saveRecentChat(recentChat);
 
             List<RecentChat> recentChats = recentChatDao.queryForAll();
 
@@ -81,7 +81,6 @@ public class LoginActivity extends BaseActivity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-*/
 /*        //todo: 测试recentChatDao queryBy
         try {
             RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
