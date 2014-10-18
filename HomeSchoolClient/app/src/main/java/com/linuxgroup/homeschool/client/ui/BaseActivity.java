@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.db.service.DatabaseHelper;
 
@@ -72,6 +73,10 @@ public class BaseActivity extends FragmentActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public String getOwnerAccount() {
+        return (String) App.get(App.ACCOUNT);
     }
 
     @Override

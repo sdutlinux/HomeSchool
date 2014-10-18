@@ -1,13 +1,35 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.linuxgroup.homeschool.client.ui.fragment.RecentChatFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- 项目列表 -->
+    <ListView
+        android:id="@id/listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:choiceMode="singleChoice"
+        android:drawSelectorOnTop="false"
+        android:cacheColorHint="#00000000"
+        />
 
-</FrameLayout>
+    <Button
+        android:id="@id/search_friend"
+        android:text="加好友"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@id/friend_list"
+        android:text="好友列表"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@id/check_update"
+        android:text="检查更新"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

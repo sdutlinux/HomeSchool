@@ -49,8 +49,10 @@ public class FetchMessageJob extends Job {
         // 保存消息到本地数据库
         DatabaseManager.getMessageDao().save(chatMessage);
 
-
+        
         // 保存会话到本地数据库
+        // todo: 检查是否存在
+
         RecentChat recentChat = new RecentChat();
 
         recentChat.setUserAccount(getOwnerAccount());

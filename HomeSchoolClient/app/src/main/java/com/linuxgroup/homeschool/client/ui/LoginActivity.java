@@ -67,12 +67,12 @@ public class LoginActivity extends BaseActivity {
         recentChat.setFriendAccount("5");
         recentChat.setUserAccount("1");
 */
-        try {
+    /*    try {
             RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
 
 //            recentChatDao.saveRecentChat(recentChat);
 
-            List<RecentChat> recentChats = recentChatDao.queryForAll();
+            List<RecentChat> recentChats = recentChatDao.queryForAll(getOwnerAccount());
 
             for (RecentChat recentChat1 : recentChats) {
                 System.out.println(recentChat1);
@@ -80,7 +80,7 @@ public class LoginActivity extends BaseActivity {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
 /*        //todo: 测试recentChatDao queryBy
         try {
             RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();

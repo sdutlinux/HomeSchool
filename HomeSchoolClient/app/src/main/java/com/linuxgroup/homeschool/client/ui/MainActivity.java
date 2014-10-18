@@ -32,12 +32,6 @@ public class MainActivity extends BaseActivity {
     @InjectView(R.id.pager)
     ViewPager mViewPager;
 
-/*    @InjectView(R.id.check_update)
-    Button bt_check_update;
-
-    @InjectView(R.id.search_friend)
-    Button bt_search_friend;*/
-
     private MyPagerAdapter myPagerAdapter;
 
 
@@ -53,23 +47,7 @@ public class MainActivity extends BaseActivity {
 
         init();
 
-       /* bt_search_friend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        // 检查更新
-        bt_check_update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 检查更新
-                UpdateManager updateManager = new UpdateManager(MainActivity.this);
-                updateManager.checkUpdate();
-            }
-        });*/
     }
 
     public void init() {

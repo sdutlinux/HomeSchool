@@ -9,7 +9,7 @@ import java.util.List;
  * Created by tan on 14-10-17.
  */
 public interface RecentChatDao {
-    public List<RecentChat> queryForAll() throws SQLException;
+    public List<RecentChat> queryForAll(String userAccount) throws SQLException;
 
     public void saveRecentChat(RecentChat recentChat) throws SQLException;
 

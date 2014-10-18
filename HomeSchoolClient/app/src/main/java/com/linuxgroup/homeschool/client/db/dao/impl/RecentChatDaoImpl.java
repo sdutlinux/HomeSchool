@@ -41,15 +41,19 @@ public class RecentChatDaoImpl extends BaseDaoImpl<RecentChat, Integer> implemen
         return recentChat;
     }
 
-/*    *//**
+    /**
      * todo: 按时间排序?
      * todo：已经存在了
      * 返回所有的 会话
      * @return
      * @throws SQLException
-     *//*
+     */
     @Override
-    public List<RecentChat> queryForAll() throws SQLException {
-        return this.queryForAll();
-    }*/
+    public List<RecentChat> queryForAll(String userAccount) throws SQLException {
+        Where<RecentChat, Integer> where = this.queryBuilder().where();
+
+        where.eq("userAccount", userAccount);
+
+        return where.query();
+    }
 }
