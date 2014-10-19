@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -25,6 +26,7 @@ import com.linuxgroup.homeschool.client.db.model.RecentChat;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.linuxgroup.homeschool.client.manager.UpdateManager;
 import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
+import com.linuxgroup.homeschool.client.ui.ChatActivity;
 import com.linuxgroup.homeschool.client.ui.MainActivity;
 import com.linuxgroup.homeschool.client.ui.SearchActivity;
 
@@ -66,7 +68,6 @@ public class RecentChatFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        registerUpdateMessageBroadcast();
     }
 
     @Override
@@ -76,7 +77,7 @@ public class RecentChatFragment extends Fragment {
 
         ButterKnife.inject(this, view);
 
-        initListView();
+        init();
 
         bt_search_friend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,9 +100,37 @@ public class RecentChatFragment extends Fragment {
         return view;
     }
 
+    public void init() {
+        setListener();
+    }
+
+    private void setListener() {
+        registerUpdateMessageBroadcast();
+
+        initListView();
+    }
+
     public void initListView() {
         recentChatListAdapter = new RecentChatListAdapter(getActivity().getLayoutInflater());
         listView.setAdapter(recentChatListAdapter);
+
+        // 点击会话，开始聊天
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                RecentChat recentChat = recentChatListAdapter.getItem(i);
+
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+
+                // 设置好友的 account
+                intent.putExtra(ChatActivity.PARAM_FRIEND_ACCOUNT, recentChat.getFriendAccount());
+
+                // todo: 设置好友的 nick, 而不是 Account
+                intent.putExtra(ChatActivity.PARAM_FRIEND_NICK, recentChat.getFriendAccount());
+
+                startActivity(intent);
+            }
+        });
 
         refreshList();
     }
