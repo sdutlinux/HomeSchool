@@ -15,12 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by tan on 14-9-25.
  */
-public class FetchMessageJob extends Job {
-    private static String ownerAccount;
-
-    private static final AtomicInteger jobCounter = new AtomicInteger(0);
-
-    private final int id;
+public class FetchMessageJob extends BaseJob {
 
     /**
      * 用于请求的 message 的 id
@@ -29,8 +24,6 @@ public class FetchMessageJob extends Job {
 
     public FetchMessageJob(Integer requestMsgId) {
         super(new Params(Priority.LOW).requireNetwork().groupBy("fetch-message"));
-
-        id = jobCounter.incrementAndGet();
 
         this.requestMsgId = requestMsgId;
     }
@@ -41,7 +34,7 @@ public class FetchMessageJob extends Job {
 
     @Override
     public void onRun() throws Throwable {
-        System.out.println("run Fetch message " + id);
+        System.out.println("run Fetch message " + getId());
 
         // 获取消息
         ChatMessage chatMessage = MessageApi.getMessage(requestMsgId, ChatMessage.class);
@@ -53,7 +46,6 @@ public class FetchMessageJob extends Job {
         // 更新会话到本地数据库
         RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
 
-        String ownerAccount = getOwnerAccount();
         String friendAccount = chatMessage.getFromAccount();
 
         RecentChat recentChat = recentChatDao.queryBy(getOwnerAccount(), friendAccount);
@@ -73,17 +65,11 @@ public class FetchMessageJob extends Job {
         BroadcastSender.sendUpdateMessageBroadcast(App.getContext());
     }
 
-    public static String getOwnerAccount() {
-        if (ownerAccount == null) {
-            ownerAccount = (String) App.get(App.ACCOUNT);
-        }
 
-        return ownerAccount;
-    }
 
     @Override
     protected void onCancel() {
-        System.out.println("calcel Fetch message " + id);
+        System.out.println("calcel Fetch message " + getId());
     }
 
     @Override
