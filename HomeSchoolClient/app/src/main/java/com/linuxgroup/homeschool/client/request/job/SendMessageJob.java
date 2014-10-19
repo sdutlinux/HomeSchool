@@ -47,7 +47,7 @@ public class SendMessageJob extends BaseJob {
         // 更新会话到本地数据库
         RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
 
-        String friendAccount = chatMessage.getFromAccount();
+        String friendAccount = chatMessage.getToAccount();
 
         RecentChat recentChat = recentChatDao.queryBy(getOwnerAccount(), friendAccount);
 
@@ -55,14 +55,13 @@ public class SendMessageJob extends BaseJob {
             // 如果检索不到，新建
             recentChat = new RecentChat();
             recentChat.setUserAccount(getOwnerAccount());
-            recentChat.setFriendAccount(chatMessage.getFromAccount());
+            recentChat.setFriendAccount(friendAccount);
         }
 
         recentChat.setIsRead(true);
 
         recentChatDao.saveRecentChat(recentChat);
 
-        // todo: 通知发送成功
         // 发送收到新消息的广播
         BroadcastSender.sendUpdateMessageBroadcast(App.getContext());
     }
