@@ -1,6 +1,8 @@
 package com.linuxgroup.homeschool.client.ui.fragment;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
@@ -17,6 +19,7 @@ import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.RecentChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Constants;
+import com.linuxgroup.homeschool.client.broadcast.BroadcastRegister;
 import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
 import com.linuxgroup.homeschool.client.db.model.RecentChat;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
@@ -44,6 +47,8 @@ public class RecentChatFragment extends Fragment {
     @InjectView(R.id.listview)
     ListView listView;
 
+    private BroadcastReceiver broadcastReceiver;
+
     private static final String ownerAccount = (String)App.get(App.ACCOUNT);
 
     private RecentChatListAdapter recentChatListAdapter;
@@ -61,6 +66,7 @@ public class RecentChatFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        registerUpdateMessageBroadcast();
     }
 
     @Override
@@ -120,29 +126,23 @@ public class RecentChatFragment extends Fragment {
             protected void onSuccess(List<RecentChat> recentChats) {
                 //todo: 显示列表
                 recentChatListAdapter.replaceLazyList(recentChats);
-
             }
         }.execute();
     }
 
-  /*  *//**
-     * 收到消息后，更新 listview
-     *//*
-    private void registerReceivedNewMessageBroadcast() {
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(Constants.ACTION_UPDATE_MESSAGE);
-
-        broadcastReceiver = new BroadcastReceiver() {
+    /**
+     * 无论是发送消息，还是收到新的消息，都要更新下会话列表
+     */
+    private void registerUpdateMessageBroadcast() {
+        broadcastReceiver = BroadcastRegister.registerUpdateMessageBroadcast(getActivity(), new BroadcastRegister.OnDo() {
             @Override
-            public void onReceive(Context context, Intent intent) {
+            public void onDo(Context context, Intent intent) {
                 // 数据更新显示
                 refreshList();
             }
-        };
-
-        this.registerReceiver(broadcastReceiver, intentFilter);
+        });
     }
-*/
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -152,5 +152,6 @@ public class RecentChatFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        getActivity().unregisterReceiver(broadcastReceiver);
     }
 }

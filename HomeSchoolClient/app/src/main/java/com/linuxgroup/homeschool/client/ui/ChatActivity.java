@@ -3,7 +3,6 @@ package com.linuxgroup.homeschool.client.ui;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
-import com.linuxgroup.homeschool.client.api.Constants;
 import com.linuxgroup.homeschool.client.broadcast.BroadcastRegister;
 import com.linuxgroup.homeschool.client.db.dao.ChatMessageDao;
 import com.linuxgroup.homeschool.client.db.model.ChatMessage;
@@ -97,7 +95,7 @@ public class ChatActivity extends BaseActivity {
         // 初始化ListView
         initListView();
 
-        registerReceivedNewMessageBroadcast();
+        registerUpdateMessageBroadcast();
     }
 
     public void initListView() {
@@ -138,7 +136,7 @@ public class ChatActivity extends BaseActivity {
     /**
      * 收到消息后，更新 listview
      */
-    private void registerReceivedNewMessageBroadcast() {
+    private void registerUpdateMessageBroadcast() {
         broadcastReceiver = BroadcastRegister.registerUpdateMessageBroadcast(ChatActivity.this, new BroadcastRegister.OnDo() {
             @Override
             public void onDo(Context context, Intent intent) {
