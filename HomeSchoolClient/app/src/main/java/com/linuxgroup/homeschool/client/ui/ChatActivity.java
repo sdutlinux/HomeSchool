@@ -18,6 +18,7 @@ import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.ChatListAdapter;
 import com.linuxgroup.homeschool.client.api.Constants;
+import com.linuxgroup.homeschool.client.broadcast.BroadcastRegister;
 import com.linuxgroup.homeschool.client.db.dao.ChatMessageDao;
 import com.linuxgroup.homeschool.client.db.model.ChatMessage;
 import com.linuxgroup.homeschool.client.request.RequestManager;
@@ -138,7 +139,15 @@ public class ChatActivity extends BaseActivity {
      * 收到消息后，更新 listview
      */
     private void registerReceivedNewMessageBroadcast() {
-        IntentFilter intentFilter = new IntentFilter();
+        broadcastReceiver = BroadcastRegister.registerUpdateMessageBroadcast(ChatActivity.this, new BroadcastRegister.OnDo() {
+            @Override
+            public void onDo(Context context, Intent intent) {
+                // 数据更新显示
+                refreshList();
+            }
+        });
+
+        /*IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Constants.ACTION_UPDATE_MESSAGE);
 
         broadcastReceiver = new BroadcastReceiver() {
@@ -149,7 +158,7 @@ public class ChatActivity extends BaseActivity {
             }
         };
 
-        this.registerReceiver(broadcastReceiver, intentFilter);
+        this.registerReceiver(broadcastReceiver, intentFilter);*/
     }
 
     private void setListener() {

@@ -2,6 +2,7 @@ package com.linuxgroup.homeschool.client.ui.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.adapter.RecentChatListAdapter;
+import com.linuxgroup.homeschool.client.api.Constants;
 import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
 import com.linuxgroup.homeschool.client.db.model.RecentChat;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
@@ -123,6 +125,24 @@ public class RecentChatFragment extends Fragment {
         }.execute();
     }
 
+  /*  *//**
+     * 收到消息后，更新 listview
+     *//*
+    private void registerReceivedNewMessageBroadcast() {
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Constants.ACTION_UPDATE_MESSAGE);
+
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                // 数据更新显示
+                refreshList();
+            }
+        };
+
+        this.registerReceiver(broadcastReceiver, intentFilter);
+    }
+*/
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);

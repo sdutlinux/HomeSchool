@@ -34,10 +34,6 @@ public class BaseActivity extends FragmentActivity {
     private void initActionBar() {
         actionBar = getActionBar();
 
-        // 设置背景颜色
-//        Drawable drawable = getResources().getDrawable(R.drawable.actionbar_shape);
-//        actionBar.setBackgroundDrawable(drawable);
-
         // 显示返回上一层的图标
 
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -48,8 +44,6 @@ public class BaseActivity extends FragmentActivity {
         actionBar.setDisplayShowCustomEnabled(true);
         View view = View.inflate(this, R.layout.actionbar_title, null);
 
-
-//        new Shimmer().start(mActionBarTitle);
         actionBar.setCustomView(view);
 
         mActionBarTitle = (TextView) view.findViewById(R.id.tv_actionbar_title);
@@ -83,20 +77,4 @@ public class BaseActivity extends FragmentActivity {
     public void onDestroy() {
         super.onDestroy();
     }
-
-    /*public DatabaseHelper getHelper() {
-        if (databaseHelper == null) {
-            databaseHelper = OpenHelperManager
-                    .getHelper(this, DatabaseHelper.class);
-        }
-        return databaseHelper;
-    }
-
-    public MessageDao getChatMessageDao() throws SQLException {
-        return getHelper().getChatMessageDao();
-    }*/
-
-//    protected void executeRequest(Request<?> request) {
-//        RequestManager.addRequest(request, this);
-//    }
 }

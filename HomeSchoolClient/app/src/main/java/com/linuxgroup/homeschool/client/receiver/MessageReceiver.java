@@ -24,7 +24,6 @@ public class MessageReceiver extends BroadcastReceiver {
     private NotificationManager nm;
 
     @Override
-
     public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
         Log.d(TAG, "onReceive - " + intent.getAction());
