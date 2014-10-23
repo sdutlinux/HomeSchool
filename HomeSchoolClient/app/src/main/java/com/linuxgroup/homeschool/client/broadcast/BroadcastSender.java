@@ -13,4 +13,9 @@ public class BroadcastSender {
         Intent intent = new Intent(Constants.ACTION_UPDATE_MESSAGE);
         context.sendBroadcast(intent);
     }
+
+    public static void sendUpdatePersonInfo(Context context) {
+        Intent intent = new Intent(Constants.ACTION_UPDATE_PERSON_INFO);
+        context.sendBroadcast(intent);
+    }
 }

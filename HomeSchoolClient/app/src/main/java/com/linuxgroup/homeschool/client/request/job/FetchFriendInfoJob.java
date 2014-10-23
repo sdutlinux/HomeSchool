@@ -1,6 +1,8 @@
 package com.linuxgroup.homeschool.client.request.job;
 
+import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.api.UserApi;
+import com.linuxgroup.homeschool.client.broadcast.BroadcastSender;
 import com.linuxgroup.homeschool.client.db.model.Person;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.path.android.jobqueue.Params;
@@ -37,8 +39,7 @@ public class FetchFriendInfoJob extends BaseJob {
         DatabaseManager.getPersonDao().save(person);
 
         // todo: 发送更新好友的广播
-
-
+        BroadcastSender.sendUpdatePersonInfo(App.getContext());
     }
 
     @Override
