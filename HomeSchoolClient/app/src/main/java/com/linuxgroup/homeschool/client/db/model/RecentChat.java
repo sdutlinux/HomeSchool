@@ -30,9 +30,18 @@ public class RecentChat {
      */
     @DatabaseField
     private String friendAccount;
-//    private String nick;
-//    private String content;
-//    private String time;
+
+    /**
+     * 会话朋友的 Nick
+     */
+    @DatabaseField
+    private String nick;
+
+    @DatabaseField
+    private String content;
+
+    @DatabaseField
+    private String time;
 
     @DatabaseField
     private Boolean isRead;
@@ -78,5 +87,29 @@ public class RecentChat {
 
     public void setIsRead(Boolean isRead) {
         this.isRead = isRead;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }
