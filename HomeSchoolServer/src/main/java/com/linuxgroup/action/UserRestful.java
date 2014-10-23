@@ -60,6 +60,12 @@ public class UserRestful {
         return person;
     }
 
+/*
+    @RequestMapping(value = "/{account}", method = RequestMethod.GET)
+    public @ResponseBody Person userInfo() {
+//        personService.getPerson()
+    }
+*/
 
 
 

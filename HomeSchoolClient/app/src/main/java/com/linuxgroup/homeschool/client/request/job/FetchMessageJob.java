@@ -55,6 +55,8 @@ public class FetchMessageJob extends BaseJob {
             recentChat = new RecentChat();
             recentChat.setUserAccount(getOwnerAccount());
             recentChat.setFriendAccount(chatMessage.getFromAccount());
+
+
         }
 
         recentChat.setIsRead(false);

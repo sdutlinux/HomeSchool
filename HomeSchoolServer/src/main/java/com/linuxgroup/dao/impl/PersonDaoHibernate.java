@@ -2,6 +2,8 @@ package com.linuxgroup.dao.impl;
 
 import com.linuxgroup.dao.PersonDao;
 import com.linuxgroup.model.Person;
+import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import java.util.List;
@@ -12,13 +14,20 @@ import java.util.List;
 public class PersonDaoHibernate extends HibernateDaoSupport implements PersonDao{
 
     /**
-     * get方法，获得记录的id
+     * 通过id查找 person（不包括密码)， 该方法用于获取好友的信息
      * @param id
      * @return 查找记录的id
      */
     @Override
     public Person get(Integer id) {
-        return getHibernateTemplate().get(Person.class,id);
+        String hql = "select new Person(p.id, p.account, p.name, p.sex, p.address, p.communication, p.type) from Person as p where p.id = ?";
+        Query query = currentSession().createQuery(hql);
+
+        query.setInteger(new Integer(0), id);
+
+        Person person = (Person)query.list().get(0);
+
+        return person;
     }
 
     /**

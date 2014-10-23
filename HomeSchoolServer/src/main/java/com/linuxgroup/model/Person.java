@@ -74,7 +74,7 @@ public class Person {
 
     public Person() { }
 
-    public Person(int id, String account,String password,String name, int sex, String address, String communication, Set<Integer> friendsId, int type) {
+    public Person(int id, String account,String password,String name, int sex, String address, String communication, int type) {
         this.id = id;
         this.account = account;
         this.password = password;
@@ -82,9 +82,19 @@ public class Person {
         this.address = address;
         this.sex = sex;
         this.communication = communication;
-        this.friendsId = friendsId;
         this.type = type;
     }
+
+    public Person(int id, String account, String name, int sex, String address, String communication, int type) {
+        this.id = id;
+        this.account = account;
+        this.name = name;
+        this.address = address;
+        this.sex = sex;
+        this.communication = communication;
+        this.type = type;
+    }
+
 
     public int getId() {
         return id;

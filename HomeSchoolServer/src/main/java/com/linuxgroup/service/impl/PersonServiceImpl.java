@@ -40,6 +40,11 @@ public class PersonServiceImpl implements PersonService {
         this.personDao = personDao;
     }
 
+    /**
+     * 通过id查找 person（不包括密码)， 该方法用于获取好友的信息
+     * @param id
+     * @return 查找记录的id
+     */
     @Override
     public Person getPerson(Integer id) {
         return personDao.get(id);

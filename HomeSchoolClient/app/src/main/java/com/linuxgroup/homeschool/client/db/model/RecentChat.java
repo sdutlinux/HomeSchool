@@ -47,7 +47,9 @@ public class RecentChat {
     private Boolean isRead;
 
     public String toString() {
-        return  "id:" + id + " userAccount:" + userAccount + " friendAccount:" + friendAccount + " isRead:" + isRead;
+        return  "id:" + id + " userAccount:" + userAccount + " friendAccount:" + friendAccount
+                + " nick:" + nick + " content:" + content + " isRead:" + isRead
+                + " time:" + time;
     }
 
 

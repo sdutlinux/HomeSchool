@@ -32,7 +32,7 @@ public class Communication {
          *  创建一个Message对象
          */
         //ChatMessage msg = new ChatMessage();
-        Person person = new Person();
+ /*       Person person = new Person();
 
         person.setAccount("1836944444444444449");
         person.setPassword("0000444444444444");
@@ -44,7 +44,7 @@ public class Communication {
 
         Integer id = personService.savePerson(person);
         System.out.println(id);
-        System.out.println(person);
+        System.out.println(person);*/
 
 //        ChatMessage chatMsg = new ChatMessage();
 //        chatMsg.setContent("test");
@@ -71,14 +71,7 @@ public class Communication {
 //        }
 
 
-        try {
-
-            //jsonObj = JSONObject.fromObject(str);
-            //msg  = JSONObject.toBean(jsonObj,ChatMessage.class);
-            //messageService.saveMessage(msg);
-            //Integer id = messageService
-
-
+        /*try {
             pushService.pushToAll("person存储");  // 将信息发送至极光推送
             result.setStatus("ok");
 
@@ -88,7 +81,11 @@ public class Communication {
 
         }
 
-        jsonObj = JsonUtils.toJson(result);
+        jsonObj = JsonUtils.toJson(result);*/
+
+        Person person = personService.getPerson(1);
+
+        System.out.println(person);
 
         return Action.SUCCESS;
     }
