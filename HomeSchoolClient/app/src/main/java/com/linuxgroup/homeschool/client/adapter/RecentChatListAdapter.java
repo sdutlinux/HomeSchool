@@ -53,12 +53,20 @@ public class RecentChatListAdapter extends LazyListAdapter<RecentChat> {
         @InjectView(R.id.account)
         TextView tv_account;
 
+        @InjectView(R.id.content)
+        TextView tv_content;
+
+        @InjectView(R.id.time)
+        TextView tv_time;
+
         public CacheView(View view) {
             ButterKnife.inject(this, view);
         }
 
         public void render(RecentChat recentChat) {
             tv_account.setText(recentChat.getFriendAccount());
+            tv_content.setText(recentChat.getContent());
+            tv_time.setText(recentChat.getTime().toString());
         }
     }
 }

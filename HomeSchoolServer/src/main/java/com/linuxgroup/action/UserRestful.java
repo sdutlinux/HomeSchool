@@ -72,7 +72,7 @@ public class UserRestful {
         return person;
     }
 
-
+    
 
     public PersonService getPersonService() {
         return personService;

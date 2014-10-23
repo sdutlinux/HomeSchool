@@ -56,8 +56,13 @@ public class SendMessageJob extends BaseJob {
             recentChat = new RecentChat();
             recentChat.setUserAccount(getOwnerAccount());
             recentChat.setFriendAccount(friendAccount);
+
+            //todo: 设置 nick
         }
 
+        //todo: 风转起来，直接传过来 chatMessage
+        recentChat.setTime(chatMessage.getTime());
+        recentChat.setContent(chatMessage.getContent());
         recentChat.setIsRead(true);
 
         recentChatDao.saveRecentChat(recentChat);

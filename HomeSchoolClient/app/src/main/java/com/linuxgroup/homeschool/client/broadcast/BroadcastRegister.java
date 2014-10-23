@@ -7,13 +7,19 @@ import android.content.IntentFilter;
 
 import com.linuxgroup.homeschool.client.api.Constants;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by tan on 14-10-19.
  */
 public class BroadcastRegister {
-    public static BroadcastReceiver registerBroadcast(Context context, String action, final  OnDo onDo) {
+    public static BroadcastReceiver registerBroadcast(Context context, List<String> actions, final OnDo onDo) {
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(action);
+
+        for (String action : actions) {
+            intentFilter.addAction(action);
+        }
 
         BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -25,6 +31,12 @@ public class BroadcastRegister {
         context.registerReceiver(broadcastReceiver, intentFilter);
 
         return broadcastReceiver;
+    }
+
+    public static BroadcastReceiver registerBroadcast(Context context, String action, final  OnDo onDo) {
+        List<String> actions = Arrays.asList(action);
+
+        return registerBroadcast(context, actions, onDo);
     }
 
     /**

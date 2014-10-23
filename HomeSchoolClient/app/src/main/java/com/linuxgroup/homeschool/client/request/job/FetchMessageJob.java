@@ -2,11 +2,14 @@ package com.linuxgroup.homeschool.client.request.job;
 
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.broadcast.BroadcastSender;
+import com.linuxgroup.homeschool.client.db.dao.PersonDao;
 import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
 import com.linuxgroup.homeschool.client.db.model.ChatMessage;
 import com.linuxgroup.homeschool.client.api.MessageApi;
+import com.linuxgroup.homeschool.client.db.model.Person;
 import com.linuxgroup.homeschool.client.db.model.RecentChat;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
+import com.linuxgroup.homeschool.client.request.RequestManager;
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.Params;
 
@@ -56,9 +59,19 @@ public class FetchMessageJob extends BaseJob {
             // 如果检索不到，新建
             recentChat = new RecentChat();
             recentChat.setUserAccount(getOwnerAccount());
-            recentChat.setFriendAccount(chatMessage.getFromAccount());
+            recentChat.setFriendAccount(friendAccount);
 
-
+            // 查询本地是否有好友信息
+            PersonDao personDao = DatabaseManager.getPersonDao();
+            Person person = personDao.queryBy(friendAccount);
+            if (person == null) {
+                // todo: 如果找不到，就执行获取用户信息 任务
+                // todo: 这里好像无法得知好友 id。。。。。。。。。。。
+                RequestManager.addBackgroundJob(new FetchFriendInfoJob());
+            } else {
+                // 如果找到了，就设置信息
+                recentChat.setNick(person.getName());
+            }
         }
 
         recentChat.setTime(chatMessage.getTime());

@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -27,10 +25,10 @@ import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.linuxgroup.homeschool.client.manager.UpdateManager;
 import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
 import com.linuxgroup.homeschool.client.ui.ChatActivity;
-import com.linuxgroup.homeschool.client.ui.MainActivity;
 import com.linuxgroup.homeschool.client.ui.SearchActivity;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -105,7 +103,7 @@ public class RecentChatFragment extends Fragment {
     }
 
     private void setListener() {
-        registerUpdateMessageBroadcast();
+        registerUpdateBroadcast();
 
         initListView();
     }
@@ -162,10 +160,22 @@ public class RecentChatFragment extends Fragment {
     /**
      * 无论是发送消息，还是收到新的消息，都要更新下会话列表
      */
-    private void registerUpdateMessageBroadcast() {
-        broadcastReceiver = BroadcastRegister.registerUpdateMessageBroadcast(getActivity(), new BroadcastRegister.OnDo() {
+    private void registerUpdateBroadcast() {
+
+        // 注册多个监听 action
+        List<String> actions = Arrays.asList(
+                Constants.ACTION_UPDATE_MESSAGE,// 接受、发送消息的广播
+                Constants.ACTION_UPDATE_PERSON_INFO// 更新好友的广播
+        );
+
+        broadcastReceiver = BroadcastRegister.registerBroadcast(getActivity(), actions, new BroadcastRegister.OnDo() {
             @Override
             public void onDo(Context context, Intent intent) {
+                /*if (intent.getAction().equals(Constants.ACTION_UPDATE_PERSON_INFO)) {
+                    // 如果是更新了好友信息，还需要修改RecentChat中的nick等信息
+
+                }
+*/
                 // 数据更新显示
                 refreshList();
             }

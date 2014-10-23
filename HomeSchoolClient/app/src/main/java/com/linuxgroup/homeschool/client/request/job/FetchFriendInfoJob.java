@@ -3,7 +3,9 @@ package com.linuxgroup.homeschool.client.request.job;
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.api.UserApi;
 import com.linuxgroup.homeschool.client.broadcast.BroadcastSender;
+import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
 import com.linuxgroup.homeschool.client.db.model.Person;
+import com.linuxgroup.homeschool.client.db.model.RecentChat;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.path.android.jobqueue.Params;
 
@@ -35,8 +37,20 @@ public class FetchFriendInfoJob extends BaseJob {
         Person person = UserApi.userInfo(friendId);
 
         // 将 person 信息保存到本地
-
         DatabaseManager.getPersonDao().save(person);
+
+        // 如果发现有 recentchat， 则需要更新该recentchat的信息
+        RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
+
+        String friendAccount = person.getAccount();
+        RecentChat recentChat = recentChatDao.queryBy(getOwnerAccount(), friendAccount);
+        if (recentChat != null) { // 找到了该 recentChat
+            // 更新信息
+            recentChat.setNick(person.getName());
+
+            // 保存
+            recentChatDao.saveRecentChat(recentChat);
+        }
 
         // todo: 发送更新好友的广播
         BroadcastSender.sendUpdatePersonInfo(App.getContext());
