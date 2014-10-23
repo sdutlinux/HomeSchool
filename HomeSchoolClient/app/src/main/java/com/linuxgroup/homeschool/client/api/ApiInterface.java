@@ -15,4 +15,6 @@ public class ApiInterface {
     public static final String PATH_REGISTER = BASE_URL + "/restful/user";
     public static final String PATH_LOGIN = BASE_URL + "/restful/user/login";
     public static final String PATH_SEARCH = BASE_URL + "/restful/user/search";
+    public static final String PATH_USER_INFO = BASE_URL + "/restful/user";
+
 }

@@ -50,6 +50,8 @@ public class FetchMessageJob extends BaseJob {
 
         RecentChat recentChat = recentChatDao.queryBy(getOwnerAccount(), friendAccount);
 
+        //todo: 从网络获取好友信息，应该改为本地存储
+
         if (recentChat == null) {
             // 如果检索不到，新建
             recentChat = new RecentChat();
@@ -59,6 +61,8 @@ public class FetchMessageJob extends BaseJob {
 
         }
 
+        recentChat.setTime(chatMessage.getTime());
+        recentChat.setContent(chatMessage.getContent());
         recentChat.setIsRead(false);
 
         recentChatDao.saveRecentChat(recentChat);

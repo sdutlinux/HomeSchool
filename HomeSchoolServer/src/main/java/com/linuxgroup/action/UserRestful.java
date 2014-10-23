@@ -53,6 +53,11 @@ public class UserRestful {
         return result;
     }
 
+    /**
+     * todo: 搜索，会增加模糊搜索
+     * @param account
+     * @return
+     */
     @RequestMapping(value = "/search/{account}", method = RequestMethod.GET)
     public @ResponseBody Person search(@PathVariable String account) {
         Person person = personService.findBy(account);
@@ -60,12 +65,12 @@ public class UserRestful {
         return person;
     }
 
-/*
-    @RequestMapping(value = "/{account}", method = RequestMethod.GET)
-    public @ResponseBody Person userInfo() {
-//        personService.getPerson()
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public @ResponseBody Person userInfo(@PathVariable Integer id) {
+        Person person = personService.getPerson(id);
+        System.out.println(person);
+        return person;
     }
-*/
 
 
 

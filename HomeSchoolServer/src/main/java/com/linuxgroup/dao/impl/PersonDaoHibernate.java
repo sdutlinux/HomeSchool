@@ -27,6 +27,8 @@ public class PersonDaoHibernate extends HibernateDaoSupport implements PersonDao
 
         Person person = (Person)query.list().get(0);
 
+        System.out.println("dao: " + person);
+
         return person;
     }
 

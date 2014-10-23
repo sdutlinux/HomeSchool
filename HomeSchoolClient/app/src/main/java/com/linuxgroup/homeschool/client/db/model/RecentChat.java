@@ -5,6 +5,8 @@ import com.j256.ormlite.table.DatabaseTable;
 import com.linuxgroup.homeschool.client.db.dao.impl.ChatMessageDaoImpl;
 import com.linuxgroup.homeschool.client.db.dao.impl.RecentChatDaoImpl;
 
+import java.util.Date;
+
 /**
  * Created by tan on 14-10-17.
  * 当前保存的会话
@@ -41,7 +43,7 @@ public class RecentChat {
     private String content;
 
     @DatabaseField
-    private String time;
+    private Date time;
 
     @DatabaseField
     private Boolean isRead;
@@ -107,11 +109,11 @@ public class RecentChat {
         this.content = content;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 }
