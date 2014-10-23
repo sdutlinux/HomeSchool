@@ -58,6 +58,19 @@ public class LoginActivity extends BaseActivity {
 
         setListener();
 
+
+        //todo: 测试 person 的数据库存储
+        Person person = new Person(1, "1", null, "123", 1, "", "", null, 1);
+        try {
+            DatabaseManager.getPersonDao().save(person);
+            Person p = DatabaseManager.getPersonDao().get(1);
+            System.out.println(p);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
       /*  // todo: test recent dao
 
         RecentChat recentChat = new RecentChat();

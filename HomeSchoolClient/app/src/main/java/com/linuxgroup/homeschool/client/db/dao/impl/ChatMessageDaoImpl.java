@@ -20,8 +20,8 @@ public class ChatMessageDaoImpl extends BaseDaoImpl<ChatMessage, Integer> implem
 
     @Override
     public void save(ChatMessage message) throws SQLException {
-        // todo: 如果不存在 就 创建, 如果存在，则更新?
-        this.createIfNotExists(message);
+        // 如果不存在 就 创建, 如果存在，则更新
+        this.createOrUpdate(message);
     }
 
     @Override

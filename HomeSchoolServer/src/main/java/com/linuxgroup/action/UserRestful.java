@@ -68,7 +68,7 @@ public class UserRestful {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody Person userInfo(@PathVariable Integer id) {
         Person person = personService.getPerson(id);
-        System.out.println(person);
+        System.out.println("获取好友信息: " + person);
         return person;
     }
 

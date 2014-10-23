@@ -7,10 +7,13 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.linuxgroup.homeschool.client.db.dao.ChatMessageDao;
+import com.linuxgroup.homeschool.client.db.dao.PersonDao;
 import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
 import com.linuxgroup.homeschool.client.db.dao.impl.ChatMessageDaoImpl;
+import com.linuxgroup.homeschool.client.db.dao.impl.PersonDaoImpl;
 import com.linuxgroup.homeschool.client.db.dao.impl.RecentChatDaoImpl;
 import com.linuxgroup.homeschool.client.db.model.ChatMessage;
+import com.linuxgroup.homeschool.client.db.model.Person;
 import com.linuxgroup.homeschool.client.db.model.RecentChat;
 
 import java.sql.SQLException;
@@ -25,6 +28,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private ChatMessageDao messageDao;
     private RecentChatDao recentChatDao;
+    private PersonDao personDao;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -39,6 +43,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             // 建表, 可以继续添加别的表
             TableUtils.createTable(connectionSource, ChatMessage.class);
             TableUtils.createTable(connectionSource, RecentChat.class);
+            TableUtils.createTable(connectionSource, Person.class);
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,6 +56,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.dropTable(connectionSource, ChatMessage.class, true);
             TableUtils.dropTable(connectionSource, RecentChat.class, true);
+            TableUtils.dropTable(connectionSource, Person.class, true);
 
             onCreate(database, connectionSource);
         } catch (SQLException e) {
@@ -72,6 +79,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
 
         return recentChatDao;
+    }
+
+    public PersonDao getPersonDao() throws SQLException {
+        if (personDao == null) {
+            personDao = new PersonDaoImpl(connectionSource);
+        }
+
+        return personDao;
     }
 
     @Override

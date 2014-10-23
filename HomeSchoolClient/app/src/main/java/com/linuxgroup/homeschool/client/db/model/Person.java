@@ -1,5 +1,9 @@
 package com.linuxgroup.homeschool.client.db.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import com.linuxgroup.homeschool.client.db.dao.PersonDao;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,48 +17,56 @@ import java.util.Set;
  * 教师/家长对应管理所的学生(personsId)
  * Person类型（0.老师，1.家长）(type)
  */
+@DatabaseTable(tableName = "person_inf", daoClass = PersonDao.class)
 public class Person {
 
     /**
      * id
      * @param 教师/家长id
      */
+    @DatabaseField(id = true)
     private int id;
 
     /**
      * account
      * @param 用户帐号（暂时用手机号）
      */
+    @DatabaseField
     private String account;
 
     /**
      * password
      * @param 用户登录密码
      */
+    @DatabaseField
     private String password;
 
     /**
      * name
      * @param 教师/家长/学生姓名
      */
+    @DatabaseField
     private String name;
 
     /**
      * sex
      * @param 教师/家长/学生性别(0.女，1.男)
      */
+    @DatabaseField
     private int sex;
 
     /**
      * address
      * @param 教师/家长/学生家庭住址
      */
+    @DatabaseField
     private String address;
 
     /**
      * communication
      * @param 教师/家长/学生的联系方式
      */
+    @DatabaseField
     private String communication;
 
     /**
@@ -67,6 +79,7 @@ public class Person {
      *  type
      * @param person类型（0.老师/家长,1.学生）
      */
+    @DatabaseField
     private int type;
 
     public Person() { }
