@@ -11,4 +11,12 @@ public interface PersonDao {
     public void save(Person person) throws SQLException;
 
     public Person get(Integer id) throws SQLException;
+
+    /**
+     * 根据帐号获取用户信息
+     * @param account
+     * @return
+     * @throws SQLException
+     */
+    public Person queryBy(String account) throws SQLException;
 }
