@@ -24,7 +24,6 @@ public class Communication {
     private PersonService personService;
     private JSONObject jsonObj;
 
-
     public String sendMessage() {
 
         Result result = new Result();
