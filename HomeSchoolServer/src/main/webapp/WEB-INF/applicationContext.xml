@@ -64,9 +64,11 @@
     <bean id="messageDao" class="com.linuxgroup.dao.impl.MessageDaoHibernate">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+
     <bean id="messageService" class="com.linuxgroup.service.impl.MessageServiceImpl">
         <property name="messageDao" ref="messageDao" />
     </bean>
+
     <bean id="personDao" class="com.linuxgroup.dao.impl.PersonDaoHibernate">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>

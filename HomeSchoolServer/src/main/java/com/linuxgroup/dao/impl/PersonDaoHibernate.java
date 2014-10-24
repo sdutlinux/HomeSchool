@@ -33,6 +33,25 @@ public class PersonDaoHibernate extends HibernateDaoSupport implements PersonDao
     }
 
     /**
+     * 通过account查找 person（不包括密码)， 该方法用于获取好友的信息
+     * @param account
+     * @return 查找记录的 account
+     */
+    @Override
+    public Person get(String account) {
+        String hql = "select new Person(p.id, p.account, p.name, p.sex, p.address, p.communication, p.type) from Person as p where p.account = ?";
+        Query query = currentSession().createQuery(hql);
+
+        query.setString(new Integer(0), account);
+
+        Person person = (Person)query.list().get(0);
+
+        System.out.println("dao: " + person);
+
+        return person;
+    }
+
+    /**
      * save方法，保存数据到数据库
      * @param person
      * @return

@@ -15,6 +15,13 @@ public interface PersonDao {
     public Person get(Integer id);
 
     /**
+     * 通过account查找 person（不包括密码)， 该方法用于获取好友的信息
+     * @param account
+     * @return 查找记录的 account
+     */
+    public Person get(String account);
+
+    /**
      * save方法，保存数据到数据库
      * @param person
      * @return

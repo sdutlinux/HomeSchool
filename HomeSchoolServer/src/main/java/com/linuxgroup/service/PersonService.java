@@ -21,6 +21,8 @@ public interface PersonService {
 
     public Person getPerson(Integer id);
 
+    public Person getPerson(String account);
+
     public Integer savePerson(Person person);
 
     public void deletePerson(Integer id);

@@ -72,7 +72,12 @@ public class UserRestful {
         return person;
     }
 
-
+    @RequestMapping(value = "/account/{account}", method = RequestMethod.GET)
+    public @ResponseBody Person userInfo(@PathVariable String account) {
+        Person person = personService.getPerson(account);
+        System.out.println("获取好友信息: " + person);
+        return person;
+    }
 
     public PersonService getPersonService() {
         return personService;

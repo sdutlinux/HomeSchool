@@ -43,6 +43,8 @@ public class FetchFriendInfoJob extends BaseJob {
         RecentChatDao recentChatDao = DatabaseManager.getRecentChatDao();
 
         String friendAccount = person.getAccount();
+
+        //todo: 这里有些问题，如果第一次创建 recnetChat 又没有个人信息，获取时不能保证已经创建了 RecentChat?
         RecentChat recentChat = recentChatDao.queryBy(getOwnerAccount(), friendAccount);
         if (recentChat != null) { // 找到了该 recentChat
             // 更新信息
