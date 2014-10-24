@@ -63,9 +63,22 @@ public class UserApi extends BaseApi {
      * @return
      */
     public static Person userInfo(Integer id) {
-        Person person = restTemplate.getForObject(ApiInterface.PATH_USER_INFO
+        Person person = restTemplate.getForObject(ApiInterface.PATH_USER_INFO_BY_ID
                 + "/{id}",
                 Person.class, id);
+
+        return person;
+    }
+
+    /**
+     * 获取指定id的用户信息
+     * @param id
+     * @return
+     */
+    public static Person userInfo(String account) {
+        Person person = restTemplate.getForObject(ApiInterface.PATH_USER_INFO_BY_ACCOUNT
+                        + "/{account}",
+                Person.class, account);
 
         return person;
     }

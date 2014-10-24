@@ -67,7 +67,7 @@ public class FetchMessageJob extends BaseJob {
             if (person == null) {
                 // todo: 如果找不到，就执行获取用户信息 任务
                 // todo: 这里好像无法得知好友 id。。。。。。。。。。。
-//                RequestManager.addBackgroundJob(new FetchFriendInfoJob());
+                RequestManager.addBackgroundJob(new FetchFriendInfoJob(chatMessage.getToAccount()));
             } else {
                 // 如果找到了，就设置信息
                 recentChat.setNick(person.getName());

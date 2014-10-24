@@ -18,11 +18,20 @@ public class FetchFriendInfoJob extends BaseJob {
      * 用于请求的 message 的 id
      */
     private Integer friendId;
+    private String account;
 
     public FetchFriendInfoJob(Integer friendId) {
         super(new Params(Priority.LOW).requireNetwork().groupBy("fetch-friend-info"));
 
         this.friendId = friendId;
+        this.account = null;
+    }
+
+    public FetchFriendInfoJob(String account) {
+        super(new Params(Priority.LOW).requireNetwork().groupBy("fetch-friend-info"));
+
+        this.account = account;
+        this.friendId = null;
     }
 
     @Override
@@ -34,7 +43,21 @@ public class FetchFriendInfoJob extends BaseJob {
     public void onRun() throws Throwable {
         System.out.println("run Fetch message " + getId());
 
-        Person person = UserApi.userInfo(friendId);
+        // 判断是根据id获取还是根据帐号获取
+        Person person = null;
+
+        if (friendId != null) {
+            person = UserApi.userInfo(friendId);
+        } else {
+            person = UserApi.userInfo(account);
+        }
+
+        System.out.println(person);
+
+        //todo: 如果为空, 怎么处理?
+        if (person == null) {
+
+        }
 
         // 将 person 信息保存到本地
         DatabaseManager.getPersonDao().save(person);

@@ -19,6 +19,8 @@ import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
 import com.linuxgroup.homeschool.client.db.model.Person;
 import com.linuxgroup.homeschool.client.db.model.RecentChat;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
+import com.linuxgroup.homeschool.client.request.RequestManager;
+import com.linuxgroup.homeschool.client.request.job.FetchFriendInfoJob;
 import com.linuxgroup.homeschool.client.service.UserInfoService;
 import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;
@@ -58,6 +60,8 @@ public class LoginActivity extends BaseActivity {
 
         setListener();
 
+
+        RequestManager.addBackgroundJob(new FetchFriendInfoJob("1"));
 
       /*  //todo: 测试 person 的数据库存储
         Person person = new Person(1, "1", null, "123", 1, "", "", null, 1);
