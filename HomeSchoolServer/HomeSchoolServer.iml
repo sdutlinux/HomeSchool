@@ -19,6 +19,7 @@
           <fileset id="s2fileset" name="My Fileset " removed="false">
             <file>file://$MODULE_DIR$/src/main/resources/struts.xml</file>
             <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-core/2.3.16/struts2-core-2.3.16.jar!/struts-default.xml</file>
+            <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-json-plugin/2.3.16/struts2-json-plugin-2.3.16.jar!/struts-plugin.xml</file>
             <file>jar://$MAVEN_REPOSITORY$/org/apache/struts/struts2-spring-plugin/2.3.16.3/struts2-spring-plugin-2.3.16.3.jar!/struts-plugin.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
@@ -27,8 +28,15 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
+        <fileset id="web application context" name="MVC application context" removed="true">
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/applicationContext.xml</file>
+        </fileset>
+        <fileset id="web rest servlet context" name="MVC rest servlet context" removed="true">
+          <file>file://$MODULE_DIR$/src/main/resources/rest-servlet.xml</file>
+        </fileset>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/rest-servlet.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -117,6 +125,7 @@
     <orderEntry type="library" name="Maven: c3p0:c3p0:0.9.0" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.31" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.7" level="project" />
+    <orderEntry type="library" name="java" level="project" />
   </component>
 </module>
 

@@ -17,7 +17,7 @@ public class Message {
      */
     private int id;
 
-    /**
+    /*
      * time 信息发送时间
      * 以服务器时间为准
      */
