@@ -3,10 +3,14 @@ package com.linuxgroup.homeschool.client.request.job;
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.api.MessageApi;
 import com.linuxgroup.homeschool.client.broadcast.BroadcastSender;
+import com.linuxgroup.homeschool.client.db.dao.PersonDao;
 import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
 import com.linuxgroup.homeschool.client.db.model.ChatMessage;
+import com.linuxgroup.homeschool.client.db.model.Person;
 import com.linuxgroup.homeschool.client.db.model.RecentChat;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
+import com.linuxgroup.homeschool.client.request.RequestManager;
+import com.linuxgroup.homeschool.client.utils.ToastUtils;
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.Params;
 
@@ -56,9 +60,27 @@ public class SendMessageJob extends BaseJob {
             recentChat = new RecentChat();
             recentChat.setUserAccount(getOwnerAccount());
             recentChat.setFriendAccount(friendAccount);
-
-            //todo: 设置 nick
         }
+
+        // 查询本地是否有好友信息
+        PersonDao personDao = DatabaseManager.getPersonDao();
+
+        Person person = personDao.queryBy(friendAccount);
+        if (person == null) {
+            // todo: 如果找不到，就执行获取用户信息 任务
+            // 获取信息任务执行完毕后，会自动更新 RecentChat 数据库。
+            RequestManager.addBackgroundJob(new FetchFriendInfoJob(friendAccount));
+
+            // 先设置 nick 为对方帐号
+            recentChat.setNick(friendAccount);
+
+            ToastUtils.showShort("run fetch friend info when sendmessage: account: " + friendAccount);
+
+        } else {
+            // 如果找到了，就设置信息
+            recentChat.setNick(person.getName());
+        }
+
 
         //todo: 风转起来，直接传过来 chatMessage
         recentChat.setTime(chatMessage.getTime());

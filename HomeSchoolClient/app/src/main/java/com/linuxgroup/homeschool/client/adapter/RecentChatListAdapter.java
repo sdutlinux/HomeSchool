@@ -64,7 +64,7 @@ public class RecentChatListAdapter extends LazyListAdapter<RecentChat> {
         }
 
         public void render(RecentChat recentChat) {
-            tv_account.setText(recentChat.getFriendAccount());
+            tv_account.setText(recentChat.getNick());
             tv_content.setText(recentChat.getContent());
             tv_time.setText(recentChat.getTime().toString());
         }

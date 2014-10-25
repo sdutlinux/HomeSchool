@@ -10,6 +10,7 @@ import com.linuxgroup.homeschool.client.db.model.Person;
 import com.linuxgroup.homeschool.client.db.model.RecentChat;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.linuxgroup.homeschool.client.request.RequestManager;
+import com.linuxgroup.homeschool.client.utils.ToastUtils;
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.Params;
 
@@ -60,18 +61,25 @@ public class FetchMessageJob extends BaseJob {
             recentChat = new RecentChat();
             recentChat.setUserAccount(getOwnerAccount());
             recentChat.setFriendAccount(friendAccount);
+        }
 
-            // 查询本地是否有好友信息
-            PersonDao personDao = DatabaseManager.getPersonDao();
-            Person person = personDao.queryBy(friendAccount);
-            if (person == null) {
-                // todo: 如果找不到，就执行获取用户信息 任务
-                // todo: 这里好像无法得知好友 id。。。。。。。。。。。
-                RequestManager.addBackgroundJob(new FetchFriendInfoJob(chatMessage.getToAccount()));
-            } else {
-                // 如果找到了，就设置信息
-                recentChat.setNick(person.getName());
-            }
+        // 查询本地是否有好友信息
+        PersonDao personDao = DatabaseManager.getPersonDao();
+
+        Person person = personDao.queryBy(friendAccount);
+        if (person == null) {
+            // todo: 如果找不到，就执行获取用户信息 任务
+            // 获取信息任务执行完毕后，会自动更新 RecentChat 数据库。
+            RequestManager.addBackgroundJob(new FetchFriendInfoJob(friendAccount));
+
+            // 先设置 nick 为对方帐号
+            recentChat.setNick(friendAccount);
+
+            ToastUtils.showShort("run fetch friend info: account: " + friendAccount);
+
+        } else {
+            // 如果找到了，就设置信息
+            recentChat.setNick(person.getName());
         }
 
         recentChat.setTime(chatMessage.getTime());
