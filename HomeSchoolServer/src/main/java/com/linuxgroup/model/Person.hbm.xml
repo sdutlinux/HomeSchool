@@ -29,5 +29,11 @@
             <!--用以映射到关联类属性-->
             <many-to-many class="Person" column="friends_id"/>
         </set>
+
+        <set name="classes" table="person_class" lazy="false">
+            <key column="person_id"/>
+            <many-to-many class="Class" column="class_id"/>
+        </set>
+
     </class>
 </hibernate-mapping>

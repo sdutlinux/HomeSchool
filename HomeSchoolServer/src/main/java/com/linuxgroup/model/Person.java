@@ -67,6 +67,11 @@ public class Person {
     private Set<Integer>  friendsId = new HashSet<Integer>();
 
     /**
+     * Person 与 Class 之间多对多的关系
+     */
+    private Set<Class> classes = new HashSet<Class>();
+
+    /**
      *  type
      * @param person类型（0.老师/家长,1.学生）
      */
@@ -95,6 +100,16 @@ public class Person {
         this.type = type;
     }
 
+
+    public String toString() {
+        return "id: " + getId() + " account: " + getAccount() + " password: " +
+                getPassword() + " name: " + getName() + " sex: " + getSex() +
+                " address: " + getAddress() + "communication: " + getCommunication() +
+                " personsId: " + getFriendsId();
+    }
+
+
+    // set and get methods
 
     public int getId() {
         return id;
@@ -168,11 +183,14 @@ public class Person {
         this.type = type;
     }
 
-    public String toString() {
-        return "id: " + getId() + " account: " + getAccount() + " password: " +
-                getPassword() + " name: " + getName() + " sex: " + getSex() +
-                " address: " + getAddress() + "communication: " + getCommunication() +
-                " personsId: " + getFriendsId();
+    public Set<Class> getClasses() {
+        return classes;
     }
+
+    public void setClasses(Set<Class> classes) {
+        this.classes = classes;
+    }
+
+
 
 }
