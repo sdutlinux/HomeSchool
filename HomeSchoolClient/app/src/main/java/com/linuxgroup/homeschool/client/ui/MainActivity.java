@@ -19,6 +19,7 @@ import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
 import com.linuxgroup.homeschool.client.db.model.RecentChat;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.linuxgroup.homeschool.client.manager.UpdateManager;
+import com.linuxgroup.homeschool.client.ui.fragment.ClassFragment;
 import com.linuxgroup.homeschool.client.ui.fragment.RecentChatFragment;
 
 import java.sql.SQLException;
@@ -34,9 +35,7 @@ public class MainActivity extends BaseActivity {
 
     private MyPagerAdapter myPagerAdapter;
 
-
-    private final String[] tabNames = new String[] {"聊天"/*, "联系人", "公告"*/};
-
+    private final String[] tabNames = new String[] {"聊天", "班级"/*, "公告"*/};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,8 +138,11 @@ public class MainActivity extends BaseActivity {
             // 根据 postsion 来选择 fragment 的内容
 
             if (position == 0) { // 聊天记录
-                Fragment fragment = RecentChatFragment.newInstance();
-                return fragment;
+                Fragment recentChatFragment = RecentChatFragment.newInstance();
+                return recentChatFragment;
+            } else if (position == 1) {// 班级列表
+                Fragment classFragment = ClassFragment.newInstance();
+                return classFragment;
             }
 
             return null;
