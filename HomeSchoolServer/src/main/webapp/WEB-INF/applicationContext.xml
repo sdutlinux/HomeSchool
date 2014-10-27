@@ -50,6 +50,7 @@
                 <!--<value>com/linuxgroup/model/NoteMessage.hbm.xml</value>-->
                 <!--<value>com/linuxgroup/model/RequestMessage.hbm.xml</value>-->
                 <value>com/linuxgroup/model/Message.hbm.xml</value>
+                <value>com/linuxgroup/model/Class.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -75,6 +76,13 @@
     <bean id="personService" class="com.linuxgroup.service.impl.PersonServiceImpl">
         <property name="personDao" ref="personDao" />
     </bean>
+    <bean id="classDao" class="com.linuxgroup.dao.impl.ClassDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="classService" class="com.linuxgroup.service.impl.ClassServiceImpl">
+        <property name="classDao" ref="classDao" />
+    </bean>
+
 
 
     <bean id="pushService" class="com.linuxgroup.service.impl.PushServiceImpl">
