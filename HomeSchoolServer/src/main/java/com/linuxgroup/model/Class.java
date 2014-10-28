@@ -31,6 +31,10 @@ public class Class {
 
     }
 
+    public String toString() {
+        return "id:" + id + " className:" + className + " " + classNum + " persons size:" + persons.size();
+    }
+
 
     // set and get methods
 
