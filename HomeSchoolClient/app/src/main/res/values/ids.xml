@@ -27,7 +27,8 @@
 
     <item type="id" name="create_class"/>
     <item type="id" name="join_class"/>
-
+    <item type="id" name="class_name"/>
+    <item type="id" name="class_num"/>
 
 
     <!-- 代表 接受或者发送的消息 -->
