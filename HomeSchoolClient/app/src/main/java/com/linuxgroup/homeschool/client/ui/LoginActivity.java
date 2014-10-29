@@ -14,14 +14,18 @@ import android.widget.TextView;
 
 import com.linuxgroup.homeschool.client.App;
 import com.linuxgroup.homeschool.client.R;
+import com.linuxgroup.homeschool.client.api.ClassApi;
 import com.linuxgroup.homeschool.client.api.UserApi;
 import com.linuxgroup.homeschool.client.db.dao.RecentChatDao;
-import com.linuxgroup.homeschool.client.db.model.Person;
-import com.linuxgroup.homeschool.client.db.model.RecentChat;
+import com.linuxgroup.homeschool.client.db.model.*;
+import com.linuxgroup.homeschool.client.db.model.Class;
 import com.linuxgroup.homeschool.client.db.service.DatabaseManager;
 import com.linuxgroup.homeschool.client.request.RequestManager;
+import com.linuxgroup.homeschool.client.request.domain.Result;
+import com.linuxgroup.homeschool.client.request.job.CreateClassJob;
 import com.linuxgroup.homeschool.client.request.job.FetchFriendInfoJob;
 import com.linuxgroup.homeschool.client.service.UserInfoService;
+import com.linuxgroup.homeschool.client.tasks.CreateClassTask;
 import com.linuxgroup.homeschool.client.tasks.SimpleBackgroundTask;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
@@ -61,7 +65,57 @@ public class LoginActivity extends BaseActivity {
         setListener();
 
 
-        RequestManager.addBackgroundJob(new FetchFriendInfoJob("1"));
+        /*// 测试获取
+        new SimpleBackgroundTask<Class>(LoginActivity.this) {
+            @Override
+            protected Class onRun() {
+                return ClassApi.getClass(1);
+            }
+
+            @Override
+            protected void onSuccess(Class result) {
+                System.out.println(result);
+            }
+        }.execute();*/
+
+        /*new SimpleBackgroundTask<Integer>(LoginActivity.this) {
+            @Override
+            protected Integer onRun() {
+                Class cla = new Class();
+                cla.setClassName("三年级二班");
+                cla.setClassNum("3#02");
+
+                return ClassApi.createClass(cla);
+            }
+
+            @Override
+            protected void onSuccess(Integer result) {
+                System.out.println(result);
+            }
+        }.execute();*/
+
+  /*      Class cla = new Class();
+        cla.setClassName("三年级三班");
+        cla.setClassNum("3#03");*/
+
+  /*      new CreateClassTask(LoginActivity.this, cla) {
+            @Override
+            protected void onSuccess(Integer result) {
+                System.out.println("123");
+            }
+        };*/
+
+/*
+        Class clas = new Class();
+        clas.setClassName("一年级二班");
+        clas.setClassNum("1#02");
+
+        RequestManager.addBackgroundJob(new CreateClassJob(clas));
+*/
+
+
+
+//        RequestManager.addBackgroundJob(new FetchFriendInfoJob("1"));
 
       /*  //todo: 测试 person 的数据库存储
         Person person = new Person(1, "1", null, "123", 1, "", "", null, 1);

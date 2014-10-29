@@ -2,7 +2,7 @@ package com.linuxgroup.dao.impl;
 
 import com.linuxgroup.dao.ClassDao;
 import com.linuxgroup.model.Class;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import java.util.List;
 

@@ -5,8 +5,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.linuxgroup.homeschool.client.R;
+import com.linuxgroup.homeschool.client.utils.ToastUtils;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +20,9 @@ import com.linuxgroup.homeschool.client.R;
  *
  */
 public class ClassFragment extends Fragment {
+
+    @InjectView(R.id.create_class)
+    Button bt_create_class;
 
     public static ClassFragment newInstance() {
         ClassFragment fragment = new ClassFragment();
@@ -38,7 +46,17 @@ public class ClassFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_class, container, false);
+        View view = inflater.inflate(R.layout.fragment_class, container, false);
+
+        ButterKnife.inject(this, view);
+
+        bt_create_class.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.showShort("创建班级");
+            }
+        });
+
+        return view;
     }
 }

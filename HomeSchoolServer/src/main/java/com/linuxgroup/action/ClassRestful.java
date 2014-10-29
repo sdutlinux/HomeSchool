@@ -26,13 +26,18 @@ public class ClassRestful {
         result.setStatus("ok");
         result.setRetId(classId);
 
+        System.out.println("ClassRestFul: createClass: " + clas);
+
         return result;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public @ResponseBody
     Class getClass(@PathVariable Integer id) {
+
         Class clas = classService.get(id);
+
+        System.out.println("ClassRestFul: getClass: " + clas);
 
         return clas;
     }

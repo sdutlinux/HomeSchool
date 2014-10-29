@@ -25,8 +25,8 @@
 
     <item type="id" name="pager"/>
 
-
-
+    <item type="id" name="create_class"/>
+    <item type="id" name="join_class"/>
 
 
 

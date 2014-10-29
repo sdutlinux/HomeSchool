@@ -72,7 +72,7 @@ public class UserApi extends BaseApi {
 
     /**
      * 获取指定id的用户信息
-     * @param id
+     * @param account
      * @return
      */
     public static Person userInfo(String account) {

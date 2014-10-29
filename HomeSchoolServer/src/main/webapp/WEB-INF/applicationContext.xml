@@ -122,7 +122,7 @@
     <aop:config>
         <!-- 配置一个切入点 -->
         <aop:pointcut id="ajaxPointcut"
-                      expression="bean(pushService)||bean(messageService)||bean(personService)"/>
+                      expression="bean(pushService)||bean(messageService)||bean(personService)||bean(classService)"/>
         <!-- 指定在 leePointcut 切入点应用 txAdvice 事务增强处理 -->
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="ajaxPointcut"/>
