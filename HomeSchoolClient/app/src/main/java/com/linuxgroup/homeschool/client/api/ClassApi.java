@@ -5,6 +5,8 @@ import com.linuxgroup.homeschool.client.db.model.*;
 import com.linuxgroup.homeschool.client.db.model.Class;
 import com.linuxgroup.homeschool.client.request.domain.Result;
 
+import java.util.List;
+
 /**
  * Created by tan on 14-10-28.
  */
@@ -37,5 +39,13 @@ public class ClassApi extends BaseApi {
                 Class.class, id);
 
         return aClass;
+    }
+
+    public static List<Class> findClassByClassName(String className) {
+        List<Class> classes = (List<Class>) restTemplate.getForObject(ApiInterface.PATH_CLASS_FIND_BY_CLASSNAME
+                + "/{className}",
+                List.class, className);
+
+        return classes;
     }
 }

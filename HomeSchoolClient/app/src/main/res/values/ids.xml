@@ -29,7 +29,7 @@
     <item type="id" name="join_class"/>
     <item type="id" name="class_name"/>
     <item type="id" name="class_num"/>
-
+    <item type="id" name="search_class"/>
 
     <!-- 代表 接受或者发送的消息 -->
     <item type="id" name="tag_left"/>

@@ -39,12 +39,13 @@ public class CreateClassActivity extends Activity {
     }
 
     private void setListener() {
-        final String className = et_class_name.getText().toString();
-        final String classNum = et_class_num.getText().toString();
-
         bt_create_class.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                final String className = et_class_name.getText().toString();
+                final String classNum = et_class_num.getText().toString();
+
                 Class clas = new Class();
                 clas.setClassName(className);
                 clas.setClassNum(classNum);

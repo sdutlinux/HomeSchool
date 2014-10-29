@@ -5,6 +5,8 @@ import com.linuxgroup.model.*;
 import com.linuxgroup.model.Class;
 import com.linuxgroup.service.ClassService;
 
+import java.util.List;
+
 /**
  * Created by huihui on 14-10-27.
  */
@@ -67,7 +69,7 @@ public class ClassServiceImpl implements ClassService {
      * @return Class对象
      */
     @Override
-    public Class findBy(String className) {
+    public List<Class> findBy(String className) {
         return classDao.findBy(className);
     }
 }

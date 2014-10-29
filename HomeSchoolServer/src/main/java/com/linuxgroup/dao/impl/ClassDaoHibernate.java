@@ -58,13 +58,13 @@ public class ClassDaoHibernate extends HibernateDaoSupport implements ClassDao{
      * @return Class对象
      */
     @Override
-    public Class findBy(String className) {
-        List<Class> classes = (List<Class>)getHibernateTemplate().find("from Class as c where c.className=?",className);
+    public List<Class> findBy(String className) {
+        List<Class> classes = (List<Class>)getHibernateTemplate().find("from Class as c where c.className like ?", "%" + className + "%");
 
-        if (classes.size() == 0) {
-            return null;
-        }else {
-            return classes.get(0);
-        }
+
+
+        System.out.println(classes);
+
+        return classes;
     }
 }

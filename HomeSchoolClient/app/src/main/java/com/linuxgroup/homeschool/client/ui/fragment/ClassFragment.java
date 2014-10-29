@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import com.linuxgroup.homeschool.client.R;
 import com.linuxgroup.homeschool.client.ui.CreateClassActivity;
+import com.linuxgroup.homeschool.client.ui.SearchActivity;
+import com.linuxgroup.homeschool.client.ui.SearchClassActivity;
 import com.linuxgroup.homeschool.client.utils.ToastUtils;
 
 import butterknife.ButterKnife;
@@ -25,6 +27,9 @@ public class ClassFragment extends Fragment {
 
     @InjectView(R.id.create_class)
     Button bt_create_class;
+
+    @InjectView(R.id.search_class)
+    Button bt_search_class;
 
     public static ClassFragment newInstance() {
         ClassFragment fragment = new ClassFragment();
@@ -59,6 +64,14 @@ public class ClassFragment extends Fragment {
                 startActivity(intent);
 
                 // 创建完之后,等着接收创建成功的 broadcast, 然后从数据库读取
+            }
+        });
+
+        bt_search_class.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), SearchClassActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -2,6 +2,8 @@ package com.linuxgroup.dao;
 
 import com.linuxgroup.model.Class;
 
+import java.util.List;
+
 /**
  * Created by huihui on 14-10-27.
  */
@@ -40,5 +42,5 @@ public interface ClassDao {
      * @param className
      * @return Class对象
      */
-    public Class findBy(String className);
+    public List<Class> findBy(String className);
 }

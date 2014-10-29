@@ -32,7 +32,7 @@ public class Class {
     }
 
     public String toString() {
-        return "id:" + id + " className:" + className + " " + classNum + " persons size:" + persons.size();
+        return "id:" + id + " className:" + className + " classNum:" + classNum + " persons size:" + persons.size();
     }
 
 

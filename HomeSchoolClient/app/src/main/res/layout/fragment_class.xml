@@ -12,7 +12,7 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@id/join_class"
+        android:id="@id/search_class"
         android:text="加入班级"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

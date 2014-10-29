@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by tan on 14-10-28.
  */
@@ -42,6 +44,12 @@ public class ClassRestful {
         return clas;
     }
 
+    @RequestMapping(value = "/find/className/{className}", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Class> findClass(@PathVariable String className) {
+        List<Class> classes = classService.findBy(className);
+        return classes;
+    }
 
     //set and get methods
 

@@ -159,6 +159,10 @@
             android:name=".ui.CreateClassActivity"
             android:label="@string/title_activity_create_class" >
         </activity>
+        <activity
+            android:name=".ui.SearchClassActivity"
+            android:label="@string/title_activity_search_class" >
+        </activity>
     </application>
 
 </manifest>
