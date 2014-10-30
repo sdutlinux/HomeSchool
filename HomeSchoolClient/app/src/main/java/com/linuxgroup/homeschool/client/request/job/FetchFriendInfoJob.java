@@ -25,6 +25,7 @@ public class FetchFriendInfoJob extends BaseJob {
 
         this.friendId = friendId;
         this.account = null;
+
     }
 
     public FetchFriendInfoJob(String account) {

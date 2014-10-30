@@ -3,6 +3,7 @@ package com.linuxgroup.dao.impl;
 import com.linuxgroup.dao.ClassDao;
 import com.linuxgroup.model.Class;
 import com.linuxgroup.model.Person;
+
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import java.util.HashSet;
@@ -58,18 +59,17 @@ public class ClassDaoHibernate extends HibernateDaoSupport implements ClassDao{
 
     /**
      * findBy方法
-     * @param className
+     * @param classNum
      * @return Class对象
      */
     @Override
-    public Class findBy(String className) {
-        List<Class> classes = (List<Class>)getHibernateTemplate().find("from Class as c where c.className=?",className);
+    public Class findBy(String classNum) {
+        Class clas =(Class) getHibernateTemplate().find("from Class as c where c.classNum = ?", classNum)
+                .get(0);
 
-        if (classes.size() == 0) {
-            return null;
-        }else {
-            return classes.get(0);
-        }
+        System.out.println(clas);
+
+        return clas;
     }
 
     /**

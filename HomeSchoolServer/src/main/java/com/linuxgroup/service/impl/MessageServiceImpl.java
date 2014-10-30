@@ -1,6 +1,7 @@
 package com.linuxgroup.service.impl;
 
 import com.linuxgroup.dao.MessageDao;
+import com.linuxgroup.dao.impl.MessageDaoHibernate;
 import com.linuxgroup.model.Message;
 import com.linuxgroup.service.MessageService;
 
