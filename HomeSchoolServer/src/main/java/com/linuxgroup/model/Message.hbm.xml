@@ -19,7 +19,6 @@
         <joined-subclass name="ChatMessage">
             <!-- 必须使用key元素映射父子类的共有主键-->
             <key column="chat_id" />
-
             <!--映射基本属性 -->
             <property name="fromAccount" column="fromAccount" type="string" not-null="true"/>
             <property name="toAccount" column="toAccount" type="string" not-null="true"/>

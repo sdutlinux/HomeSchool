@@ -10,7 +10,7 @@ public class Class {
     /**
      * Class 的数据库 id
      */
-    private Integer id;
+    private int id;
 
     /**
      * Class 的名称, 例如 一年级二班
@@ -64,5 +64,9 @@ public class Class {
 
     public void setPersons(Set<Person> persons) {
         this.persons = persons;
+    }
+
+    public String toString() {
+        return "id: " + id + " className: " + className + " classNum: " + classNum;
     }
 }

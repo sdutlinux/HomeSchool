@@ -2,9 +2,12 @@ package com.linuxgroup.dao.impl;
 
 import com.linuxgroup.dao.ClassDao;
 import com.linuxgroup.model.Class;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import com.linuxgroup.model.Person;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by huihui on 14-10-27.
@@ -29,6 +32,7 @@ public class ClassDaoHibernate extends HibernateDaoSupport implements ClassDao{
      */
     @Override
     public Integer save(Class classes) {
+
         return (Integer)getHibernateTemplate().save(classes);
     }
 
@@ -66,5 +70,52 @@ public class ClassDaoHibernate extends HibernateDaoSupport implements ClassDao{
         }else {
             return classes.get(0);
         }
+    }
+
+    /**
+     * findClassPerson
+     * @param className 传入的是class的班级名称
+     * @return 这个class下的相关联的Person的集合
+     */
+    @Override
+    public List<Person> findClassPerson(String className) {
+        List<Person> persons = (List<Person>)getHibernateTemplate().find("select persons from  Class  as c where c.className=?",className);
+
+        if (persons.size() == 0) {
+            return null;
+        }else {
+            return persons;
+        }
+    }
+
+    /**
+     * findClassName 以List的形式返回class表中的className
+     * @return className的List集合
+     */
+    @Override
+    public List<String> findClassName() {
+        List<String> className = (List<String>)getHibernateTemplate().find("select className from Class order by className");
+
+        if (className.size() == 0) {
+            return null;
+        }else {
+            return className;
+        }
+    }
+
+    /**
+     * findClassNum 以set的形式返回class表中的classNum
+     * @return classNum的List集合
+     */
+    @Override
+    public List<String> findClassNum() {
+        List<String> classNum = (List<String>)getHibernateTemplate().find("select classNum from Class order by classNum");
+
+        if (classNum.size() == 0) {
+            return null;
+        }else {
+            return classNum;
+        }
+
     }
 }

@@ -5,6 +5,9 @@ import com.linuxgroup.model.*;
 import com.linuxgroup.model.Class;
 import com.linuxgroup.service.ClassService;
 
+import java.util.List;
+import java.util.Set;
+
 /**
  * Created by huihui on 14-10-27.
  */
@@ -38,6 +41,7 @@ public class ClassServiceImpl implements ClassService {
      */
     @Override
     public Integer save(Class classes) {
+
         return classDao.save(classes);
     }
 
@@ -69,5 +73,17 @@ public class ClassServiceImpl implements ClassService {
     @Override
     public Class findBy(String className) {
         return classDao.findBy(className);
+    }
+
+    public List<String> findClassNum() {
+        return classDao.findClassNum();
+    }
+
+    public List<String> findClassName() {
+        return classDao.findClassName();
+    }
+
+    public List<Person> findClassPerson(String className) {
+        return classDao.findClassPerson(className);
     }
 }

@@ -5,16 +5,16 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
 <!--hibernate-mapping是映射文件的根元素-->
 <hibernate-mapping package="com.linuxgroup.model" >
-    <!-- 每个class元素对应一个持久话对象-->
-    <class name="com.linuxgroup.model.Class" table="classes_table">
+<!-- 每个class元素对应一个持久话对象-->
+    <class name="Class" table="classes_table">
         <!--id元素定义持久化对象-->
         <id name="id" column="id">
             <!--指定主键生成策略-->
             <generator class="identity"/>
         </id>
         <!-- property元素定义常规属性-->
-        <property name="className" type="java.lang.String" not-null="true"/>
-        <property name="classNum" type="java.lang.String" not-null="true"/>
+        <property name="className" column="className" type="string" not-null="true"/>
+        <property name="classNum" column="classNum" type="string" not-null="true"/>
 
         <!--person 和 class 的多对多关系-->
 

@@ -2,7 +2,6 @@ package com.linuxgroup.dao.impl;
 
 import com.linuxgroup.dao.PersonDao;
 import com.linuxgroup.model.Person;
-import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 

@@ -1,6 +1,10 @@
 package com.linuxgroup.service;
 
 import com.linuxgroup.model.Class;
+import com.linuxgroup.model.Person;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by huihui on 14-10-27.
@@ -41,4 +45,23 @@ public interface ClassService {
      * @return Class对象
      */
     public Class findBy(String className);
+
+    /**
+     * findClassNum方法
+     * @return 以List的形式返回所有的classNum
+     */
+    public List<String> findClassNum();
+
+    /**
+     * findClassName方法
+     * @return 以List的形式返回所有的ClassName
+     */
+    public List<String> findClassName();
+
+    /**
+     * findClassPerson
+     * @param className 传入的是class的班级名称
+     * @return 这个class下的相关联的Person的集合
+     */
+    public List<Person> findClassPerson(String className);
 }
