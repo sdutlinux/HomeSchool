@@ -70,7 +70,4 @@ public class Class {
         this.persons = persons;
     }
 
-    public String toString() {
-        return "id: " + id + " className: " + className + " classNum: " + classNum;
-    }
 }
