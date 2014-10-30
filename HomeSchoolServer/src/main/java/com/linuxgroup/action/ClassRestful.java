@@ -44,11 +44,12 @@ public class ClassRestful {
         return clas;
     }
 
-    @RequestMapping(value = "/find/className/{className}", method = RequestMethod.GET)
+    @RequestMapping(value = "/find/{classNum}", method = RequestMethod.GET)
     public @ResponseBody
-    List<Class> findClass(@PathVariable String className) {
-        List<Class> classes = classService.findBy(className);
-        return classes;
+    Class findClass(@PathVariable String classNum) {
+        System.out.println(classNum);
+        Class clas = classService.findBy(classNum);
+        return clas;
     }
 
     //set and get methods

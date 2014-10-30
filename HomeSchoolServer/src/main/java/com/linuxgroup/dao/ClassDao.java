@@ -42,5 +42,5 @@ public interface ClassDao {
      * @param className
      * @return Class对象
      */
-    public List<Class> findBy(String className);
+    public Class findBy(String className);
 }

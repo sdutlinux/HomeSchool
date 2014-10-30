@@ -69,7 +69,7 @@ public class ClassServiceImpl implements ClassService {
      * @return Class对象
      */
     @Override
-    public List<Class> findBy(String className) {
+    public Class findBy(String className) {
         return classDao.findBy(className);
     }
 }

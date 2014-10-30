@@ -39,15 +39,19 @@ public class SearchClassActivity extends BaseActivity {
             public void onClick(View view) {
                 final String className = et_class_name.getText().toString();
 
-                new SimpleBackgroundTask<List<Class>>(SearchClassActivity.this) {
+                new SimpleBackgroundTask<Class>(SearchClassActivity.this) {
                     @Override
-                    protected List<Class> onRun() {
+                    protected Class onRun() {
                         return ClassApi.findClassByClassName(className);
                     }
 
                     @Override
-                    protected void onSuccess(List<Class> result) {
-                        System.out.println(result);
+                    protected void onSuccess(Class clas) {
+                        //todo: 显示
+                        //todo: 如果找到了
+                        System.out.println(clas);
+
+                        //todo: 如果没找到
                     }
                 }.execute();
             }

@@ -41,11 +41,11 @@ public class ClassApi extends BaseApi {
         return aClass;
     }
 
-    public static List<Class> findClassByClassName(String className) {
-        List<Class> classes = (List<Class>) restTemplate.getForObject(ApiInterface.PATH_CLASS_FIND_BY_CLASSNAME
-                + "/{className}",
-                List.class, className);
+    public static Class findClassByClassName(String classNum) {
+        Class clas = restTemplate.getForObject(ApiInterface.PATH_CLASS_FIND_BY_CLASSNAME
+                + "/{classNum}",
+                Class.class, classNum);
 
-        return classes;
+        return clas;
     }
 }
